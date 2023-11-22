@@ -19,7 +19,7 @@ const MESSAGE_ITEM_ADDED_END = `</span>`;
 const MESSAGE_ITEM_DELETED_START = `<span class='alert_deletedItem'>`;
 const MESSAGE_ITEM_DELETED_END = `</span>`;
 
-			
+console.log("init inventoryAlert plugin");		
 function saveCurrentInventory() {
 	let inventory = JSON.stringify(getCurrentInventory());
 
