@@ -35,7 +35,7 @@ function saveCurrentInventory() {
 		},
 		async: false,
 		success: function(data){
-			console.log(data);
+			// console.log(data);
 		}
 	});
 }
@@ -52,7 +52,7 @@ function getLastInventory() {
 		},
 		async: false,
 		success: function(data){
-			console.log(data);
+			// console.log(data);
 			inventory = eval('(' + data.response.storage.data.backup_inventory + ')');
 		}
 	});
