@@ -5,6 +5,8 @@
 - Уведомление при изменении инвентаря: https://github.com/AlluvioDev/scripts/tree/main/inventoryAlert
   Подключать в низ.
   ```
-    <script type="text/javascript" src="https://alluviodev.github.io/scripts/inventoryAlert/script.min.js"></script>
+	<!-- start Проверка наличия обновлений в поле "награды" ( https://github.com/AlluvioDev/scripts/tree/main#readme ) -->
+		<script type="text/javascript" src="https://alluviodev.github.io/scripts/inventoryAlert/script.min.js"></script>
+	<!-- end  Проверка наличия обновлений в поле "награды" -->
   ```
   NB! Пока файла min.js НЕТ.
