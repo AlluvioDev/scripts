@@ -1,3 +1,25 @@
+const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
+
+/* ==== STYLE SETTINGS ==== */
+/* id контейнера, куда будет выводиться список изменений. При значении "" будет выводиться в консоль. */
+const MESSAGE_CONTAINER_ID = "";
+/* Обёртка для изменений в одной вкладке */
+const MESSAGE_BLOCK_START = `<div class='alert_block'>`;
+const MESSAGE_BLOCK_END = `</div>`;
+/* Обёртка для имени изменённого раздела */
+const MESSAGE_TITLE_START = `<div class='alert_blockTitle'>Изменён раздел `;
+const MESSAGE_TITLE_END = `!</div>`;
+/* Обёртка для списка изменённых предметов */
+const MESSAGE_ITEMS_ROW_START = `<div class='alert_blockItems'>`;
+const MESSAGE_ITEMS_ROW_END = `</div>`;
+/* Обёртка для добавленного предмета */
+const MESSAGE_ITEM_ADDED_START = `<span class='alert_addedItem'>`;
+const MESSAGE_ITEM_ADDED_END = `</span>`;
+/* Обёртка для удадённого предмета */
+const MESSAGE_ITEM_DELETED_START = `<span class='alert_deletedItem'>`;
+const MESSAGE_ITEM_DELETED_END = `</span>`;
+
+			
 function saveCurrentInventory() {
 	let inventory = JSON.stringify(getCurrentInventory());
 
@@ -66,23 +88,21 @@ function getCurrentInventory() {
 }
 
 function showAlertIfInventoryChanged() {
-	console.log("Get last inv...");
+	// console.log("Get last inv...");
 	let oldInventoryArr = getLastInventory();
 	if(!oldInventoryArr) {
-		console.log("Last inv not exist...");
+		// console.log("Last inv not exist...");
 		saveCurrentInventory();
-		console.log("Curr inv saved");
+		// console.log("Curr inv saved");
 		return;
 	}
-	console.log("Last inv getted");
+	// console.log("Last inv getted");
 	
-	console.log("Get curr inv...");
+	// console.log("Get curr inv...");
 	let newInventory = getCurrentInventory();
-	console.log("Curr inv getted");
+	// console.log("Curr inv getted");
 	
-	let msInOneDay = 120000; //86400000; // 1 000(ms) * 60(s) * 60(m) * 24(h)
-	
-	if(oldInventoryArr[0] + msInOneDay > newInventory[0]) {console.log("Inv too fresh"); return;}
+	if(oldInventoryArr[0] + UPDATE_INTERVAL_IN_MS > newInventory[0]) {/* console.log("Inv too fresh"); */ return;}
 	
 	if(oldInventoryArr[1] === newInventory[1]
 		&& oldInventoryArr[2] === newInventory[2]
@@ -90,15 +110,15 @@ function showAlertIfInventoryChanged() {
 		&& oldInventoryArr[4] === newInventory[4]
 		&& oldInventoryArr[5] === newInventory[5]) {
 		saveCurrentInventory();
-		console.log("No changes!");
+		// console.log("No changes!");
 		return;
 	}
-	console.log("Find changes!");
+	// console.log("Find changes!");
 	
 	let message = "";
 	for(let i = 1; i < newInventory.length; i++) {
 		if(!(oldInventoryArr[i] === newInventory[i])) {
-			message += `<div class='alert_block'><div class='alert_blockTitle'>Изменён раздел `;
+			message += MESSAGE_BLOCK_START + MESSAGE_TITLE_START;
 			switch(i) {
 				case 1: message += `"Награды"`; break;
 				case 2: message += `"Артефакты"`; break;
@@ -106,32 +126,21 @@ function showAlertIfInventoryChanged() {
 				case 4: message += `"Иконки"`; break;
 				case 5: message += `"Подарки"`; break;
 			}
-			message += `!</div>`;
-			message += `<div class='alert_blockItems'>`;
-	console.log("Get diffs #" + i + "...");
+			message += MESSAGE_TITLE_END;
+			message += MESSAGE_ITEMS_ROW_START;
+	// console.log("Get diffs #" + i + "...");
 			message += getItems(oldInventoryArr[i], newInventory[i]);
-	console.log("Diffs getted!");
-			message += `</div></div>`;
+	// console.log("Diffs getted!");
+			message += MESSAGE_ITEMS_ROW_END + MESSAGE_BLOCK_END;
 		}
 	}
-	console.log("Save curr inv...");
+	// console.log("Save curr inv...");
 	saveCurrentInventory();
-	console.log("Curr inv saved");
-	let style=`<style>
-		.alert_deletedItem > *{     border: 3px solid red; opacity:0.6;}
-		.alert_deletedItem:before { content: "I'm deleted: ";}
-		.alert_addedItem > *{     border: 3px solid green; }
-		.alert_addedItem:before { content: "I'm added: ";}
-	</style>`;
+	// console.log("Curr inv saved");
 	
-	$('body').append(style);
-	
-	$('body').append('<div class="alert_panel" style="display:block;color:#ffffff;position:fixed;width: 400px;height: 200px;top: 50%;margin-top: -100px;margin-left: -200px;padding: 20px;left: 50%;background-color:rgba(0, 0, 0, 0.9);z-index:990;border-radius: 4px;"></div>');
-		$('.alert_panel').append('<div>' + message + '</div>');
-		
-	
-		
+	MESSAGE_CONTAINER_ID == "" ? console.log(message) : $(MESSAGE_CONTAINER_ID).append('<div>' + message + '</div>');
 }
+showAlertIfInventoryChanged();
 
 function getItems(oldItemsString, newItemsString) {
 	let oldItemsArr = oldItemsString ? splitItemsStringToArr(oldItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
@@ -140,12 +149,12 @@ function getItems(oldItemsString, newItemsString) {
 	var result = [];
 	for (var i = 0; i < oldItemsArr.length; i++) {
 		if (newItemsArr.indexOf(oldItemsArr[i]) === -1) {
-			result.push("<span class='alert_deletedItem'>" + oldItemsArr[i] + "</span>");
+			result.push(MESSAGE_ITEM_DELETED_START + oldItemsArr[i] + MESSAGE_ITEM_DELETED_END);
 		}
 	}
 	for (i = 0; i < newItemsArr.length; i++) {
 		if (oldItemsArr.indexOf(newItemsArr[i]) === -1) {
-			result.push("<span class='alert_addedItem'>" + newItemsArr[i] + "</span>");
+			result.push(MESSAGE_ITEM_ADDED_START + newItemsArr[i] + MESSAGE_ITEM_ADDED_END);
 		}
 	}
 	return result.join(" ");
