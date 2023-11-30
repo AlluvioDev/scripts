@@ -62,7 +62,7 @@ const STYLE = `<style>
 }
 </style>`;
 
-console.log("init inventoryAlert plugin");		
+console.log("init inventoryAlert plugin v2.03");		
 function saveCurrentInventory() {
 	let inventory = JSON.stringify(getCurrentInventory());
 
@@ -182,10 +182,6 @@ function showAlertIfInventoryChanged() {
 	// console.log("Curr inv saved");
 
 	$('body').append(STYLE);
-
-	$('body').append('<div class="alert_panel" style="display:block;color:#ffffff;position:fixed;width: 400px;height: 200px;top: 50%;margin-top: -100px;margin-left: -200px;padding: 20px;left: 50%;background-color:rgba(0, 0, 0, 0.9);z-index:990;border-radius: 4px;"></div>');
-		$('.alert_panel').append('<div>' + message + '</div>');
-	
 	$('body').append('<div class="alert_wrapper">' + message + '</div>');
 }
 showAlertIfInventoryChanged();
