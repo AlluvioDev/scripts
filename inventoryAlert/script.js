@@ -1,3 +1,4 @@
+const DEBUG_MODE = true; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
 
 /* ==== STYLE SETTINGS ==== */
@@ -62,7 +63,8 @@ const STYLE = `<style>
 }
 </style>`;
 
-console.log("init inventoryAlert plugin v2.03");		
+console.log("init inventoryAlert plugin v2.04");
+if(DEBUG_MODE) console.log("DEBUG_MODE on");
 function saveCurrentInventory() {
 	let inventory = JSON.stringify(getCurrentInventory());
 
@@ -145,7 +147,7 @@ function showAlertIfInventoryChanged() {
 	let newInventory = getCurrentInventory();
 	// console.log("Curr inv getted");
 	
-	if(oldInventoryArr[0] + UPDATE_INTERVAL_IN_MS > newInventory[0]) {/* console.log("Inv too fresh"); */ return;}
+	if(oldInventoryArr[0] + UPDATE_INTERVAL_IN_MS > newInventory[0]) {/* console.log("Inv too fresh"); */ if(!DEBUG_MODE) return;}
 	
 	if(oldInventoryArr[1] === newInventory[1]
 		&& oldInventoryArr[2] === newInventory[2]
@@ -154,7 +156,7 @@ function showAlertIfInventoryChanged() {
 		&& oldInventoryArr[5] === newInventory[5]) {
 		saveCurrentInventory();
 		// console.log("No changes!");
-		return;
+		if(!DEBUG_MODE) return;
 	}
 	// console.log("Find changes!");
 	
@@ -182,6 +184,9 @@ function showAlertIfInventoryChanged() {
 	// console.log("Curr inv saved");
 
 	$('body').append(STYLE);
+	if(DEBUG_MODE) {
+		message = `<div class="alert_block"><div class="alert_blockTitle">Изменён раздел "Артефакты"!</div><div class="alert_blockItems"><span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 1 тысячи слов"></span> <span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 2 тысячи слов"></span> <span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 3 тысячи слов"></span></div></div><div class="alert_block"><div class="alert_blockTitle">Изменён раздел "Подарки"!</div><div class="alert_blockItems"><span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 1 тысячи слов"></span> <span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 2 тысячи слов"></span> <span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 3 тысячи слов"></span></div></div>`;
+	}
 	$('body').append('<div class="alert_wrapper">' + message + '</div>');
 }
 showAlertIfInventoryChanged();
