@@ -19,6 +19,49 @@ const MESSAGE_ITEM_ADDED_END = `</span>`;
 const MESSAGE_ITEM_DELETED_START = `<span class='alert_deletedItem'>`;
 const MESSAGE_ITEM_DELETED_END = `</span>`;
 
+const STYLE = `<style>
+ .alert_wrapper {
+    width: 514px;
+    background: #122634;
+    color: #cbcbcb;
+    height: 271px;
+    position: absolute;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    border: double 4px #23486a;
+    box-shadow: 0px 0px 19px #0000006e inset;
+    overflow: auto;
+}
+
+.alert_block {
+    padding: 0px 0px 0px 0px;
+    width: 478px;
+    height: 93px;
+    margin: 14px 18px;
+    overflow: auto;
+}     
+
+.alert_blockTitle {
+        text-transform: uppercase;
+    font-family: 'Cormorant';
+    text-align: center;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.7px;
+    text-shadow: 0px 0px 4px #000000a6;
+    margin-bottom: 10px;
+}
+
+.alert_blockItems {
+    width: 475px;
+}
+
+.alert_addedItem {
+    padding: 3px;
+}
+</style>`;
+
 console.log("init inventoryAlert plugin");		
 function saveCurrentInventory() {
 	let inventory = JSON.stringify(getCurrentInventory());
@@ -137,8 +180,13 @@ function showAlertIfInventoryChanged() {
 	// console.log("Save curr inv...");
 	saveCurrentInventory();
 	// console.log("Curr inv saved");
+
+	$('body').append(STYLE);
+
+	$('body').append('<div class="alert_panel" style="display:block;color:#ffffff;position:fixed;width: 400px;height: 200px;top: 50%;margin-top: -100px;margin-left: -200px;padding: 20px;left: 50%;background-color:rgba(0, 0, 0, 0.9);z-index:990;border-radius: 4px;"></div>');
+		$('.alert_panel').append('<div>' + message + '</div>');
 	
-	MESSAGE_CONTAINER_ID == "" ? console.log(message) : $(MESSAGE_CONTAINER_ID).append('<div>' + message + '</div>');
+	$('body').append('<div class="alert_wrapper">' + message + '</div>');
 }
 showAlertIfInventoryChanged();
 
