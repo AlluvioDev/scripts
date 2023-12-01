@@ -1,3 +1,5 @@
+const version = "v2.05"; // Обнови меня, если меняешь код!
+
 const DEBUG_MODE = true; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
 
@@ -5,7 +7,7 @@ const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_2
 /* id контейнера, куда будет выводиться список изменений. При значении "" будет выводиться в консоль. */
 const MESSAGE_CONTAINER_ID = "";
 /* Обёртка для изменений в одной вкладке */
-const MESSAGE_BLOCK_START = `<div class='alert_block'>`;
+const MESSAGE_BLOCK_START = `<div class='alert_block'><a class="close_alert">×</a>`;
 const MESSAGE_BLOCK_END = `</div>`;
 /* Обёртка для имени изменённого раздела */
 const MESSAGE_TITLE_START = `<div class='alert_blockTitle'>Изменён раздел `;
@@ -32,12 +34,12 @@ const STYLE = `<style>
     box-shadow: 0px 0px 19px #0000006e inset;
     overflow: auto;
     position: absolute;
-    top: 302px;
+    top: 25vh;
     right: 0;
-    bottom: 0;
+    bottom: 25vh;
     left: 0;
     margin: auto;
-    z-index: 1;
+    z-index: 1000;
 }
 
 .alert_block {
@@ -89,7 +91,7 @@ color: #1f242a85 !important;
 }
 </style>`;
 
-console.log("init inventoryAlert plugin v2.04");
+console.log("init inventoryAlert plugin " + version);
 if(DEBUG_MODE) console.log("DEBUG_MODE on");
 function saveCurrentInventory() {
 	let inventory = JSON.stringify(getCurrentInventory());
