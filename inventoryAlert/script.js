@@ -26,13 +26,18 @@ const STYLE = `<style>
     background: #122634;
     color: #cbcbcb;
     height: 271px;
-    position: absolute;
-    margin: 0;
     padding: 20px;
     text-align: center;
     border: double 4px #23486a;
     box-shadow: 0px 0px 19px #0000006e inset;
     overflow: auto;
+    position: absolute;
+    top: 302px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 1;
 }
 
 .alert_block {
