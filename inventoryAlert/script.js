@@ -33,7 +33,7 @@ const STYLE = `<style>
     border: double 4px #23486a;
     box-shadow: 0px 0px 19px #0000006e inset;
     overflow: auto;
-    position: absolute;
+    position: fixed;
     top: 25vh;
     right: 0;
     bottom: 25vh;
