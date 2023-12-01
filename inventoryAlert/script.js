@@ -1,4 +1,4 @@
-const version = "v2.10"; // Обнови меня, если меняешь код!
+const version = "v2.11"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = true; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -228,7 +228,7 @@ function closeAlertWindow() {
 	$('body').remove("." + MESSAGE_PANEL_WRAPPER_CLASS);
 }
 showAlertIfInventoryChanged();
-$('.' + MESSAGE_CLOSE_BTN_CLASS).click(closeAlertWindow());
+$('.' + MESSAGE_CLOSE_BTN_CLASS).on("click", ".menu_button", function() { closeAlertWindow()});
 
 function getItems(oldItemsString, newItemsString) {
 	let oldItemsArr = oldItemsString ? splitItemsStringToArr(oldItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
