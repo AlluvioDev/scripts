@@ -1,4 +1,4 @@
-const version = "v2.09"; // Обнови меня, если меняешь код!
+const version = "v2.10"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = true; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -9,7 +9,8 @@ const MESSAGE_PANEL_WRAPPER_CLASS = `alert_wrapper`;
 const MESSAGE_PANEL_WRAPPER_START = `<div class='` + MESSAGE_PANEL_WRAPPER_CLASS + `'>`;
 const MESSAGE_PANEL_WRAPPER_END = `</div>`;
 /* Крестик закрывания окошка. */
-const MESSAGE_CLOSE_BTN = `<a class="close_alert">×</a>`;
+const MESSAGE_CLOSE_BTN_CLASS = `close_alert`;
+const MESSAGE_CLOSE_BTN = `<a class="` + MESSAGE_CLOSE_BTN_CLASS + `">×</a>`;
 /* Обёртка для изменений в одной вкладке */
 const MESSAGE_BLOCK_START = `<div class='alert_block'>`;
 const MESSAGE_BLOCK_END = `</div>`;
@@ -227,6 +228,7 @@ function closeAlertWindow() {
 	$('body').remove("." + MESSAGE_PANEL_WRAPPER_CLASS);
 }
 showAlertIfInventoryChanged();
+$('.' + MESSAGE_CLOSE_BTN_CLASS).click(closeAlertWindow());
 
 function getItems(oldItemsString, newItemsString) {
 	let oldItemsArr = oldItemsString ? splitItemsStringToArr(oldItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
