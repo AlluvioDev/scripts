@@ -21,18 +21,23 @@ const MESSAGE_ITEM_DELETED_START = `<span class='alert_deletedItem'>`;
 const MESSAGE_ITEM_DELETED_END = `</span>`;
 
 const STYLE = `<style>
- .alert_wrapper {
+.alert_wrapper {
     width: 514px;
     background: #122634;
     color: #cbcbcb;
     height: 271px;
-    position: absolute;
-    margin: 0;
     padding: 20px;
     text-align: center;
     border: double 4px #23486a;
     box-shadow: 0px 0px 19px #0000006e inset;
     overflow: auto;
+    position: absolute;
+    top: 302px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 1;
 }
 
 .alert_block {
@@ -60,6 +65,27 @@ const STYLE = `<style>
 
 .alert_addedItem {
     padding: 3px;
+}
+
+.alert_deletedItem {
+    opacity: 10%;
+    filter: alpha(opacity=40);
+}
+
+.close_alert {
+    font-size: 27px;
+    position: absolute;
+    top: 8px;
+    right: 11px;
+    color: #4b72a3;
+    text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.close_alert a:hover {
+color: #1f242a85 !important;
 }
 </style>`;
 
