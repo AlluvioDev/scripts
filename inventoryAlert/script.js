@@ -1,13 +1,16 @@
-const version = "v2.06"; // Обнови меня, если меняешь код!
+const version = "v2.07"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = true; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
 
 /* ==== STYLE SETTINGS ==== */
-/* id контейнера, куда будет выводиться список изменений. При значении "" будет выводиться в консоль. */
-const MESSAGE_CONTAINER_ID = "";
+/* Обёртка для всей панельки */
+const MESSAGE_PANEL_WRAPPER_START = `<div class='alert_wrapper'>`;
+const MESSAGE_PANEL_WRAPPER_END = `</div>`;
+/* Крестик закрывания окошка. */
+const MESSAGE_CLOSE_BTN = `<a class="close_alert">×</a>`;
 /* Обёртка для изменений в одной вкладке */
-const MESSAGE_BLOCK_START = `<div class='alert_block'><a class="close_alert">×</a>`;
+const MESSAGE_BLOCK_START = `<div class='alert_block'>`;
 const MESSAGE_BLOCK_END = `</div>`;
 /* Обёртка для имени изменённого раздела */
 const MESSAGE_TITLE_START = `<div class='alert_blockTitle'>Изменён раздел `;
@@ -215,7 +218,7 @@ function showAlertIfInventoryChanged() {
 	if(DEBUG_MODE) {
 		message = `<div class="alert_block"><div class="alert_blockTitle">Изменён раздел "Артефакты"!</div><div class="alert_blockItems"><span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 1 тысячи слов"></span> <span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 2 тысячи слов"></span> <span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 3 тысячи слов"></span></div></div><div class="alert_block"><div class="alert_blockTitle">Изменён раздел "Подарки"!</div><div class="alert_blockItems"><span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 1 тысячи слов"></span> <span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 2 тысячи слов"></span> <span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 3 тысячи слов"></span></div></div>`;
 	}
-	$('body').append('<div class="alert_wrapper">' + message + '</div>');
+	$('body').append(MESSAGE_PANEL_WRAPPER_START + MESSAGE_CLOSE_BTN + message + MESSAGE_PANEL_WRAPPER_END);
 }
 showAlertIfInventoryChanged();
 
