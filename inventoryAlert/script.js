@@ -1,4 +1,4 @@
-const version = "v2.12"; // Обнови меня, если меняешь код!
+const version = "v2.13"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = true; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -27,74 +27,74 @@ const MESSAGE_ITEM_ADDED_END = `</span>`;
 const MESSAGE_ITEM_DELETED_START = `<span class='alert_deletedItem'>`;
 const MESSAGE_ITEM_DELETED_END = `</span>`;
 
-const STYLE = `<style>
-.alert_wrapper {
-    width: 514px;
-    background: #122634;
-    color: #cbcbcb;
-    height: 271px;
-    padding: 20px;
-    text-align: center;
-    border: double 4px #23486a;
-    box-shadow: 0px 0px 19px #0000006e inset;
-    overflow: auto;
-    position: fixed;
-    top: 25vh;
-    right: 0;
-    bottom: 25vh;
-    left: 0;
-    margin: auto;
-    z-index: 1000;
-}
+// const STYLE = `<style>
+// .alert_wrapper {
+//     width: 514px;
+//     background: #122634;
+//     color: #cbcbcb;
+//     height: 271px;
+//     padding: 20px;
+//     text-align: center;
+//     border: double 4px #23486a;
+//     box-shadow: 0px 0px 19px #0000006e inset;
+//     overflow: auto;
+//     position: fixed;
+//     top: 25vh;
+//     right: 0;
+//     bottom: 25vh;
+//     left: 0;
+//     margin: auto;
+//     z-index: 1000;
+// }
 
-.alert_block {
-    padding: 0px 0px 0px 0px;
-    width: 478px;
-    height: 93px;
-    margin: 14px 18px;
-    overflow: auto;
-}     
+// .alert_block {
+//     padding: 0px 0px 0px 0px;
+//     width: 478px;
+//     height: 93px;
+//     margin: 14px 18px;
+//     overflow: auto;
+// }     
 
-.alert_blockTitle {
-        text-transform: uppercase;
-    font-family: 'Cormorant';
-    text-align: center;
-    font-weight: 400;
-    font-size: 13px;
-    letter-spacing: 0.7px;
-    text-shadow: 0px 0px 4px #000000a6;
-    margin-bottom: 10px;
-}
+// .alert_blockTitle {
+//         text-transform: uppercase;
+//     font-family: 'Cormorant';
+//     text-align: center;
+//     font-weight: 400;
+//     font-size: 13px;
+//     letter-spacing: 0.7px;
+//     text-shadow: 0px 0px 4px #000000a6;
+//     margin-bottom: 10px;
+// }
 
-.alert_blockItems {
-    width: 475px;
-}
+// .alert_blockItems {
+//     width: 475px;
+// }
 
-.alert_addedItem {
-    padding: 3px;
-}
+// .alert_addedItem {
+//     padding: 3px;
+// }
 
-.alert_deletedItem {
-    opacity: 10%;
-    filter: alpha(opacity=40);
-}
+// .alert_deletedItem {
+//     opacity: 10%;
+//     filter: alpha(opacity=40);
+// }
 
-.close_alert {
-    font-size: 27px;
-    position: absolute;
-    top: 8px;
-    right: 11px;
-    color: #4b72a3;
-    text-shadow: 0 -1px 1px rbga(0,0,0,.6);
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-}
+// .close_alert {
+//     font-size: 27px;
+//     position: absolute;
+//     top: 8px;
+//     right: 11px;
+//     color: #4b72a3;
+//     text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+//     font-weight: bold;
+//     cursor: pointer;
+//     text-decoration: none;
+// }
 
-.close_alert a:hover {
-color: #1f242a85 !important;
-}
-</style>`;
+// .close_alert a:hover {
+// color: #1f242a85 !important;
+// }
+// </style>`;
 
 console.log("init inventoryAlert plugin " + version);
 if(DEBUG_MODE) console.log("DEBUG_MODE on");
@@ -216,7 +216,7 @@ function showAlertIfInventoryChanged() {
 	saveCurrentInventory();
 	// console.log("Curr inv saved");
 
-	$('body').append(STYLE);
+	//$('body').append(STYLE);
 	if(DEBUG_MODE) {
 		message = `<div class="alert_block"><div class="alert_blockTitle">Изменён раздел "Артефакты"!</div><div class="alert_blockItems"><span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 1 тысячи слов"></span> <span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 2 тысячи слов"></span> <span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 3 тысячи слов"></span></div></div><div class="alert_block"><div class="alert_blockTitle">Изменён раздел "Подарки"!</div><div class="alert_blockItems"><span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 1 тысячи слов"></span> <span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 2 тысячи слов"></span> <span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 3 тысячи слов"></span></div></div>`;
 	}
