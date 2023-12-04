@@ -5,4 +5,5 @@
 
   # Подключение
   Администрирование -> Формы -> Форма ответа -> HTML в форме ответа
+
   Вставить туда код из файла https://github.com/AlluvioDev/scripts/blob/main/dice/dice.html 
