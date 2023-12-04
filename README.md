@@ -16,3 +16,4 @@
 		<script type="text/javascript" src="https://alluviodev.github.io/scripts/inventoryAlert/script_v2.13.min.js"></script>
 	<!-- end  Проверка наличия обновлений в поле "награды" -->
   ```
+- Код дайсов, учитывающих время написания поста, его id и прочие броски на странице: https://github.com/AlluvioDev/scripts/tree/main/dice#readme
