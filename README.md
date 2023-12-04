@@ -4,9 +4,15 @@
 ## В наличии:
 - Уведомление при изменении инвентаря: https://github.com/AlluvioDev/scripts/tree/main/inventoryAlert
   Подключать в низ.
+  БЕЗ СЖАТИЯ (проверен, гарантированно работает, но содержит много мусора (комментариев)):
   ```
 	<!-- start Проверка наличия обновлений в поле "награды" ( https://github.com/AlluvioDev/scripts/tree/main#readme ) -->
-		<script type="text/javascript" src="https://alluviodev.github.io/scripts/inventoryAlert/script.min.js"></script>
+		<script type="text/javascript" src="https://alluviodev.github.io/scripts/inventoryAlert/script.js"></script>
 	<!-- end  Проверка наличия обновлений в поле "награды" -->
   ```
-  NB! Пока файла min.js НЕТ.
+  СЖАТЫЙ (быстрее грузится, не проверялся отдельно):
+  ```
+	<!-- start Проверка наличия обновлений в поле "награды" ( https://github.com/AlluvioDev/scripts/tree/main#readme ) -->
+		<script type="text/javascript" src="https://alluviodev.github.io/scripts/inventoryAlert/script_v2.13.min.js"></script>
+	<!-- end  Проверка наличия обновлений в поле "награды" -->
+  ```
