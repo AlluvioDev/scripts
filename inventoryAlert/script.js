@@ -1,4 +1,4 @@
-const version = "v2.19"; // Обнови меня, если меняешь код!
+const version = "v2.20"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -96,11 +96,12 @@ const MESSAGE_ITEM_DELETED_END = `</span>`;
 // }
 // </style>`;
 
+var regexpSpecChars = /[^\w\sа-яА-ЯёЁ\d\.<>\\\/\"=\[\]\!\?\:]/g;
 console.log("init inventoryAlert plugin " + version);
 if(DEBUG_MODE) console.log("DEBUG_MODE on");
 function saveCurrentInventory() {
 	let invStr = getCurrentInventory();
-	let inventory = encodeURIComponent(JSON.stringify(invStr));
+	let inventory = JSON.stringify(invStr);
 
 	$.ajax({
 		url: '/api.php',
@@ -136,7 +137,7 @@ function getLastInventory() {
 			} else {
 				console.log(data.response.storage.user_id);
 	console.log("getLastInventory invStr = " + data.response.storage.data.backup_inventory);
-				inventory = eval('(' + decodeURIComponent(data.response.storage.data.backup_inventory) + ')');
+				inventory = eval('(' + data.response.storage.data.backup_inventory + ')');
 			}
 		}
 	});
@@ -187,12 +188,12 @@ function showAlertIfInventoryChanged() {
 	// console.log("Curr inv getted");
 	
 	if(oldInventoryArr[0] + UPDATE_INTERVAL_IN_MS > newInventory[0]) {/* console.log("Inv too fresh"); */ if(!DEBUG_MODE) return;}
-	
-	if(oldInventoryArr[1] === newInventory[1]
-		&& oldInventoryArr[2] === newInventory[2]
-		&& oldInventoryArr[3] === newInventory[3]
-		&& oldInventoryArr[4] === newInventory[4]
-		&& oldInventoryArr[5] === newInventory[5]) {
+
+	if(oldInventoryArr[1].replace(regexpSpecChars, "") === newInventory[1].replace(regexpSpecChars, "")
+		&& oldInventoryArr[2].replace(regexpSpecChars, "") === newInventory[2].replace(regexpSpecChars, "")
+		&& oldInventoryArr[3].replace(regexpSpecChars, "") === newInventory[3].replace(regexpSpecChars, "")
+		&& oldInventoryArr[4].replace(regexpSpecChars, "") === newInventory[4].replace(regexpSpecChars, "")
+		&& oldInventoryArr[5].replace(regexpSpecChars, "") === newInventory[5].replace(regexpSpecChars, "")) {
 		saveCurrentInventory();
 		// console.log("No changes!");
 		if(!DEBUG_MODE) return;
@@ -201,7 +202,7 @@ function showAlertIfInventoryChanged() {
 	
 	let message = "";
 	for(let i = 1; i < newInventory.length; i++) {
-		if(!(oldInventoryArr[i] === newInventory[i])) {
+		if(!(oldInventoryArr[i].replace(regexpSpecChars, "") === newInventory[i].replace(regexpSpecChars, ""))) {
 			message += MESSAGE_BLOCK_START + MESSAGE_TITLE_START;
 			switch(i) {
 				case 1: message += `"Награды"`; break;
@@ -241,15 +242,21 @@ document.querySelectorAll('.' + MESSAGE_CLOSE_BTN_CLASS).forEach(el => el.addEve
 function getItems(oldItemsString, newItemsString) {
 	let oldItemsArr = oldItemsString ? splitItemsStringToArr(oldItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
 	let newItemsArr = newItemsString ? splitItemsStringToArr(newItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
+
+	let cleanedOldArr = oldItemsArr.map(function(x){ return x.replace(regexpSpecChars, ""); });
+	let cleanedNewArr = newItemsString.map(function(x){ return x.replace(regexpSpecChars, ""); });
 	
 	var result = [];
-	for (var i = 0; i < oldItemsArr.length; i++) {
-		if (newItemsArr.indexOf(oldItemsArr[i]) === -1) {
+
+	var deleted = [];
+	var added = [];
+	for (var i = 0; i < cleanedOldArr.length; i++) {
+		if (cleanedNewArr.indexOf(cleanedOldArr[i]) === -1) {
 			result.push(MESSAGE_ITEM_DELETED_START + oldItemsArr[i] + MESSAGE_ITEM_DELETED_END);
 		}
 	}
 	for (i = 0; i < newItemsArr.length; i++) {
-		if (oldItemsArr.indexOf(newItemsArr[i]) === -1) {
+		if (cleanedOldArr.indexOf(cleanedNewArr[i]) === -1) {
 			result.push(MESSAGE_ITEM_ADDED_START + newItemsArr[i] + MESSAGE_ITEM_ADDED_END);
 		}
 	}
