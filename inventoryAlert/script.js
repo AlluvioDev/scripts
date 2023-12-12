@@ -136,7 +136,7 @@ function getLastInventory() {
 				console.log("Error on saveCurrentInventory method");console.log(data);
 			} else {
 				console.log(data.response.storage.user_id);
-	console.log("getLastInventory invStr = " + data.response.storage.data.backup_inventory);
+	//console.log("getLastInventory invStr = " + data.response.storage.data.backup_inventory);
 				inventory = eval('(' + data.response.storage.data.backup_inventory + ')');
 			}
 		}
