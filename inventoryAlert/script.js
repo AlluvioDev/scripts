@@ -1,4 +1,4 @@
-const version = "v2.13"; // Обнови меня, если меняешь код!
+const version = "v2.14"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -114,7 +114,10 @@ function saveCurrentInventory() {
 		async: false,
 		success: function(data){
 			// console.log(data);
-		}
+		},
+	        error: function(data, errorThrown) {
+	        	console.log('saveCurrentInventory failed :'+errorThrown);
+	        }
 	});
 }
 
@@ -130,9 +133,12 @@ function getLastInventory() {
 		},
 		async: false,
 		success: function(data){
-			// console.log(data);
+			console.log(data.response.storage.user_id);
 			inventory = eval('(' + data.response.storage.data.backup_inventory + ')');
-		}
+		},
+	        error: function(data, errorThrown) {
+	        	console.log('getLastInventory failed :'+errorThrown);
+	        }
 	});
 	return inventory;
 }
