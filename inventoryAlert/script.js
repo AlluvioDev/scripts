@@ -1,4 +1,4 @@
-const version = "v2.15"; // Обнови меня, если меняешь код!
+const version = "v2.16"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -114,7 +114,6 @@ function saveCurrentInventory() {
 		async: false,
 		success: function(data){
 			 if(data.error) {console.log("Error on saveCurrentInventory method");console.log(data);}
-		},
 		}
 	});
 }
