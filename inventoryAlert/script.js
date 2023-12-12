@@ -1,4 +1,4 @@
-const version = "v2.22"; // Обнови меня, если меняешь код!
+const version = "v2.23"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -252,15 +252,18 @@ function getItems(oldItemsString, newItemsString) {
 	for (let i = 0; i < cleanedOldArr.length; i++) {
 		if (cleanedNewArr.indexOf(cleanedOldArr[i]) === -1) {
 			resJson[oldItemsArr[i]] = resJson[oldItemsArr[i]] - 1 || -1;
+	console.log("remove "+ oldItemsArr[i]);
 			//result.push(MESSAGE_ITEM_DELETED_START + oldItemsArr[i] + MESSAGE_ITEM_DELETED_END);
 		}
 	}
 	for (let i = 0; i < newItemsArr.length; i++) {
 		if (cleanedOldArr.indexOf(cleanedNewArr[i]) === -1) {
 			resJson[newItemsArr[i]] = resJson[newItemsArr[i]] + 1 || 1;
+	console.log("add "+ newItemsArr[i]);
 			//result.push(MESSAGE_ITEM_ADDED_START + newItemsArr[i] + MESSAGE_ITEM_ADDED_END);
 		}
 	}
+	console.log(resJson);
 	for (var key in resJson) {
 		if(resJson[key] < 0) {
 			for(let cnt = 0; cnt < resJson[key]*-1; cnt++) {
