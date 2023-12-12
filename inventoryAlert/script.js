@@ -1,4 +1,4 @@
-const version = "v2.18"; // Обнови меня, если меняешь код!
+const version = "v2.19"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -100,7 +100,7 @@ console.log("init inventoryAlert plugin " + version);
 if(DEBUG_MODE) console.log("DEBUG_MODE on");
 function saveCurrentInventory() {
 	let invStr = getCurrentInventory();
-	let inventory = encodeURI(JSON.stringify(invStr));
+	let inventory = encodeURIComponent(JSON.stringify(invStr));
 
 	$.ajax({
 		url: '/api.php',
@@ -136,7 +136,7 @@ function getLastInventory() {
 			} else {
 				console.log(data.response.storage.user_id);
 	console.log("getLastInventory invStr = " + data.response.storage.data.backup_inventory);
-				inventory = eval('(' + decodeURI(data.response.storage.data.backup_inventory) + ')');
+				inventory = eval('(' + decodeURIComponent(data.response.storage.data.backup_inventory) + ')');
 			}
 		}
 	});
