@@ -1,4 +1,4 @@
-const version = "v2.14"; // Обнови меня, если меняешь код!
+const version = "v2.15"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -113,11 +113,9 @@ function saveCurrentInventory() {
 		},
 		async: false,
 		success: function(data){
-			// console.log(data);
+			 if(data.error) {console.log("Error on saveCurrentInventory method");console.log(data);}
 		},
-	        error: function(data, errorThrown) {
-	        	console.log('saveCurrentInventory failed :'+errorThrown);
-	        }
+		}
 	});
 }
 
@@ -133,12 +131,13 @@ function getLastInventory() {
 		},
 		async: false,
 		success: function(data){
-			console.log(data.response.storage.user_id);
-			inventory = eval('(' + data.response.storage.data.backup_inventory + ')');
-		},
-	        error: function(data, errorThrown) {
-	        	console.log('getLastInventory failed :'+errorThrown);
-	        }
+			if(data.error) {
+				console.log("Error on saveCurrentInventory method");console.log(data);
+			} else {
+				console.log(data.response.storage.user_id);
+				inventory = eval('(' + data.response.storage.data.backup_inventory + ')');
+			}
+		}
 	});
 	return inventory;
 }
@@ -174,7 +173,7 @@ function getCurrentInventory() {
 function showAlertIfInventoryChanged() {
 	// console.log("Get last inv...");
 	let oldInventoryArr = getLastInventory();
-	if(!oldInventoryArr) {
+	if(!oldInventoryArr || oldInventoryArr == -1) {
 		// console.log("Last inv not exist...");
 		saveCurrentInventory();
 		// console.log("Curr inv saved");
