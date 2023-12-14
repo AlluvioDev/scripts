@@ -227,13 +227,13 @@ function getCurrentInventory() {
 function showAlertIfInventoryChanged() {
 	console.log("Get last inv...");
 	let oldInventoryArr = getLastInventory();
+	console.log(oldInventoryArr);
 	if(!oldInventoryArr || !oldInventoryArr[0]) {
 		console.log("Last inv not exist...");
 		saveCurrentInventory();
 		console.log("Curr inv saved");
 		return;
 	}
-	console.log(oldInventoryArr);
 	console.log("Last inv getted");
 	
 	console.log("Get curr inv...");
@@ -274,9 +274,9 @@ function showAlertIfInventoryChanged() {
 			message += MESSAGE_ITEMS_ROW_END + MESSAGE_BLOCK_END;
 		}
 	}
-	// console.log("Save curr inv...");
+	console.log("Save curr inv...");
 	saveCurrentInventory();
-	// console.log("Curr inv saved");
+	console.log("Curr inv saved");
 
 	//$('body').append(STYLE);
 	if(DEBUG_MODE) {
