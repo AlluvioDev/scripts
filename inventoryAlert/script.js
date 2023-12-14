@@ -1,4 +1,4 @@
-const version = "v3.06"; // Обнови меня, если меняешь код!
+const version = "v3.07"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -212,7 +212,7 @@ function showAlertIfInventoryChanged() {
 	console.log(newInventory);
 	console.log("Curr inv getted");
 	
-	if(oldInventoryArr[0] + UPDATE_INTERVAL_IN_MS > newInventory[0]) {console.log("Inv too fresh"); if(!DEBUG_MODE) return;}
+	if(oldInventoryArr[0]*1 + UPDATE_INTERVAL_IN_MS > newInventory[0]) {console.log("Inv too fresh"); if(!DEBUG_MODE) return;}
 
 	if(oldInventoryArr[1].replace(regexpSpecChars, "") === newInventory[1].replace(regexpSpecChars, "")
 		&& oldInventoryArr[2].replace(regexpSpecChars, "") === newInventory[2].replace(regexpSpecChars, "")
