@@ -225,21 +225,21 @@ function getCurrentInventory() {
 }
 
 function showAlertIfInventoryChanged() {
-	// console.log("Get last inv...");
+	console.log("Get last inv...");
 	let oldInventoryArr = getLastInventory();
 	if(!oldInventoryArr || !oldInventoryArr[0]) {
 		console.log("Last inv not exist...");
 		saveCurrentInventory();
-		// console.log("Curr inv saved");
+		console.log("Curr inv saved");
 		return;
 	}
-	// console.log(oldInventoryArr);
-	// console.log("Last inv getted");
+	console.log(oldInventoryArr);
+	console.log("Last inv getted");
 	
-	// console.log("Get curr inv...");
+	console.log("Get curr inv...");
 	let newInventory = getCurrentInventory();
-	// console.log(newInventory);
-	// console.log("Curr inv getted");
+	console.log(newInventory);
+	console.log("Curr inv getted");
 	
 	if(oldInventoryArr[0]*1 + UPDATE_INTERVAL_IN_MS > newInventory[0]) {console.log("Inv too fresh"); if(!DEBUG_MODE) return;}
 
