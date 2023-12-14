@@ -1,4 +1,4 @@
-const version = "v2.24"; // Обнови меня, если меняешь код!
+const version = "v2.25"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -116,7 +116,10 @@ function saveCurrentInventory() {
 		async: false,
 		success: function(data){
 			 if(data.error) {console.log("Error on saveCurrentInventory method");console.log(data);}
-		}
+		},
+		  error: function(){
+		    	console.log("Error on saveCurrentInventory method [2]");
+		  }
 	});
 }
 
@@ -139,7 +142,10 @@ function getLastInventory() {
 	//console.log("getLastInventory invStr = " + data.response.storage.data.backup_inventory);
 				inventory = eval('(' + data.response.storage.data.backup_inventory + ')');
 			}
-		}
+		},
+		  error: function(){
+		    	console.log("Error on saveCurrentInventory method [2]");
+		  }
 	});
 	return inventory;
 }
@@ -167,7 +173,10 @@ function getCurrentInventory() {
 			currentInventory[3] = $(d).find('#sm3').html();
 			currentInventory[4] = $(d).find('#sm4').html();
 			currentInventory[5] = $(d).find('#sm5').html();
-		}
+		},
+		  error: function(){
+		    	console.log("Error on saveCurrentInventory method [2]");
+		  }
 	});
 	return currentInventory;
 }
