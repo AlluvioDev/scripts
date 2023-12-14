@@ -1,4 +1,4 @@
-const version = "v4.09"; // Обнови меня, если меняешь код!
+const version = "v4.10"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -110,7 +110,7 @@ function saveCurrentInventory() {
 		let jId = 1;
 		for(let j = 0; j < items.length; j = j + CHUNK_SIZE){
 			if(j != 0) {
-				setValueToStorage(i + "_" + jId, items.slice(j, j+CHUNK_SIZE ));
+				setValueToStorage(i + "_" + jId, items.slice(j, j+CHUNK_SIZE ).join("\n"));
 				jId++;
 			} else {
 				setValueToStorage(i, invStr[i]);
@@ -138,7 +138,8 @@ function setValueToStorage(keySuffix, keyValue){
 			 }
 		},
 		  error: function(){
-		    	console.log("Error on setValueToStorage method [2]");
+		    	console.log("Error on setValueToStorage method [2] backup_inventory_" + keySuffix);
+		    	console.log(keyValue);
 		  }
 	});
 }
