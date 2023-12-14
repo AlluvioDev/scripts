@@ -1,4 +1,4 @@
-const version = "v4.12"; // Обнови меня, если меняешь код!
+const version = "v4.13"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -103,7 +103,9 @@ console.log("init inventoryAlert plugin " + version);
 if(DEBUG_MODE) console.log("DEBUG_MODE on");
 function saveCurrentInventory() {
 	let invStr = getCurrentInventory();
-	setValueToStorage(0, invStr[0]);
+	let current = new Date();
+	current = current.getTime();
+	setValueToStorage(0, current);
 	for(let i = 0; i < 6; i++) {
 		let items = splitItemsStringToArr(invStr[i]);
 		let chunksCount = Math.floor(items.length / CHUNK_SIZE);
