@@ -1,4 +1,4 @@
-const version = "v3.03"; // Обнови меня, если меняешь код!
+const version = "v3.04"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -198,7 +198,7 @@ function getCurrentInventory() {
 function showAlertIfInventoryChanged() {
 	console.log("Get last inv...");
 	let oldInventoryArr = getLastInventory();
-	if(!oldInventoryArr || oldInventoryArr.length < 1) {
+	if(!oldInventoryArr || !oldInventoryArr[0]) {
 		console.log("Last inv not exist...");
 		saveCurrentInventory();
 		console.log("Curr inv saved");
