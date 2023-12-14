@@ -1,4 +1,4 @@
-const version = "v4.04"; // Обнови меня, если меняешь код!
+const version = "v4.05"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -153,7 +153,7 @@ function getLastInventory() {
 		let chunksCount = 1;
 		while(arr.length >= CHUNK_SIZE) {
 			val = getValueFromStorage(i + "_" + chunksCount);
-			arr = splitItemsStringToArr(val.replace(/[\r\n\t]+/g, '').trim());
+			arr = splitItemsStringToArr(val ? val.replace(/[\r\n\t]+/g, '').trim() : "");
 			rez = rez.concat(arr);
 			chunksCount++;
 		}
