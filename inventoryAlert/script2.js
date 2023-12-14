@@ -1,4 +1,4 @@
-const version = "v4.14"; // Обнови меня, если меняешь код!
+const version = "v4.15"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -213,11 +213,11 @@ function getCurrentInventory() {
 		async: false,
 		success: function(data){
 			let d = $(data);
-			currentInventory[1] = $(d).find('#sm1').html();
-			currentInventory[2] = $(d).find('#sm2').html();
-			currentInventory[3] = $(d).find('#sm3').html();
-			currentInventory[4] = $(d).find('#sm4').html();
-			currentInventory[5] = $(d).find('#sm5').html();
+			currentInventory[1] = splitItemsStringToArr($(d).find('#sm1').html());
+			currentInventory[2] = splitItemsStringToArr($(d).find('#sm2').html());
+			currentInventory[3] = splitItemsStringToArr($(d).find('#sm3').html());
+			currentInventory[4] = splitItemsStringToArr($(d).find('#sm4').html());
+			currentInventory[5] = splitItemsStringToArr($(d).find('#sm5').html());
 		},
 		  error: function(){
 		    	console.log("Error on getCurrentInventory method [2]");
@@ -245,11 +245,11 @@ function showAlertIfInventoryChanged() {
 	
 	if(oldInventoryArr[0]*1 + UPDATE_INTERVAL_IN_MS > newInventory[0]) {console.log("Inv too fresh"); if(!DEBUG_MODE) return;}
 
-	if(oldInventoryArr[1].length == newInventory[1].length
-		&& oldInventoryArr[2].length == newInventory[2].length
-		&& oldInventoryArr[3].length == newInventory[3].length
-		&& oldInventoryArr[4].length == newInventory[4].length
-		&& oldInventoryArr[5].length == newInventory[5].length) {
+	if(oldInventoryArr[1].join("") === newInventory[1].join("")
+		&& oldInventoryArr[2].join("") === newInventory[2].join("")
+		&& oldInventoryArr[3].join("") === newInventory[3].join("")
+		&& oldInventoryArr[4].join("") === newInventory[4].join("")
+		&& oldInventoryArr[5].join("") === newInventory[5].join("")) {
 		saveCurrentInventory();
 		console.log("No changes!");
 		if(!DEBUG_MODE) return;
@@ -305,9 +305,9 @@ document.querySelectorAll('.' + MESSAGE_CLOSE_BTN_CLASS).forEach(el => el.addEve
 	closeAlertWindow();
 }));
 
-function getItems(oldItemsArr, newItemsString) {
+function getItems(oldItemsArr, newItemsArr) {
 	// let oldItemsArr = oldItemsString ? splitItemsStringToArr(oldItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
-	let newItemsArr = newItemsString ? splitItemsStringToArr(newItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
+	// let newItemsArr = newItemsString ? splitItemsStringToArr(newItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
 
 	let cleanedOldArr = oldItemsArr.map(function(x){ return x.replace(regexpSpecChars, ""); });
 	let cleanedNewArr = newItemsArr.map(function(x){ return x.replace(regexpSpecChars, ""); });
