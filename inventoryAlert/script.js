@@ -1,4 +1,4 @@
-const version = "v3.08"; // Обнови меня, если меняешь код!
+const version = "v4.00"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -259,9 +259,10 @@ function showAlertIfInventoryChanged() {
 	// 	console.log("message:" + message);
 	// 	return 0;
 	// }
-	if(message.length > 1) {
-		$('body').append(MESSAGE_PANEL_WRAPPER_START + MESSAGE_CLOSE_BTN + message + MESSAGE_PANEL_WRAPPER_END);
-	}
+	
+	////// if(message.length > 1) {
+	////// 	$('body').append(MESSAGE_PANEL_WRAPPER_START + MESSAGE_CLOSE_BTN + message + MESSAGE_PANEL_WRAPPER_END);
+	////// }
 	
 }
 function closeAlertWindow() {
