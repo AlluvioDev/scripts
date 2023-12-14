@@ -108,7 +108,7 @@ function saveCurrentInventory() {
 		let items = splitItemsStringToArr(invStr[i]);
 		let chunksCount = Math.floor(items.length / CHUNK_SIZE);
 		let jId = 1;
-		for(let j = 0; j < items.length; j = j + CHUNK_SIZE){
+		for(let j = 0; j <= items.length; j = j + CHUNK_SIZE){
 			if(j != 0) {
 				setValueToStorage(i + "_" + jId, items.slice(j, j+CHUNK_SIZE ).join("\n"));
 				jId++;
