@@ -27,7 +27,7 @@ const MESSAGE_ITEM_ADDED_END = `</span>`;
 const MESSAGE_ITEM_DELETED_START = `<span class='alert_deletedItem'>`;
 const MESSAGE_ITEM_DELETED_END = `</span>`;
 
-const CHUNK_SIZE = 25;
+const CHUNK_SIZE = 15;
 
 // const STYLE = `<style>
 // .alert_wrapper {
