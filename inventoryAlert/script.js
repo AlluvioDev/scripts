@@ -136,7 +136,7 @@ function getLastInventory() {
 		async: false,
 		success: function(data){
 			if(data.error) {
-				console.log("Error on saveCurrentInventory method");console.log(data);
+				console.log("Error on getLastInventory method");console.log(data);
 			} else {
 				console.log(data.response.storage.user_id);
 	//console.log("getLastInventory invStr = " + data.response.storage.data.backup_inventory);
@@ -144,7 +144,7 @@ function getLastInventory() {
 			}
 		},
 		  error: function(){
-		    	console.log("Error on saveCurrentInventory method [2]");
+		    	console.log("Error on getLastInventory method [2]");
 		  }
 	});
 	return inventory;
