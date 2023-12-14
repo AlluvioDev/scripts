@@ -1,4 +1,4 @@
-const version = "v4.00"; // Обнови меня, если меняешь код!
+const version = "v4.18"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -26,6 +26,8 @@ const MESSAGE_ITEM_ADDED_END = `</span>`;
 /* Обёртка для удадённого предмета */
 const MESSAGE_ITEM_DELETED_START = `<span class='alert_deletedItem'>`;
 const MESSAGE_ITEM_DELETED_END = `</span>`;
+
+const CHUNK_SIZE = 15;
 
 // const STYLE = `<style>
 // .alert_wrapper {
@@ -101,12 +103,27 @@ console.log("init inventoryAlert plugin " + version);
 if(DEBUG_MODE) console.log("DEBUG_MODE on");
 function saveCurrentInventory() {
 	let invStr = getCurrentInventory();
-	
-	for(let i = 0; i < 6; i++) {
-		setValueToStorage(i, invStr[i]);
+	let current = new Date();
+	current = current.getTime();
+	setValueToStorage(0, current);
+	for(let i = 1; i < 6; i++) {
+		let items = invStr[i];
+		let chunksCount = Math.floor(items.length / CHUNK_SIZE);
+		let jId = 1;
+		for(let j = 0; j <= items.length; j = j + CHUNK_SIZE){
+			if(j != 0) {
+				setValueToStorage(i + "_" + jId, items.slice(j, j+CHUNK_SIZE ).join("\n"));
+				jId++;
+			} else {
+				setValueToStorage(i, items.slice(0, CHUNK_SIZE).join("\n"));
+			}
+		}
 	}
 }
 function setValueToStorage(keySuffix, keyValue){
+	if(keyValue instanceof Array) {
+		keyValue = keyValue.join("\n");
+	}
 	$.ajax({
 		url: '/api.php',
 		method: 'post',
@@ -126,15 +143,27 @@ function setValueToStorage(keySuffix, keyValue){
 			 }
 		},
 		  error: function(){
-		    	console.log("Error on setValueToStorage method [2]");
+		    	console.log("Error on setValueToStorage method [2] backup_inventory_" + keySuffix);
+		    	console.log(keyValue);
 		  }
 	});
 }
 
 function getLastInventory() {
 	let inventory = [];
-	for(let i = 0; i < 6; i++) {
-		inventory[i] =getValueFromStorage(i);
+	inventory[0] = getValueFromStorage(0);
+	for(let i = 1; i < 6; i++) {
+		let val = getValueFromStorage(i);
+		let arr = splitItemsStringToArr(val);
+		let rez = arr;
+		let chunksCount = 1;
+		while(arr.length >= CHUNK_SIZE) {
+			val = getValueFromStorage(i + "_" + chunksCount);
+			arr = splitItemsStringToArr(val ? val.replace(/[\r\n\t]+/g, '').trim() : "");
+			rez = rez.concat(arr);
+			chunksCount++;
+		}
+		inventory[i] = rez;
 	}
 	return inventory;
 }
@@ -151,7 +180,7 @@ function getValueFromStorage(keySuffix){
 		async: false,
 		success: function(data){
 			 if(data.error) {
-				 console.log("Error on getValueFromStorage method");console.log(data);
+				 console.log("Error on getValueFromStorage method on backup_inventory_"+keySuffix);console.log(data);
 			 } else {
 				 console.log("getValueFromStorage done");
 				 valueFromStorage = data.response.storage.data["backup_inventory_"+keySuffix];
@@ -159,6 +188,7 @@ function getValueFromStorage(keySuffix){
 		},
 		  error: function(){
 		    	console.log("Error on getValueFromStorage method [2]");
+		    	console.log(keySuffix);
 		  }
 	});
 	return valueFromStorage;
@@ -182,11 +212,11 @@ function getCurrentInventory() {
 		async: false,
 		success: function(data){
 			let d = $(data);
-			currentInventory[1] = $(d).find('#sm1').html();
-			currentInventory[2] = $(d).find('#sm2').html();
-			currentInventory[3] = $(d).find('#sm3').html();
-			currentInventory[4] = $(d).find('#sm4').html();
-			currentInventory[5] = $(d).find('#sm5').html();
+			currentInventory[1] = splitItemsStringToArr($(d).find('#sm1').html());
+			currentInventory[2] = splitItemsStringToArr($(d).find('#sm2').html());
+			currentInventory[3] = splitItemsStringToArr($(d).find('#sm3').html());
+			currentInventory[4] = splitItemsStringToArr($(d).find('#sm4').html());
+			currentInventory[5] = splitItemsStringToArr($(d).find('#sm5').html());
 		},
 		  error: function(){
 		    	console.log("Error on getCurrentInventory method [2]");
@@ -196,29 +226,29 @@ function getCurrentInventory() {
 }
 
 function showAlertIfInventoryChanged() {
-	// console.log("Get last inv...");
+	console.log("Get last inv...");
 	let oldInventoryArr = getLastInventory();
+	console.log(oldInventoryArr);
 	if(!oldInventoryArr || !oldInventoryArr[0]) {
 		console.log("Last inv not exist...");
 		saveCurrentInventory();
-		// console.log("Curr inv saved");
+		console.log("Curr inv saved");
 		return;
 	}
-	// console.log(oldInventoryArr);
-	// console.log("Last inv getted");
+	console.log("Last inv getted");
 	
-	// console.log("Get curr inv...");
+	console.log("Get curr inv...");
 	let newInventory = getCurrentInventory();
-	// console.log(newInventory);
-	// console.log("Curr inv getted");
+	console.log(newInventory);
+	console.log("Curr inv getted");
 	
 	if(oldInventoryArr[0]*1 + UPDATE_INTERVAL_IN_MS > newInventory[0]) {console.log("Inv too fresh"); if(!DEBUG_MODE) return;}
 
-	if(oldInventoryArr[1].replace(regexpSpecChars, "") === newInventory[1].replace(regexpSpecChars, "")
-		&& oldInventoryArr[2].replace(regexpSpecChars, "") === newInventory[2].replace(regexpSpecChars, "")
-		&& oldInventoryArr[3].replace(regexpSpecChars, "") === newInventory[3].replace(regexpSpecChars, "")
-		&& oldInventoryArr[4].replace(regexpSpecChars, "") === newInventory[4].replace(regexpSpecChars, "")
-		&& oldInventoryArr[5].replace(regexpSpecChars, "") === newInventory[5].replace(regexpSpecChars, "")) {
+	if(oldInventoryArr[1].join("") === newInventory[1].join("")
+		&& oldInventoryArr[2].join("") === newInventory[2].join("")
+		&& oldInventoryArr[3].join("") === newInventory[3].join("")
+		&& oldInventoryArr[4].join("") === newInventory[4].join("")
+		&& oldInventoryArr[5].join("") === newInventory[5].join("")) {
 		saveCurrentInventory();
 		console.log("No changes!");
 		if(!DEBUG_MODE) return;
@@ -245,9 +275,9 @@ function showAlertIfInventoryChanged() {
 			message += MESSAGE_ITEMS_ROW_END + MESSAGE_BLOCK_END;
 		}
 	}
-	// console.log("Save curr inv...");
+	console.log("Save curr inv...");
 	saveCurrentInventory();
-	// console.log("Curr inv saved");
+	console.log("Curr inv saved");
 
 	//$('body').append(STYLE);
 	if(DEBUG_MODE) {
@@ -259,10 +289,9 @@ function showAlertIfInventoryChanged() {
 	// 	console.log("message:" + message);
 	// 	return 0;
 	// }
-	
-	////// if(message.length > 1) {
-	////// 	$('body').append(MESSAGE_PANEL_WRAPPER_START + MESSAGE_CLOSE_BTN + message + MESSAGE_PANEL_WRAPPER_END);
-	////// }
+	if(message.length > 1) {
+		$('body').append(MESSAGE_PANEL_WRAPPER_START + MESSAGE_CLOSE_BTN + message + MESSAGE_PANEL_WRAPPER_END);
+	}
 	
 }
 function closeAlertWindow() {
@@ -275,9 +304,9 @@ document.querySelectorAll('.' + MESSAGE_CLOSE_BTN_CLASS).forEach(el => el.addEve
 	closeAlertWindow();
 }));
 
-function getItems(oldItemsString, newItemsString) {
-	let oldItemsArr = oldItemsString ? splitItemsStringToArr(oldItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
-	let newItemsArr = newItemsString ? splitItemsStringToArr(newItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
+function getItems(oldItemsArr, newItemsArr) {
+	// let oldItemsArr = oldItemsString ? splitItemsStringToArr(oldItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
+	// let newItemsArr = newItemsString ? splitItemsStringToArr(newItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
 
 	let cleanedOldArr = oldItemsArr.map(function(x){ return x.replace(regexpSpecChars, ""); });
 	let cleanedNewArr = newItemsArr.map(function(x){ return x.replace(regexpSpecChars, ""); });
