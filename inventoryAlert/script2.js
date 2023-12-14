@@ -1,4 +1,4 @@
-const version = "v4.10"; // Обнови меня, если меняешь код!
+const version = "v4.11"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -175,7 +175,7 @@ function getValueFromStorage(keySuffix){
 		async: false,
 		success: function(data){
 			 if(data.error) {
-				 console.log("Error on getValueFromStorage method");console.log(data);
+				 console.log("Error on getValueFromStorage method on backup_inventory_"+keySuffix);console.log(data);
 			 } else {
 				 console.log("getValueFromStorage done");
 				 valueFromStorage = data.response.storage.data["backup_inventory_"+keySuffix];
