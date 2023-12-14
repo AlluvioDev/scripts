@@ -1,4 +1,4 @@
-const version = "v3.07"; // Обнови меня, если меняешь код!
+const version = "v3.08"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -204,13 +204,13 @@ function showAlertIfInventoryChanged() {
 		// console.log("Curr inv saved");
 		return;
 	}
-	console.log(oldInventoryArr);
-	console.log("Last inv getted");
+	// console.log(oldInventoryArr);
+	// console.log("Last inv getted");
 	
 	// console.log("Get curr inv...");
 	let newInventory = getCurrentInventory();
-	console.log(newInventory);
-	console.log("Curr inv getted");
+	// console.log(newInventory);
+	// console.log("Curr inv getted");
 	
 	if(oldInventoryArr[0]*1 + UPDATE_INTERVAL_IN_MS > newInventory[0]) {console.log("Inv too fresh"); if(!DEBUG_MODE) return;}
 
@@ -241,7 +241,7 @@ function showAlertIfInventoryChanged() {
 			message += MESSAGE_ITEMS_ROW_START;
 	// console.log("Get diffs #" + i + "...");
 			message += arrsDiff;
-	console.log("Diffs getted!");
+	// console.log("Diffs getted!");
 			message += MESSAGE_ITEMS_ROW_END + MESSAGE_BLOCK_END;
 		}
 	}
