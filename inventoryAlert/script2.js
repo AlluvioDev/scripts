@@ -115,7 +115,7 @@ function saveCurrentInventory() {
 				setValueToStorage(i + "_" + jId, items.slice(j, j+CHUNK_SIZE ).join("\n"));
 				jId++;
 			} else {
-				setValueToStorage(i, items.slice(j, j+CHUNK_SIZE ).join("\n"));
+				setValueToStorage(i, items.slice(0, CHUNK_SIZE ).join("\n"));
 				jId++;
 			}
 		}
