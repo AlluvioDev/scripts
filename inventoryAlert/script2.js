@@ -120,6 +120,9 @@ function saveCurrentInventory() {
 	}
 }
 function setValueToStorage(keySuffix, keyValue){
+	if(keyValue  instanceof Array) {
+		keyValue = keyValue.join("\n");
+	}
 	$.ajax({
 		url: '/api.php',
 		method: 'post',
