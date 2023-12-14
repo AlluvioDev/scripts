@@ -1,4 +1,4 @@
-const version = "v4.08"; // Обнови меня, если меняешь код!
+const version = "v4.09"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -120,7 +120,6 @@ function saveCurrentInventory() {
 }
 function setValueToStorage(keySuffix, keyValue){
 	const myUrlWithParams = new URL("https://alluvio.ru/api.php");
-	  myUrlWithParams.searchParams.append("token", ForumAPITicket);
 	  myUrlWithParams.searchParams.append("method", "storage.set");
 	  myUrlWithParams.searchParams.append("key", "backup_inventory_" + keySuffix);
 	  myUrlWithParams.searchParams.append("value", keyValue);
@@ -129,6 +128,9 @@ function setValueToStorage(keySuffix, keyValue){
 		url: myUrlWithParams.href,
 		method: 'post',
 		dataType: 'json',
+		  data: {
+			  "token": ForumAPITicket
+			},
 		async: false,
 		success: function(data){
 			 if(data.error) {
