@@ -1,4 +1,4 @@
-const version = "v2.26"; // Обнови меня, если меняешь код!
+const version = "v3.00"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -101,8 +101,12 @@ console.log("init inventoryAlert plugin " + version);
 if(DEBUG_MODE) console.log("DEBUG_MODE on");
 function saveCurrentInventory() {
 	let invStr = getCurrentInventory();
-	let inventory = JSON.stringify(invStr);
-
+	
+	for(let i = 0; i < 6; i++) {
+		setValueToStorage(i, invStr[i]);
+	}
+}
+function setValueToStorage(keySuffix, keyValue){
 	$.ajax({
 		url: '/api.php',
 		method: 'post',
@@ -110,44 +114,54 @@ function saveCurrentInventory() {
 		data: {
 			token: ForumAPITicket,
 			method: "storage.set",
-			key: "backup_inventory",
-			value: inventory
+			key: "backup_inventory_" + keySuffix,
+			value: keyValue
 		},
 		async: false,
 		success: function(data){
-			 if(data.error) {console.log("Error on saveCurrentInventory method");console.log(data);}
+			 if(data.error) {
+				 console.log("Error on setValueToStorage method");console.log(data);
+			 } else {
+				 console.log("setValueToStorage done");
+			 }
 		},
 		  error: function(){
-		    	console.log("Error on saveCurrentInventory method [2]");
+		    	console.log("Error on setValueToStorage method [2]");
 		  }
 	});
 }
 
 function getLastInventory() {
-	let inventory;
+	let inventory = [];
+	for(let i = 0; i < 6; i++) {
+		inventory[i] =getValueFromStorage(i);
+	}
+	return inventory;
+}
+function getValueFromStorage(keySuffix){
+	let valueFromStorage;
 	$.ajax({
 		url: '/api.php',
 		method: 'get',
 		dataType: 'json',
 		data: {
 			method: "storage.get",
-			key: "backup_inventory"
+			key: "backup_inventory_" + keySuffix
 		},
 		async: false,
 		success: function(data){
-			if(data.error) {
-				console.log("Error on getLastInventory method");console.log(data);
-			} else {
-				console.log(data.response.storage.user_id);
-	//console.log("getLastInventory invStr = " + data.response.storage.data.backup_inventory);
-				inventory = eval('(' + data.response.storage.data.backup_inventory + ')');
-			}
+			 if(data.error) {
+				 console.log("Error on getValueFromStorage method");console.log(data);
+			 } else {
+				 console.log("getValueFromStorage done");
+				 valueFromStorage = data.response.storage.data["backup_inventory_"+keySuffix];
+			 }
 		},
 		  error: function(){
-		    	console.log("Error on getLastInventory method [2]");
+		    	console.log("Error on getValueFromStorage method [2]");
 		  }
 	});
-	return inventory;
+	return valueFromStorage;
 }
 function getCurrentInventory() {
 	var doc = new DOMParser().parseFromString(UserFld5, "text/html");
@@ -175,7 +189,7 @@ function getCurrentInventory() {
 			currentInventory[5] = $(d).find('#sm5').html();
 		},
 		  error: function(){
-		    	console.log("Error on saveCurrentInventory method [2]");
+		    	console.log("Error on getCurrentInventory method [2]");
 		  }
 	});
 	return currentInventory;
@@ -196,7 +210,7 @@ function showAlertIfInventoryChanged() {
 	let newInventory = getCurrentInventory();
 	// console.log("Curr inv getted");
 	
-	if(oldInventoryArr[0] + UPDATE_INTERVAL_IN_MS > newInventory[0]) {/* console.log("Inv too fresh"); */ if(!DEBUG_MODE) return;}
+	////// if(oldInventoryArr[0] + UPDATE_INTERVAL_IN_MS > newInventory[0]) {/* console.log("Inv too fresh"); */ if(!DEBUG_MODE) return;}
 
 	if(oldInventoryArr[1].replace(regexpSpecChars, "") === newInventory[1].replace(regexpSpecChars, "")
 		&& oldInventoryArr[2].replace(regexpSpecChars, "") === newInventory[2].replace(regexpSpecChars, "")
@@ -211,7 +225,8 @@ function showAlertIfInventoryChanged() {
 	
 	let message = "";
 	for(let i = 1; i < newInventory.length; i++) {
-		if(!(oldInventoryArr[i].replace(regexpSpecChars, "") === newInventory[i].replace(regexpSpecChars, ""))) {
+		let arrsDiff = getItems(oldInventoryArr[i], newInventory[i]);
+		if(arrsDiff.length > 1) {
 			message += MESSAGE_BLOCK_START + MESSAGE_TITLE_START;
 			switch(i) {
 				case 1: message += `"Награды"`; break;
@@ -223,7 +238,7 @@ function showAlertIfInventoryChanged() {
 			message += MESSAGE_TITLE_END;
 			message += MESSAGE_ITEMS_ROW_START;
 	// console.log("Get diffs #" + i + "...");
-			message += getItems(oldInventoryArr[i], newInventory[i]);
+			message += arrsDiff;
 	// console.log("Diffs getted!");
 			message += MESSAGE_ITEMS_ROW_END + MESSAGE_BLOCK_END;
 		}
@@ -240,7 +255,10 @@ function showAlertIfInventoryChanged() {
 		console.log("message:" + message);
 		return 0;
 	}
-	$('body').append(MESSAGE_PANEL_WRAPPER_START + MESSAGE_CLOSE_BTN + message + MESSAGE_PANEL_WRAPPER_END);
+	if(message.length > 1) {
+		$('body').append(MESSAGE_PANEL_WRAPPER_START + MESSAGE_CLOSE_BTN + message + MESSAGE_PANEL_WRAPPER_END);
+	}
+	
 }
 function closeAlertWindow() {
 	console.log("Inventory alert closed.");
