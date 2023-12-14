@@ -1,4 +1,4 @@
-const version = "v4.15"; // Обнови меня, если меняешь код!
+const version = "v4.16"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -115,7 +115,7 @@ function saveCurrentInventory() {
 				setValueToStorage(i + "_" + jId, items.slice(j, j+CHUNK_SIZE ).join("\n"));
 				jId++;
 			} else {
-				setValueToStorage(i, items.slice(0, CHUNK_SIZE ).join("\n"));
+				setValueToStorage(i, items.slice(j, j+CHUNK_SIZE).join("\n"));
 				jId++;
 			}
 		}
