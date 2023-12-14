@@ -1,4 +1,4 @@
-const version = "v3.05"; // Обнови меня, если меняешь код!
+const version = "v3.06"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -204,15 +204,15 @@ function showAlertIfInventoryChanged() {
 		// console.log("Curr inv saved");
 		return;
 	}
-	// console.log(oldInventoryArr);
-	// console.log("Last inv getted");
+	console.log(oldInventoryArr);
+	console.log("Last inv getted");
 	
 	// console.log("Get curr inv...");
 	let newInventory = getCurrentInventory();
-	// console.log(newInventory);
-	// console.log("Curr inv getted");
+	console.log(newInventory);
+	console.log("Curr inv getted");
 	
-	if(oldInventoryArr[0] + UPDATE_INTERVAL_IN_MS > newInventory[0]) {/* console.log("Inv too fresh"); */ if(!DEBUG_MODE) return;}
+	if(oldInventoryArr[0] + UPDATE_INTERVAL_IN_MS > newInventory[0]) {console.log("Inv too fresh"); if(!DEBUG_MODE) return;}
 
 	if(oldInventoryArr[1].replace(regexpSpecChars, "") === newInventory[1].replace(regexpSpecChars, "")
 		&& oldInventoryArr[2].replace(regexpSpecChars, "") === newInventory[2].replace(regexpSpecChars, "")
@@ -220,10 +220,10 @@ function showAlertIfInventoryChanged() {
 		&& oldInventoryArr[4].replace(regexpSpecChars, "") === newInventory[4].replace(regexpSpecChars, "")
 		&& oldInventoryArr[5].replace(regexpSpecChars, "") === newInventory[5].replace(regexpSpecChars, "")) {
 		saveCurrentInventory();
-		// console.log("No changes!");
+		console.log("No changes!");
 		if(!DEBUG_MODE) return;
 	}
-	// console.log("Find changes!");
+	console.log("Find changes!");
 	
 	let message = "";
 	for(let i = 1; i < newInventory.length; i++) {
@@ -241,7 +241,7 @@ function showAlertIfInventoryChanged() {
 			message += MESSAGE_ITEMS_ROW_START;
 	// console.log("Get diffs #" + i + "...");
 			message += arrsDiff;
-	// console.log("Diffs getted!");
+	console.log("Diffs getted!");
 			message += MESSAGE_ITEMS_ROW_END + MESSAGE_BLOCK_END;
 		}
 	}
@@ -253,6 +253,8 @@ function showAlertIfInventoryChanged() {
 	if(DEBUG_MODE) {
 		message = `<div class="alert_block"><div class="alert_blockTitle">Изменён раздел "Артефакты"!</div><div class="alert_blockItems"><span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 1 тысячи слов"></span> <span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 2 тысячи слов"></span> <span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 3 тысячи слов"></span></div></div><div class="alert_block"><div class="alert_blockTitle">Изменён раздел "Подарки"!</div><div class="alert_blockItems"><span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 1 тысячи слов"></span> <span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 2 тысячи слов"></span> <span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 3 тысячи слов"></span></div></div>`;
 	}
+	
+	console.log("message: '" + message + "';");
 	// if(UserID == 411) {
 	// 	console.log("message:" + message);
 	// 	return 0;
