@@ -119,16 +119,16 @@ function saveCurrentInventory() {
 	}
 }
 function setValueToStorage(keySuffix, keyValue){
-	$.ajax({
-		url: '/api.php',
+	const myUrlWithParams = new URL("https://alluvio.ru/api.php");
+	  myUrlWithParams.searchParams.append("method", "storage.set");
+	  myUrlWithParams.searchParams.append("key", "backup_inventory_" + keySuffix);
+	  myUrlWithParams.searchParams.append("value", keyValue);
+	  myUrlWithParams.searchParams.append("token", ForumAPITicket);
+	
+	  $.ajax({
+		url: myUrlWithParams.href,
 		method: 'post',
 		dataType: 'json',
-		data: {
-			token: ForumAPITicket,
-			method: "storage.set",
-			key: "backup_inventory_" + keySuffix,
-			value: keyValue
-		},
 		async: false,
 		success: function(data){
 			 if(data.error) {
@@ -138,8 +138,7 @@ function setValueToStorage(keySuffix, keyValue){
 			 }
 		},
 		  error: function(){
-		    	console.log("Error on setValueToStorage method [2]");
-		    	console.log(keySuffix);
+		    	console.log("Error on setValueToStorage method [2] on backup_inventory_" + keySuffix);
 		    	console.log(keyValue);
 		  }
 	});
