@@ -1,4 +1,4 @@
-const version = "v4.27"; // Обнови меня, если меняешь код!
+const version = "v4.28"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -245,10 +245,10 @@ function showAlertIfInventoryChanged() {
 	if(oldInventoryArr[0]*1 + UPDATE_INTERVAL_IN_MS > newInventory[0]) {console.log("Inv too fresh"); if(!DEBUG_MODE) return;}
 
 	if(oldInventoryArr[1].join("") === newInventory[1].join("")
-		&& oldInventoryArr[2].join("") === newInventory[2].join("")
-		&& oldInventoryArr[3].join("") === newInventory[3].join("")
-		&& oldInventoryArr[4].join("") === newInventory[4].join("")
-		&& oldInventoryArr[5].join("") === newInventory[5].join("")) {
+		&& oldInventoryArr[2].join("").replace(/[\r\n\t]+/g, '').trim() === newInventory[2].join("").replace(/[\r\n\t]+/g, '').trim()
+		&& oldInventoryArr[3].join("").replace(/[\r\n\t]+/g, '').trim() === newInventory[3].join("").replace(/[\r\n\t]+/g, '').trim()
+		&& oldInventoryArr[4].join("").replace(/[\r\n\t]+/g, '').trim() === newInventory[4].join("").replace(/[\r\n\t]+/g, '').trim()
+		&& oldInventoryArr[5].join("").replace(/[\r\n\t]+/g, '').trim() === newInventory[5].join("").replace(/[\r\n\t]+/g, '').trim()) {
 		saveCurrentInventory();
 		console.log("No changes!");
 		if(!DEBUG_MODE) return;
