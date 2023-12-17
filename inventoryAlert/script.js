@@ -1,4 +1,4 @@
-const version = "v4.22"; // Обнови меня, если меняешь код!
+const version = "v4.23"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -98,7 +98,7 @@ const CHUNK_SIZE = 15;
 // }
 // </style>`;
 
-var regexpSpecChars = /[^\w\sа-яА-ЯёЁ\d\.<>\\\/\"=\[\]\!\?\:]/g;
+var regexpSpecChars = /[^\w\sа-яА-ЯёЁ\d\.<>\\\/\"=\[\]\!\?\+\:]/g;
 console.log("init inventoryAlert plugin " + version);
 if(DEBUG_MODE) console.log("DEBUG_MODE on");
 function saveCurrentInventory() {
