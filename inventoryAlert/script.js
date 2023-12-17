@@ -289,7 +289,7 @@ function showAlertIfInventoryChanged() {
 	// 	console.log("message:" + message);
 	// 	return 0;
 	// }
-	if(message.length > 1) {
+	if(message.length > 1 && UserID != 54) {
 		$('body').append(MESSAGE_PANEL_WRAPPER_START + MESSAGE_CLOSE_BTN + message + MESSAGE_PANEL_WRAPPER_END);
 	}
 	
