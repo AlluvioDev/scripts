@@ -1,0 +1,13 @@
+#zoom {
+    transform-origin: 0px 0px;
+    transform: scale(1) translate(0px, 0px);
+    cursor: grab;
+}
+#tree {
+  background-image: url("https://fhd.multiurok.ru/c/a/c/cac30b2d5151033dc92b49d9fa4533ab5f0b6223/ekskursiia-k-novoghodniei-iolkie_1.png");
+  width: 400px;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
