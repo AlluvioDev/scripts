@@ -54,11 +54,11 @@ function showInfo(itemId) {
 
 function toggle_visibility(selector) {
        var e = document.querySelector(selector);
-       if(e.style.display == 'block') {
+       if(e.style.display == 'flex') {
           e.style.display = 'none';
        } else {
 	  $(".userComment").hide();
-          e.style.display = 'block';
+          e.style.display = 'flex';
        }
    }
 
