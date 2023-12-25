@@ -129,7 +129,7 @@ function loadInv() {
 			.replaceAll("{{XPOS}}", item.xPos ? ("left:" + item.xPos + "px;") : "")
 			.replaceAll("{{YPOS}}", item.yPos ? ("top:" + item.yPos + "px;") : "")
 			.replaceAll("{{FILTER}}", item.filter ? item.filter : "");
-		  toysStr += `<li onclick='showInfo("` + item.id + `")'><div class='toy ` + item.type + (item.img ? ` added` : ``) + `'></div>` + (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`) + `</li>`;
+		  toysStr += `<li onclick='showInfo("` + item.id + `")'><div class='toy ` + item.type + (item.img ? ` added` : ``) + `' style="position: absolute;"></div>` + (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`) + `</li>`;
 			if(item.img) {
 				$('#tree').after(toy);
 			}
