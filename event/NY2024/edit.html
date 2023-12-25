@@ -2,14 +2,67 @@
   <title>[ Alluvio ] Наряди ёлочку!</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+
 </head>
 <body>
   <h2>РЕЖИМ РЕДАКТИРОВАНИЯ ЁЛКИ <span id="username">USERNAME</span></h2>
 <table>
-  <tr>
+  <tr style="vertical-align: top;"><td><div id="tree"></div></td>
+    <td><h3>Повесить</h3><div id="add">
+      <div style="height: 80px"> Перетащи меня! <div id="currentToy"><div class='toy s'>
+	<div class="userImg"></div>
+</div></div></div>
+		<div>Имя того, кому ты посвящаешь шарик: <input type="text" id="faceOwner" placeholder="Имя"/></div>
+		<div>Портрет, который будет на шарике: <input type="text" id="imgLink" placeholder="Ссылка на картинку"/></div>
+		<div>Что ты хочешь сказать этому человеку? <textarea id="commentText" placeholder="Пиши всё, что душе угодно."></textarea></div>
+      
+      	<div class="sliders">
+			<div class="singleSlider">
+				<div class="val" id="bright">100%</div>
+				<label for="slider1">Яркость<input class="slider" id="slider1" type="range" min="20" max="250" value="100"></label>
+			</div>
+			<div class="singleSlider">
+				<div class="val" id="contrast">100%</div>
+				<label for="slider2">Контрастность<input class="slider" id="slider2" type="range" min="20" max="500" value="100"></label>
+			</div>
+			<div class="singleSlider">
+				<div class="val" id="saturate">100%</div>
+				<label for="slider3">Насыщенность<input class="slider" id="slider3" type="range" min="0" max="500" value="100"></label>
+			</div>
+			<div class="singleSlider">
+				<div class="val" id="gray">0%</div>
+				<label for="slider4">Чёрно-белое<input class="slider" id="slider4" type="range" min="0" max="100" value="0"></label>
+			</div>
+			<div class="singleSlider">
+				<div class="val" id="invert">0%</div>
+				<label for="slider5">Инвертировать<input class="slider" id="slider5" type="range" min="0" max="100" value="0"></label>
+			</div>
+			<div class="singleSlider">
+				<div class="val" id="hue">0°</div>
+				<label for="slider6">Сменить оттенок<input class="slider" id="slider6" type="range" min="0" max="360" value="0"></label>
+			</div>
+			<div class="singleSlider">
+				<div class="val" id="sepia">0%</div>
+				<label for="slider9">Сепия<input class="slider" id="slider9" type="range" min="0" max="100" value="0"></label>
+				
+			</div>
+			<button id="resetAll">Сбросить фильтры</button>
+		</div>
+
+      
+		<div><input type="number" style="width: 70px" id="xPos"/><input type="number" style="width: 70px"  id="yPos"/></div>
+      
+      <div>ИТОГОВЫЙ КОД ИГРУШКИ:
+        <button onclick="copyCode()">КОПИРОВАТЬ</button>
+      <textarea id="resultCode" readonly></textarea>
+        
+        
+      </div>
+	
+    </div><div id="info"></div></td>
     <td><h3>Список игрушек</h3><div id="toys"></div></td>
-    <td><h3>Повесить</h3><div id="add"></div></td>
-    <td><div id="tree"></div></td>
+    
   </tr>
 </table>
       
