@@ -85,13 +85,14 @@ async function loadInv() {
 	  let toysStr = "<ul>";
   
 	  TOTAL_INV.forEach((item) => {
-		if(userInv.indexOf(item.id) > -1) {
+		if(currLink.indexOf("edit") > 0 && userInv.indexOf(item.id) > -1 || !(currLink.indexOf("edit") > 0) && item.owner==params.uname) {
 		  if(!item.post) {
 			let tmpArr = item.id.split("-");
 			item.type = tmpArr[0];
 			item.post = tmpArr[1];
 		  }
 		  realInv.push(item);
+			
 	let TOY_TEMPLATE = 
 `<div class='toy {{ITEM_TYPE}}'
 	id='{{ITEM_ID}}'
