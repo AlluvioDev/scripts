@@ -12,6 +12,7 @@ function initTree(){
   }
 }
 initTree();
+$("#add").hide();
 
 var TOY_ID = "";
 var OWNER_NAME = "";
@@ -38,6 +39,7 @@ function showInfo(itemId) {
 				TOY_TYPE = item.type;
 				POST_ID = item.post;
 				updToyCode();
+				currentToy.innerHTML = `<div class='toy ` + item.type + `'><div class="userImg"></div>`;
 				$("#add").show();
 			} else {
 				$("#add").hide();
