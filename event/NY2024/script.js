@@ -4,7 +4,7 @@ var inventorySrc= "https://alluviodev.github.io/scripts/event/NY2024/inventory.j
 
 var params = {};
 var paramsArr = currLink.split('?')[1].split('&');
-paramsArr.forEach((element) => params[element.replace("%20", " ").split('=')[0]] = element.replace("%20", " ").split('=')[1]); 
+paramsArr.forEach((element) => params[element.replaceAll("%20", " ").split('=')[0]] = element.replaceAll("%20", " ").split('=')[1]); 
 var userInv = params.inv ? params.inv.split(" ") : [];
 function initTree(){
   if(params.uname) {
