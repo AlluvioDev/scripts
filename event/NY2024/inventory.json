@@ -1,14 +1,14 @@
 [
   {
-    "id": "",
-    "owner": "",
-    "type": "",
-    "post": "",
+    "id": "s-p123456-3",
+    "owner": "Rowan Turner",
+    "type": "s",
+    "post": "p123456",
     "img": "https://forumavatars.ru/img/avatars/001b/9d/5d/697-1703152808.png",
     "faceOwner": "Не Эбботт",
     "text": "Эбботтов много не бывает.",
     "xPos": "192",
     "yPos": "259",
     "filter": "brightness(162%) contrast(202%) saturate(500%) grayscale(38%) invert(0%) hue-rotate(0deg) sepia(39%)"
-  },
+  }
 ]
