@@ -24,9 +24,12 @@ var XPOS = "";
 var YPOS = "";
 var FILTER = "";
 
+var TOTAL_INV = [];
+var realInv = [];
+
 function showInfo(itemId) {
 	let infoTemplate = `<p>Выдано пользователю <b>{{OWNER_NAME}}</b> в посте с идентификатором <b>{{PID}}</b></p>`;
-	TOTAL_INV.forEach((item) => {
+	realInv.forEach((item) => {
 		if(itemId == item.id) {
 			$("#info").html(infoTemplate.replace("{{OWNER_NAME}}", item.owner).replace("{{PID}}", item.post));
 			if(!item.img) {
@@ -72,9 +75,6 @@ function updToyCode() {
 		.replace("{{FILTER}}", FILTER);
 	resultCode.value = TOY_CODE;
 }
-
-var TOTAL_INV = [];
-var realInv = [];
 
 function removeFromRealInvIfExist(itemId) {
 	let finded;
