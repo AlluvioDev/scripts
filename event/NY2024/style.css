@@ -28,6 +28,7 @@
   background-size: cover;
   width: 50px;
   height: 50px;
+    position: fixed;
 }
 .b {
   background-image: url("https://www.pngmart.com/files/10/Single-Red-Christmas-Ball-PNG-Image.png");
