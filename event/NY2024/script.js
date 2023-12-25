@@ -81,10 +81,11 @@ function removeFromRealInvIfExist(itemId) {
 	for(let i = 0; i < realInv.length; i++){
 		if(realInv[i].id == itemId) {
 			finded = i;
+			console.log("find!");
 			break;
 		}
 	}
-	realInv.splice(finded, 1)
+	if(finded) realInv.splice(finded, 1);
 	return false;
 }
 
@@ -108,6 +109,7 @@ async function loadInv() {
 	});
   
 	  TOTAL_INV.forEach((item) => {
+		removeFromRealInvIfExist(item.id);
 		if(currLink.indexOf("edit") > 0 && item.img || !(currLink.indexOf("edit") > 0) && item.owner==params.uname) {
 		  if(!item.post) {
 			let tmpArr = item.id.split("-");
