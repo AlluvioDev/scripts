@@ -48,7 +48,7 @@ const NEW_ITEM_TEMPLATE = `{
     "type": "{{TOY_TYPE}}",
     "post": "{{POST_ID}}",
     "img": "{{IMG_SRC}}",
-	"faceOwner": "{{FACE_OWNER}}",
+    "faceOwner": "{{FACE_OWNER}}",
     "text": "{{TEXT}}",
     "xPos": "{{XPOS}}",
     "yPos": "{{YPOS}}",
