@@ -75,11 +75,16 @@ function updToyCode() {
 
 var TOTAL_INV = [];
 var realInv = [];
+
+async function loadInvPls() {
+	const response = await fetch(inventorySrc);
+	TOTAL_INV = await response.json();
+};
 function loadInv() {
 	
   console.log("Load inventory...");
-	const response = await fetch(inventorySrc);
-	TOTAL_INV = await response.json();
+	loadInvPls();
+	
 	  let toysStr = "<ul>";
   
 	  TOTAL_INV.forEach((item) => {
