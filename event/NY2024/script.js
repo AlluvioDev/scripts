@@ -102,7 +102,7 @@ async function loadInv() {
 	title='{{IMG_TITLE}}'
 	style='{{XPOS}} {{YPOS}}'
 	onclick='{{ONCLICK}}'>
-	<div class="userImg" style="{{BG_IMG}} {{FILTER}}"></div>
+	<div class="userImg" style="{{BG_IMG}} {{FILTER}}"></div><div class="{{ITEM_TYPE}}_mask"></div>
 	<div class="userComment"><h3>{{IMG_TITLE}}</h3>{{USER_COMMENT}}</div>
 </div>`;
 		toy = TOY_TEMPLATE
