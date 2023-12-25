@@ -9,10 +9,7 @@
 var paramsArr = location.href.split('?')[1].split('&');
 paramsArr.forEach((element) => params[element.replace("%20", " ").split('=')[0]] = element.replace("%20", " ").split('=')[1]); 
 var userInv = params.inv ? params.inv.split(" ") : [];
-      resultCode.value= `[hide=999999999999999999999]Повесить новые игрушки вы можете тут:
-[url=https://alluviodev.github.io/scripts/event/NY2024/edit?uname=` + params.uname + `&inv=]ПЕРЕЙТИ НА СТРАНИЦУ[/url]
-[/hide]
-[html]
+      resultCode.value= `[html]
 <iframe src="https://alluviodev.github.io/scripts/event/NY2024/?uname=` + params.uname + `" height="700px" width="600px"></iframe>
 [/html]`;
       // Copies a string to the clipboard. Must be called from within an event handler such as click.
