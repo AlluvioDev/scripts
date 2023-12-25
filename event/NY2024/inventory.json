@@ -1,5 +1,17 @@
 [
   {
+    "id": "b1-p123456-1",
+    "owner": "Rowan Turner",
+    "type": "b1",
+    "post": "p123456",
+    "img": "https://forumavatars.ru/img/avatars/001b/9d/5d/2-1701503046.png",
+    "faceOwner": "Кардиган",
+    "text": "Сидит в шарике. Балдеет.",
+    "xPos": "255",
+    "yPos": "266",
+    "filter": "filter: brightness(144%) contrast(113%) saturate(150%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(23%)"
+  },
+  {
     "id": "s-p123456-3",
     "owner": "Rowan Turner",
     "type": "s",
