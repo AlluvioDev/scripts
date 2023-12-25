@@ -3,6 +3,11 @@
     transform: scale(1) translate(0px, 0px);
     cursor: grab;
 }
+.userImg {
+  width: inherit;
+  height: inherit;
+  background-size: cover;
+}
 #tree {
   background-image: url("https://fhd.multiurok.ru/c/a/c/cac30b2d5151033dc92b49d9fa4533ab5f0b6223/ekskursiia-k-novoghodniei-iolkie_1.png");
   width: 400px;
@@ -10,4 +15,39 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+}
+
+.toy {
+  display: inline-block;
+  margin: 0px;
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+}
+.b {
+  background-image: url("https://www.pngmart.com/files/10/Single-Red-Christmas-Ball-PNG-Image.png");
+}
+.b .userImg {
+    clip-path: circle(35.0% at 51% 59%);
+}
+
+.s {
+  background-image: url("https://kartinkof.club/uploads/posts/2022-09/thumbs/1662303291_28-kartinkof-club-p-novie-i-krasivie-kartinki-zvezdochka-29.png");
+}
+.s .userImg{
+ clip-path: polygon(53% 0, 66% 33%, 98% 36%, 73% 59%, 83% 94%, 54% 73%, 25% 93%, 33% 58%, 6% 35%, 41% 33%);
+}
+
+.added {
+  filter: grayscale(1);
+}
+
+#currentToy{
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  cursor: grab;
+  background-size: cover;
 }
