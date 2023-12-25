@@ -9,6 +9,6 @@
     "text": "Эбботтов много не бывает.",
     "xPos": "192",
     "yPos": "259",
-    "filter": "brightness(162%) contrast(202%) saturate(500%) grayscale(38%) invert(0%) hue-rotate(0deg) sepia(39%)"
+    "filter": "filter: brightness(162%) contrast(202%) saturate(500%) grayscale(38%) invert(0%) hue-rotate(0deg) sepia(39%)"
   }
 ]
