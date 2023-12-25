@@ -68,7 +68,7 @@ function copyToClipboard(text) {
 
 function copyCode() {
 	if(!postId) {alert("Вы не указали идентификатор поста!");return;} 
-	if(uname.length < 1) {alert("Вы не указали имя игрока!");return;} 
+	if(!uname || uname.length < 1) {alert("Вы не указали имя игрока!");return;} 
 	if(totalCount == 0) {alert("Вы не выбрали игрушки!");return;}
 	resultCode.value= TEMPLATE.replaceAll("{{UNAME}}", uname).replaceAll("{{INV}}", invStr);
 	copyToClipboard(resultCode.value);
