@@ -83,6 +83,17 @@ async function loadInv() {
 	console.log("Load inventory...");
 	
 	  let toysStr = "<ul>";
+
+	userInv.forEach((toyId) => {
+		let item = {};
+		let tmpArr = item.id.split("-");
+		item["id"] = toyId;
+		item["type"] = tmpArr[0];
+		item["post"] = tmpArr[1];
+		realInv.push(item);
+		toysStr += `<li onclick='showInfo("` + item.id + `")'><div class='toy ` + item.type + (item.img ? ` added` : ``) + `' style="position: relative;"></div>` + (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`) + `</li>`;
+
+	});
   
 	  TOTAL_INV.forEach((item) => {
 		if(currLink.indexOf("edit") > 0 && userInv.indexOf(item.id) > -1 || !(currLink.indexOf("edit") > 0) && item.owner==params.uname) {
@@ -112,7 +123,8 @@ async function loadInv() {
 			.replaceAll("{{XPOS}}", item.xPos ? ("left:" + item.xPos + "px;") : "")
 			.replaceAll("{{YPOS}}", item.yPos ? ("top:" + item.yPos + "px;") : "")
 			.replaceAll("{{FILTER}}", item.filter ? item.filter : "");
-		  toysStr += `<li onclick='showInfo("` + item.id + `")'><div class='toy ` + item.type + (item.img ? ` added` : ``) + `' style="position: relative;"></div>` + (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`) + `</li>`;
+			toysStr += `<li onclick='showInfo("` + item.id + `")'><div class='toy ` + item.type + (item.img ? ` added` : ``) + `' style="position: relative;"></div>` + (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`) + `</li>`;
+
 			if(item.img) {
 				$('#tree').after(toy);
 			}
