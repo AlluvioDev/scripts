@@ -223,7 +223,7 @@ function updateFilters() {
 		sepia +
 		"%)";
 	FILTER = 
-		"brightness(" +
+		"filter: brightness(" +
 		brightness +
 		"%) contrast(" +
 		contrast +
