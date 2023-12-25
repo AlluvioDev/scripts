@@ -100,16 +100,17 @@ var TOTAL_INV = [
 var realInv = [];
 function loadInv() {
   console.log("Load inventory...");
-  let toysStr = "<ul>";
-  TOTAL_INV.forEach((item) => {
-    if(userInv.indexOf(item.id) > -1) {
-      if(!item.post) {
-        let tmpArr = item.id.split("-");
-        item.type = tmpArr[0];
-        item.post = tmpArr[1];
-      }
-      realInv.push(item);
-let TOY_TEMPLATE = 
+	  let toysStr = "<ul>";
+  
+	  TOTAL_INV.forEach((item) => {
+		if(userInv.indexOf(item.id) > -1) {
+		  if(!item.post) {
+			let tmpArr = item.id.split("-");
+			item.type = tmpArr[0];
+			item.post = tmpArr[1];
+		  }
+		  realInv.push(item);
+	let TOY_TEMPLATE = 
 `<div class='toy {{ITEM_TYPE}}'
 	id='{{ITEM_ID}}'
 	title='{{IMG_TITLE}}'
@@ -118,30 +119,32 @@ let TOY_TEMPLATE =
 	<div class="userImg" style="{{BG_IMG}}"></div>
 	<div class="userComment"><h3>{{IMG_TITLE}}</h3>{{USER_COMMENT}}</div>
 </div>`;
-	toy = TOY_TEMPLATE
-		.replaceAll("{{ITEM_TYPE}}", item.type)
-		.replaceAll("{{ITEM_ID}}", item.id)
-		.replaceAll("{{IMG_TITLE}}", item.faceOwner ? item.faceOwner : "")
-		.replaceAll("{{USER_COMMENT}}", item.text ? item.text : "")
-		.replaceAll("{{ONCLICK}}", item.img ?  'showInfo("' + item.id + '")' : "")
-		.replaceAll("{{BG_IMG}}", item.img ? ("background-image:url(" + item.img + ");") : "")
-		.replaceAll("{{XPOS}}", item.xPos ? ("left:" + item.xPos + "px;") : "")
-		.replaceAll("{{YPOS}}", item.yPos ? ("top:" + item.yPos + "px;") : "")
-		.replaceAll("{{FILTER}}", item.filter ? item.filter : "");
-      toysStr += `<li onclick='showInfo("` + item.id + `")'><div class='toy ` + item.type + (item.img ? ` added` : ``) + `'></div>` + (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`) + `</li>`;
-		if(item.img) {
-			$('#tree').after(toy);
+		toy = TOY_TEMPLATE
+			.replaceAll("{{ITEM_TYPE}}", item.type)
+			.replaceAll("{{ITEM_ID}}", item.id)
+			.replaceAll("{{IMG_TITLE}}", item.faceOwner ? item.faceOwner : "")
+			.replaceAll("{{USER_COMMENT}}", item.text ? item.text : "")
+			.replaceAll("{{ONCLICK}}", item.img ?  'showInfo("' + item.id + '")' : "")
+			.replaceAll("{{BG_IMG}}", item.img ? ("background-image:url(" + item.img + ");") : "")
+			.replaceAll("{{XPOS}}", item.xPos ? ("left:" + item.xPos + "px;") : "")
+			.replaceAll("{{YPOS}}", item.yPos ? ("top:" + item.yPos + "px;") : "")
+			.replaceAll("{{FILTER}}", item.filter ? item.filter : "");
+		  toysStr += `<li onclick='showInfo("` + item.id + `")'><div class='toy ` + item.type + (item.img ? ` added` : ``) + `'></div>` + (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`) + `</li>`;
+			if(item.img) {
+				$('#tree').after(toy);
+			}
 		}
+		
+	  });
+	  toysStr += "</ul>"
+	  
+	if(currLink.indexOf("edit") > 0){
+		$("#toys").html(toysStr);
 	}
-	
-  });
-  toysStr += "</ul>"
-  $("#toys").html(toysStr);
+	}
 }
 
-if(currLink.indexOf("edit") > 0) {
   loadInv();
-}
 
 var div = document.getElementById('currentToy');
 var listener = function(e) {
