@@ -76,40 +76,16 @@ function updToyCode() {
 	resultCode.value = TOY_CODE;
 }
 
-function removeFromRealInvIfExist(itemId) {
-	let finded;
-	for(let i = 0; i < realInv.length; i++){
-		if(realInv[i].id == itemId) {
-			finded = i;
-			console.log("find!");
-			break;
-		}
-	}
-	if(finded) realInv.splice(finded, 1);
-	return false;
-}
-
 async function loadInv() {
 	const response = await fetch(inventorySrc);
 	TOTAL_INV = await response.json();
 	
 	console.log("Load inventory...");
 	
-	  let toysStr = "<ul>";
+	  let toysStr = "";
 
-	userInv.forEach((toyId) => {
-		let item = {};
-		let tmpArr = toyId.split("-");
-		item["id"] = toyId;
-		item["type"] = tmpArr[0];
-		item["post"] = tmpArr[1];
-		realInv.push(item);
-		toysStr += `<li onclick='showInfo(` + `"` + item.id + `"` + `)'><div class='toy ` + item.type + (item.img ? ` added` : ``) + `' style="position: relative;"></div>` + (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`) + `</li>`;
-
-	});
   
 	  TOTAL_INV.forEach((item) => {
-		removeFromRealInvIfExist(item.id);
 		if(currLink.indexOf("edit") > 0 && item.img || !(currLink.indexOf("edit") > 0) && item.owner==params.uname) {
 		  if(!item.post) {
 			let tmpArr = item.id.split("-");
@@ -145,7 +121,33 @@ async function loadInv() {
 		}
 		
 	  });
-	  toysStr += "</ul>"
+	  
+	  
+	  
+	userInv.forEach((toyId) => {
+		let exist = false;
+		realInv.forEach((item) => {
+			if(item.id == toyId) exist = true;
+		});
+		
+		if(!exist) {
+			let item = {};
+			let tmpArr = toyId.split("-");
+			item["id"] = toyId;
+			item["type"] = tmpArr[0];
+			item["post"] = tmpArr[1];
+			realInv.push(item);
+			toysStr = `<li onclick='showInfo(` + `"` + item.id + `"` + `)'>`
+				+ `<div class='toy ` + item.type + (item.img ? ` added` : ``) + `' style="position: relative;"></div>`
+				+ (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`)
+				+ `</li>`
+				+ toysStr;
+
+		}
+
+	});
+	
+	  toysStr = "<ul>" + toysStr + "</ul>"
 	  
 	if(currLink.indexOf("edit") > 0){
 		$("#toys").html(toysStr);
