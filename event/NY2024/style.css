@@ -9,6 +9,23 @@
   height: inherit;
   background-size: cover;
 }
+.userComment {
+    border: 1px solid;
+    width: 200px;
+    margin-left: -75px;
+    font-size: 4pt;
+    margin-top: -5px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 2px;
+    padding: 5px;
+    background-color: #8792b8;
+    color: #0b1534;
+}
 #tree {
   background-image: url("https://alluviodev.github.io/scripts/event/NY2024/img/treeBG.png");
     width: 411px;
