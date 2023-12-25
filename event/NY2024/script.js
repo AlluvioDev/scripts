@@ -44,7 +44,7 @@ function showInfo(itemId) {
 }
 
 var TOY_CODE = ``;
-const NEW_ITEM_TEMPLATE = `{
+const NEW_ITEM_TEMPLATE = `[code]{
     "id": "{{TOY_ID}}",
     "owner": "{{OWNER_NAME}}",
     "type": "{{TOY_TYPE}}",
@@ -55,7 +55,7 @@ const NEW_ITEM_TEMPLATE = `{
     "xPos": "{{XPOS}}",
     "yPos": "{{YPOS}}",
     "filter": "{{FILTER}}"
-  }`;
+  }[/code]`;
 
 
 function updToyCode() {
