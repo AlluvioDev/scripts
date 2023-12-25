@@ -40,6 +40,7 @@ function showInfo(itemId) {
 				POST_ID = item.post;
 				updToyCode();
 				document.querySelector("#currentToy > div").classList.add(item.type);
+				document.querySelector("#currentToyUserImg > div").classList.add(item.type + "_mask");
 				$("#add").show();
 			} else {
 				$("#add").hide();
