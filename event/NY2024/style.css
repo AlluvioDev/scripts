@@ -43,6 +43,14 @@
 .b1 .userImg {
    clip-path: circle(41.6% at 50% 58%);
 }
+.b1_mask {
+    background-image: url(https://alluviodev.github.io/scripts/event/NY2024/img/b1_mask.png);
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    margin-top: -50px;
+    position: relative;
+}
 
 .s {
   background-image: url("https://kartinkof.club/uploads/posts/2022-09/thumbs/1662303291_28-kartinkof-club-p-novie-i-krasivie-kartinki-zvezdochka-29.png");
