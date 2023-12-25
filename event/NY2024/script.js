@@ -45,6 +45,7 @@ function showInfo(itemId) {
 				document.querySelector("#currentToyToy > div._mask").classList.add(item.type + "_mask");
 				$("#add").show();
 			} else {
+				$(itemId + " > div.userComment").toggle();
 				$("#add").hide();
 			}
 		}
