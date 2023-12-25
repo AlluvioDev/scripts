@@ -118,7 +118,7 @@ async function loadInv() {
 			.replaceAll("{{ITEM_ID}}", item.id)
 			.replaceAll("{{IMG_TITLE}}", item.faceOwner ? item.faceOwner : "")
 			.replaceAll("{{USER_COMMENT}}", item.text ? item.text : "")
-			.replaceAll("{{ONCLICK}}", item.img ?  'showInfo("' + item.id + '")' : "")
+			.replaceAll("{{ONCLICK}}", item.img ?  "showInfo('" + item.id + "')" : "")
 			.replaceAll("{{BG_IMG}}", item.img ? ("background-image:url(" + item.img + ");") : "")
 			.replaceAll("{{XPOS}}", item.xPos ? ("left:" + item.xPos + "px;") : "")
 			.replaceAll("{{YPOS}}", item.yPos ? ("top:" + item.yPos + "px;") : "")
