@@ -16,6 +16,10 @@
 			<td><input type="text" id="postLink"/></td>
 		</tr>
 		<tr>
+			<td>Введите имя игрока, как на форуме.  <br>Например, Rowan Turner</td>
+			<td><input type="text" id="username"/></td>
+		</tr>
+		<tr>
 			<td>Отметьте игрушки, которые он получает. 
 			<br><br>
 			На данный момент вы выбрали <b><span id="toysCount">0</span> шт.</b> </td>
@@ -62,45 +66,31 @@ function copyToClipboard(text) {
     }
 }
 
-        
-function getUsernameByPostId(postId) {
-  var username;
-  const myUrlWithParams = new URL("https://alluvio.ru/api.php");
-
-  myUrlWithParams.searchParams.append("method", "post.get");
-  myUrlWithParams.searchParams.append("post_id", postId.slice(1));
-  myUrlWithParams.searchParams.append("fields", "username");
-
-  $.ajax({
-	url: myUrlWithParams.href,
-	method: 'post',
-	dataType: 'json',
-	async: false,
-	success: function(data){
-	      if(data.response.username)
-		username = data.response.username;
-	}
-});
-  return username;
+function copyCode() {
+	if(!postId) {alert("Вы не указали идентификатор поста!");return;} 
+	if(username.length < 1) {alert("Вы не указали имя игрока!");return;} 
+	if(totalCount == 0) {alert("Вы не выбрали игрушки!");return;}
+	resultCode.value= TEMPLATE.replaceAll("{{UNAME}}", username).replaceAll("{{INV}}", invStr);
+	copyToClipboard(resultCode.value);
 }
+
 
 var postId;
 var username;
-var TEMPLATE = `[url=https://alluviodev.github.io/scripts/event/NY2024/edit?uname={{UNAME}}&inv={{INV}}][/url]`;
+var TEMPLATE = `Молодец, @{{UNAME}} ! Переходи скорее по ссылке, чтобы повесить игрушки на самую крсивую ветку: [url=https://alluviodev.github.io/scripts/event/NY2024/edit?uname={{UNAME}}&inv={{INV}}]твоя ёлочка ждёт[/url]. Не забудь скопировать получившийся код и отправить его сюда.`;
 
-postLink.oninput = function() {
+$("#postLink").on('change', function () {
 	var currLink = postLink.value;
 
 	postId = currLink.split('#')[1];
 	if(!postId) {
-		alert("Вы ввели неправильную ссылку. Попробуйте ещё раз.");
-	} else {
-		username = getUsernameByPostId(postId);
-		if(!username) {
-			usermame = prompt("Не вышло получить имя пользователя. Введите его так, как зовётся аккаунт. Например, Rowan Turner", "Gremlin");
-		}
+		alert("Вы ввели неправильную ссылку. Попробуйте ещё раз."); return;
 	}
-};
+	updTotalCount();
+});
+$("#username").on('change', function () {
+	username = username.value;
+});
 
 var totalCount = 0;
 var invStr = "";
