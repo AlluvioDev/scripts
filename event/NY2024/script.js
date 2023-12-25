@@ -86,7 +86,7 @@ async function loadInv() {
 
 	userInv.forEach((toyId) => {
 		let item = {};
-		let tmpArr = item.id.split("-");
+		let tmpArr = toyId.split("-");
 		item["id"] = toyId;
 		item["type"] = tmpArr[0];
 		item["post"] = tmpArr[1];
