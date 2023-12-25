@@ -141,7 +141,6 @@ function loadInv() {
 	if(currLink.indexOf("edit") > 0){
 		$("#toys").html(toysStr);
 	}
-	}
 }
 
   loadInv();
