@@ -5,7 +5,7 @@
       <textarea id="resultCode" readonly></textarea>
     <script>
       var params = {};
-var paramsArr = currLink.split('?')[1].split('&');
+var paramsArr = location.href.split('?')[1].split('&');
 paramsArr.forEach((element) => params[element.replace("%20", " ").split('=')[0]] = element.replace("%20", " ").split('=')[1]); 
 var userInv = params.inv ? params.inv.split(" ") : [];
       resultCode.value= `[hide=999999999999999999999]Повесить новые игрушки вы можете тут:
