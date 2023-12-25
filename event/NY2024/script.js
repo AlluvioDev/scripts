@@ -76,6 +76,18 @@ function updToyCode() {
 var TOTAL_INV = [];
 var realInv = [];
 
+function removeFromRealInvIfExist(itemId) {
+	let finded;
+	for(let i = 0; i < realInv.length; i++){
+		if(realInv[i].id == itemId) {
+			finded = i;
+			break;
+		}
+	}
+	realInv.splice(finded, 1)
+	return false;
+}
+
 async function loadInv() {
 	const response = await fetch(inventorySrc);
 	TOTAL_INV = await response.json();
@@ -91,12 +103,12 @@ async function loadInv() {
 		item["type"] = tmpArr[0];
 		item["post"] = tmpArr[1];
 		realInv.push(item);
-		toysStr += `<li onclick='showInfo("` + item.id + `")'><div class='toy ` + item.type + (item.img ? ` added` : ``) + `' style="position: relative;"></div>` + (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`) + `</li>`;
+		toysStr += `<li onclick='showInfo(` + `"` + item.id + `"` + `)'><div class='toy ` + item.type + (item.img ? ` added` : ``) + `' style="position: relative;"></div>` + (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`) + `</li>`;
 
 	});
   
 	  TOTAL_INV.forEach((item) => {
-		if(currLink.indexOf("edit") > 0 && userInv.indexOf(item.id) > -1 || !(currLink.indexOf("edit") > 0) && item.owner==params.uname) {
+		if(currLink.indexOf("edit") > 0 && item.img || !(currLink.indexOf("edit") > 0) && item.owner==params.uname) {
 		  if(!item.post) {
 			let tmpArr = item.id.split("-");
 			item.type = tmpArr[0];
@@ -109,7 +121,7 @@ async function loadInv() {
 	id='{{ITEM_ID}}'
 	title='{{IMG_TITLE}}'
 	style='{{XPOS}} {{YPOS}} {{FILTER}}'
-	onclick='showInfo("{{ITEM_ID}}");'>
+	onclick='showInfo(` + `"` + `{{ITEM_ID}}` + `"` + `);'>
 	<div class="userImg" style="{{BG_IMG}}"></div>
 	<div class="userComment"><h3>{{IMG_TITLE}}</h3>{{USER_COMMENT}}</div>
 </div>`;
