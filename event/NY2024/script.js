@@ -39,7 +39,7 @@ function showInfo(itemId) {
 				TOY_TYPE = item.type;
 				POST_ID = item.post;
 				updToyCode();
-				currentToy.innerHTML = `<div class='toy ` + item.type + `'><div class="userImg"></div>`;
+				document.querySelector("#currentToy > div").classList.add(item.type);
 				$("#add").show();
 			} else {
 				$("#add").hide();
@@ -186,7 +186,7 @@ let huerotate = 0;
 let sepia = 0;
 let dropshadow = 0;
  
-const imgture = document.querySelector("#currentToy > div > div")
+const imgture = document.querySelector("#currentToyUserImg")
 const resetAll = document.getElementById("resetAll");
  
 const slider1 = document.getElementById("slider1");
