@@ -102,6 +102,7 @@ async function loadInv() {
 
   
 	  TOTAL_INV.forEach((item) => {
+		  if(params.uname == item.owner) {
 		if(currLink.indexOf("edit") > 0 && item.img || !(currLink.indexOf("edit") > 0) && item.owner==params.uname) {
 		  if(!item.post) {
 			let tmpArr = item.id.split("-");
@@ -135,7 +136,7 @@ async function loadInv() {
 				$('#tree').after(toy);
 			}
 		}
-		
+	  }
 	  });
 	  
 	  
