@@ -186,7 +186,7 @@ let huerotate = 0;
 let sepia = 0;
 let dropshadow = 0;
  
-const imgture = $("#currentToy .userImg");
+const imgture = document.querySelector("#currentToy > div > div")
 const resetAll = document.getElementById("resetAll");
  
 const slider1 = document.getElementById("slider1");
