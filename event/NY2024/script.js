@@ -35,7 +35,7 @@ function showInfo(itemId) {
 			$("#info").html(infoTemplate.replace("{{OWNER_NAME}}", item.owner).replace("{{PID}}", item.post));
 			if(!item.img) {
 				TOY_ID = item.id;
-				OWNER_NAME = item.owner;
+				OWNER_NAME = params.uname;
 				TOY_TYPE = item.type;
 				POST_ID = item.post;
 				updToyCode();
