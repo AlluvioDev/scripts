@@ -45,12 +45,22 @@ function showInfo(itemId) {
 				document.querySelector("#currentToyToy > div._mask").classList.add(item.type + "_mask");
 				$("#add").show();
 			} else {
-				$(itemId + " > div.userComment").toggle();
+				toggle_visibility(itemId + " > div.userComment");
 				$("#add").hide();
 			}
 		}
 	});
 }
+
+function toggle_visibility(selector) {
+       var e = document.querySelector(selector);
+       if(e.style.display == 'block') {
+          e.style.display = 'none';
+       } else {
+	  $(".userComment").hide();
+          e.style.display = 'block';
+       }
+   }
 
 var TOY_CODE = ``;
 const NEW_ITEM_TEMPLATE = `[code]{
