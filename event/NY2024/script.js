@@ -121,7 +121,7 @@ async function loadInv() {
 	id='{{ITEM_ID}}'
 	title='{{IMG_TITLE}}'
 	style='{{XPOS}} {{YPOS}} {{FILTER}}'
-	onclick='showInfo(` + `"` + `{{ITEM_ID}}` + `"` + `);'>
+	onclick='{{ONCLICK}}'>
 	<div class="userImg" style="{{BG_IMG}}"></div>
 	<div class="userComment"><h3>{{IMG_TITLE}}</h3>{{USER_COMMENT}}</div>
 </div>`;
@@ -133,7 +133,8 @@ async function loadInv() {
 			.replaceAll("{{BG_IMG}}", item.img ? ("background-image:url(" + item.img + ");") : "")
 			.replaceAll("{{XPOS}}", item.xPos ? ("left:" + item.xPos + "px;") : "")
 			.replaceAll("{{YPOS}}", item.yPos ? ("top:" + item.yPos + "px;") : "")
-			.replaceAll("{{FILTER}}", item.filter ? item.filter : "");
+			.replaceAll("{{FILTER}}", item.filter ? item.filter : "")
+			.replaceAll("{{ONCLICK}}", 'showInfo("' + item.id + '")');
 			toysStr += `<li onclick='showInfo("` + item.id + `")'><div class='toy ` + item.type + (item.img ? ` added` : ``) + `' style="position: relative;"></div>` + (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`) + `</li>`;
 
 			if(item.img) {
