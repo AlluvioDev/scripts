@@ -3,6 +3,7 @@
   <body>
       <button onclick="copyCode()">СКОПИРУЙ КОД ЁЛОЧКИ</button>
       <textarea id="resultCode" readonly></textarea>
+    <p id="doneBlock"></p>
     <script>
       var params = {};
 var paramsArr = location.href.split('?')[1].split('&');
@@ -45,6 +46,7 @@ function copyToClipboard(text) {
 function copyCode() {
     var result = copyToClipboard(resultCode.value);
     console.log("copied?", result);
+  doneBlock.innerHTML = result ? "Скопировано успешно." : "Не удалось скопировать. Попробуйте вручную.";
 };
     </script>
   </body>
