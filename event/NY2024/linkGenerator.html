@@ -1,0 +1,145 @@
+<html>
+  <head>
+    
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+  <style>
+  img {
+	width: 50px;
+	height: 50px;
+  }
+  </style>
+    <table>
+		<tr>
+			<td>Введите ссылку на пост, <br>в котором игрок отчитался о выполнении задания</td>
+			<td><input type="text" id="postLink"/></td>
+		</tr>
+		<tr>
+			<td>Отметьте игрушки, которые он получает. 
+			<br><br>
+			На данный момент вы выбрали <b><span id="toysCount">0</span> шт.</b> </td>
+			<td>
+				<label><img src="https://alluviodev.github.io/scripts/event/NY2024/img/b1.png"></img><input type="number" id="b1" min="0" value="0"/></label>
+				<br><label><img src="https://alluviodev.github.io/scripts/event/NY2024/img/b2.png"></img><input type="number" id="b2" min="0" value="0"/></label>
+				<br><label><img src="https://alluviodev.github.io/scripts/event/NY2024/img/b3.png"></img><input type="number" id="b3" min="0" value="0"/></label>
+				<br><label><img src="https://alluviodev.github.io/scripts/event/NY2024/img/b4.png"></img><input type="number" id="b4" min="0" value="0"/></label>
+				<br><label><img src="https://alluviodev.github.io/scripts/event/NY2024/img/b5.png"></img><input type="number" id="b5" min="0" value="0"/></label>
+				<br><label><img src="https://alluviodev.github.io/scripts/event/NY2024/img/s1.png"></img><input type="number" id="s1" min="0" value="0"/></label>
+			</td>
+		</tr>
+    </table>
+    
+     <button onclick="copyCode()">СКОПИРОВАТЬ КОД</button>
+      <textarea id="resultCode" readonly="" style="width: 351px; height: 147px;"></textarea>
+    <p id="doneBlock"></p>
+    <script>
+      // Copies a string to the clipboard. Must be called from within an event handler such as click.
+// May return false if it failed, but this is not always
+// possible. Browser support for Chrome 43+, Firefox 42+, Edge and IE 10+.
+// No Safari support, as of (Nov. 2015). Returns false.
+// IE: The clipboard feature may be disabled by an adminstrator. By default a prompt is
+// shown the first time the clipboard is used (per session).
+function copyToClipboard(text) {
+    if (window.clipboardData && window.clipboardData.setData) {
+        // IE specific code path to prevent textarea being shown while dialog is visible.
+        return clipboardData.setData("Text", text); 
+
+    } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+        var textarea = document.createElement("textarea");
+        textarea.textContent = text;
+        textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+        } catch (ex) {
+            console.warn("Copy to clipboard failed.", ex);
+            return false;
+        } finally {
+            document.body.removeChild(textarea);
+        }
+    }
+}
+
+        
+function getUsernameByPostId(postId) {
+  var username;
+  const myUrlWithParams = new URL("https://alluvio.ru/api.php");
+
+  myUrlWithParams.searchParams.append("method", "post.get");
+  myUrlWithParams.searchParams.append("post_id", postId.slice(1));
+  myUrlWithParams.searchParams.append("fields", "username");
+
+  $.ajax({
+	url: myUrlWithParams.href,
+	method: 'post',
+	dataType: 'json',
+	async: false,
+	success: function(data){
+	      if(data.response.username)
+		username = data.response.username;
+	}
+});
+  return username;
+}
+
+var postId;
+var username;
+var TEMPLATE = `[url=https://alluviodev.github.io/scripts/event/NY2024/edit?uname={{UNAME}}&inv={{INV}}][/url]`;
+
+postLink.oninput = function() {
+	var currLink = postLink.value;
+
+	postId = currLink.split('#')[1];
+	if(!postId) {
+		alert("Вы ввели неправильную ссылку. Попробуйте ещё раз.");
+	} else {
+		username = getUsernameByPostId(postId);
+		if(!username) {
+			usermame = prompt("Не вышло получить имя пользователя. Введите его так, как зовётся аккаунт. Например, Rowan Turner", "Gremlin");
+		}
+	}
+};
+
+var totalCount = 0;
+var invStr = "";
+function updTotalCount() {
+	totalCount = 0;
+	invStr = "";
+	for(let i=1; i <= b1.value; i++) {invStr += "b1-" + postId + "-"+ i + " ";} totalCount = totalCount*1 +b1.value*1; 
+	for(let i=totalCount; i < totalCount*1 + b2.value*1; i++) {invStr += "b2-" + postId + "-"+ i + " ";} totalCount = totalCount*1 +b2.value*1; 
+	for(let i=totalCount; i < totalCount*1 + b3.value*1; i++) {invStr += "b3-" + postId + "-"+ i + " ";} totalCount = totalCount*1 +b3.value*1; 
+	for(let i=totalCount; i < totalCount*1 + b4.value*1; i++) {invStr += "b4-" + postId + "-"+ i + " ";} totalCount = totalCount*1 +b4.value*1; 
+	for(let i=totalCount; i < totalCount*1 + b5.value*1; i++) {invStr += "b5-" + postId + "-"+ i + " ";} totalCount = totalCount*1 +b5.value*1; 
+	for(let i=totalCount; i < totalCount*1 + s1.value*1; i++) {invStr += "s1-" + postId + "-"+ i + " ";} totalCount = totalCount*1 +s1.value*1; 
+	toysCount.innerHTML = totalCount;
+	console.log(invStr);
+}
+
+$("#b1").on('change', function () {
+    updTotalCount();
+});
+
+$("#b2").on('change', function () {
+    updTotalCount();
+});
+
+$("#b3").on('change', function () {
+    updTotalCount();
+});
+
+$("#b4").on('change', function () {
+    updTotalCount();
+});
+
+$("#b5").on('change', function () {
+    updTotalCount();
+});
+
+$("#s1").on('change', function () {
+    updTotalCount();
+});
+</script>
+  </body>
+</html>
