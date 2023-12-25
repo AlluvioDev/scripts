@@ -1,4 +1,6 @@
 var currLink = location.href;
+var inventorySrc= "https://alluviodev.github.io/scripts/event/NY2024/inventory.json";
+
 
 var params = {};
 var paramsArr = currLink.split('?')[1].split('&');
@@ -71,35 +73,13 @@ function updToyCode() {
 	resultCode.value = TOY_CODE;
 }
 
-var TOTAL_INV = [
-  {
-    "id": "b-p123456-1",
-    "owner": "Rowan Turner",
-    "type": "",
-    "post": "",
-    "img": "https://forumavatars.ru/img/avatars/001b/9d/5d/78-1702750843.png",
-    "faceOwner": "Хеспочка",
-    "text": "Моя миленькая мышка",
-    "xPos": "93",
-    "yPos": "393",
-    "filter": ""
-  },
-  {
-    "id": "b-p123456-2",
-    "owner": "Rowan Turner"
-  },
-  {
-    "id": "s-p123456-3",
-    "owner": "Rowan Turner"
-  },
-  {
-    "id": "b-p123456-4",
-    "owner": "Rowan Turner"
-  }
-];
+var TOTAL_INV = [];
 var realInv = [];
 function loadInv() {
+	
   console.log("Load inventory...");
+	const response = await fetch(inventorySrc);
+	TOTAL_INV = await response.json();
 	  let toysStr = "<ul>";
   
 	  TOTAL_INV.forEach((item) => {
