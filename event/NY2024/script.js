@@ -1,4 +1,4 @@
-var currLink = "https://alluviodev.github.io/scripts/event/NY2024/edit?uname=Rowan%20Turner&inv=b-p123456-1%20s-p123456-3"; //location.href;
+var currLink = location.href;
 
 var params = {};
 var paramsArr = currLink.split('?')[1].split('&');
