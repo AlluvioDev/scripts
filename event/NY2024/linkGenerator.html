@@ -68,16 +68,16 @@ function copyToClipboard(text) {
 
 function copyCode() {
 	if(!postId) {alert("Вы не указали идентификатор поста!");return;} 
-	if(username.length < 1) {alert("Вы не указали имя игрока!");return;} 
+	if(uname.length < 1) {alert("Вы не указали имя игрока!");return;} 
 	if(totalCount == 0) {alert("Вы не выбрали игрушки!");return;}
-	resultCode.value= TEMPLATE.replaceAll("{{UNAME}}", username).replaceAll("{{INV}}", invStr);
+	resultCode.value= TEMPLATE.replaceAll("{{UNAME}}", uname).replaceAll("{{INV}}", invStr);
 	copyToClipboard(resultCode.value);
 }
 
 
 var postId;
-var username;
-var TEMPLATE = `Молодец, @{{UNAME}} ! Переходи скорее по ссылке, чтобы повесить игрушки на самую крсивую ветку: [url=https://alluviodev.github.io/scripts/event/NY2024/edit?uname={{UNAME}}&inv={{INV}}]твоя ёлочка ждёт[/url]. Не забудь скопировать получившийся код и отправить его сюда.`;
+var uname;
+var TEMPLATE = `Молодец, @{{UNAME}} ! Переходи скорее по ссылке, чтобы повесить игрушки на самую красивую ветку: [url=https://alluviodev.github.io/scripts/event/NY2024/edit?uname={{UNAME}}&inv={{INV}}]твоя ёлочка ждёт[/url]. Не забудь скопировать получившийся код и отправить его сюда.`;
 
 $("#postLink").on('change', function () {
 	var currLink = postLink.value;
@@ -89,7 +89,7 @@ $("#postLink").on('change', function () {
 	updTotalCount();
 });
 $("#username").on('change', function () {
-	username = username.value;
+	uname = username.value;
 });
 
 var totalCount = 0;
