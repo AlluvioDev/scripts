@@ -39,7 +39,9 @@ function showInfo(itemId) {
 				TOY_TYPE = item.type;
 				POST_ID = item.post;
 				updToyCode();
+				document.querySelector("#currentToy > div").classList.value = 'toy'
 				document.querySelector("#currentToy > div").classList.add(item.type);
+				document.querySelector("#currentToyToy > div._mask").classList.value = '_mask'
 				document.querySelector("#currentToyToy > div._mask").classList.add(item.type + "_mask");
 				$("#add").show();
 			} else {
