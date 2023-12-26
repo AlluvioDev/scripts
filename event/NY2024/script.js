@@ -29,7 +29,7 @@ var TOTAL_INV = [];
 var realInv = [];
 
 function showInfo(itemId) {
-	let infoTemplate = `<p>Выдано пользователю <b>{{OWNER_NAME}}</b> в посте <a href="https://alluvio.ru/viewtopic.php?pid={{SHORT_PID}}#{{PID}}" target="_blank>"с идентификатором <b>{{PID}}</b></a></p>`;
+	let infoTemplate = `<p style="color: #808080;">Выдано пользователю <b>{{OWNER_NAME}}</b> в посте <a href="https://alluvio.ru/viewtopic.php?pid={{SHORT_PID}}#{{PID}}" target="_blank>"с идентификатором <b>{{PID}}</b></a></p>`;
 	realInv.forEach((item) => {
 		if(itemId == item.id) {
 			$("#info").html(infoTemplate.replace("{{OWNER_NAME}}", item.owner).replaceAll("{{PID}}", item.post).replaceAll("{{SHORT_PID}}", item.post.slice(1)));
