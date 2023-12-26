@@ -56,6 +56,7 @@ function toggle_visibility(selector) {
        var e = document.querySelector(selector);
        if(e.style.display == 'flex') {
           e.style.display = 'none';
+	  $("#info").html("");
        } else {
 	  $(".userComment").hide();
           e.style.display = 'flex';
