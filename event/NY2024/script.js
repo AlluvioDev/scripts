@@ -110,6 +110,9 @@ async function loadInv() {
   
 	  TOTAL_INV.forEach((item) => {
 		  if(params.uname == item.owner) {
+			if(currLink.indexOf("edit") > 0 && !item.img){
+		          userInv.push(item.id);
+		        }
 		if(currLink.indexOf("edit") > 0 && item.img || !(currLink.indexOf("edit") > 0) && item.owner==params.uname) {
 		  if(!item.post) {
 			let tmpArr = item.id.split("-");
