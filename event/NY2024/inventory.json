@@ -269,6 +269,10 @@
     "filter": "filter: brightness(144%) contrast(113%) saturate(150%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(23%)"
   },
   {
+    "id": "c1-p123456-5",
+    "owner": "Gremlin"
+  },
+  {
     "id": "s1-p123456-3",
     "owner": "Gremlin",
     "type": "s1",
@@ -280,9 +284,5 @@
     "yPos": "153",
     "bgPos": "background-position:6px 10px;",
     "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
-  },
-  {
-    "id": "с1-p123456-5",
-    "owner": "Gremlin"
   }
 ]
