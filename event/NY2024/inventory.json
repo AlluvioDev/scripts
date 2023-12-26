@@ -1,5 +1,18 @@
 [
   {
+    "id": "s1-p316939-0",
+    "owner": "Ian Abercrombie",
+    "type": "s1",
+    "post": "p316939",
+    "img": "https://forumupload.ru/uploads/001b/9d/5d/599/830666.gif",
+    "faceOwner": "Ясмин",
+    "text": "тут без лишних слов ",
+    "xPos": "203",
+    "yPos": "31",
+    "bgPos": "background-position:-26px 5px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "b3-p316866-2",
     "owner": "Amrit Patil",
     "type": "b3",
@@ -204,9 +217,9 @@
     "filter": "filter: brightness(144%) contrast(113%) saturate(150%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(23%)"
   },
   {
-    "id": "s-p123456-3",
+    "id": "s1-p123456-3",
     "owner": "Gremlin",
-    "type": "b",
+    "type": "s1",
     "post": "p123456",
     "img": "https://forumavatars.ru/img/avatars/001b/9d/5d/742-1703441108.png",
     "faceOwner": "йцу",
