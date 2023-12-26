@@ -1,3 +1,4 @@
+
 <head>
   <title>[ Alluvio ] Наряди ёлочку!</title>
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -16,6 +17,16 @@
 </div></div></div>
 		<div>Имя того, кому ты посвящаешь шарик: <input type="text" id="faceOwner" placeholder="Имя"/></div>
 		<div>Портрет, который будет на шарике: <input type="text" id="imgLink" placeholder="Ссылка на картинку"/></div>
+             <div class="singleSlider">
+          <div class="val" id="moveX">0</div>
+          <label for="slider10">Двигать по горизонтали<input class="slider" id="slider10" type="range" min="-50" max="50" value="0"></label>
+        </div>
+				
+        <div class="singleSlider">
+          <div class="val" id="moveY">0</div>
+          <label for="slider11">Двигать по вертикали<input class="slider" id="slider11" type="range" min="-50" max="50" value="0"></label>
+        </div> 
+      
 		<div>Что ты хочешь сказать этому человеку? <textarea id="commentText" placeholder="Пиши всё, что душе угодно."></textarea></div>
       
       	<div class="sliders">
@@ -46,8 +57,9 @@
 			<div class="singleSlider">
 				<div class="val" id="sepia">0%</div>
 				<label for="slider9">Сепия<input class="slider" id="slider9" type="range" min="0" max="100" value="0"></label>
-				
 			</div>
+          
+				
 			<button id="resetAll">Сбросить фильтры</button>
 		</div>
 
