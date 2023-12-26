@@ -29,10 +29,10 @@ var TOTAL_INV = [];
 var realInv = [];
 
 function showInfo(itemId) {
-	let infoTemplate = `<p>Выдано пользователю <b>{{OWNER_NAME}}</b> в посте с идентификатором <b>{{PID}}</b></p>`;
+	let infoTemplate = `<p>Выдано пользователю <b>{{OWNER_NAME}}</b> в посте <a href="https://alluvio.ru/viewtopic.php?id={{SHORT_PID}}#{{PID}}" target="_blank>"с идентификатором <b>{{PID}}</b></a></p>`;
 	realInv.forEach((item) => {
 		if(itemId == item.id) {
-			$("#info").html(infoTemplate.replace("{{OWNER_NAME}}", item.owner).replace("{{PID}}", item.post));
+			$("#info").html(infoTemplate.replace("{{OWNER_NAME}}", item.owner).replaceAll("{{PID}}", item.post).replaceAll("{{SHORT_PID}}", item.post.slice(1)));
 			if(!item.img) {
 				TOY_ID = item.id;
 				OWNER_NAME = params.uname;
