@@ -24,6 +24,7 @@ var TEXT = "";
 var XPOS = "";
 var YPOS = "";
 var FILTER = "";
+var BG_POSITION = "";
 
 var TOTAL_INV = [];
 var realInv = [];
@@ -45,20 +46,23 @@ function showInfo(itemId) {
 				document.querySelector("#currentToyToy > div._mask").classList.add(item.type + "_mask");
 				$("#add").show();
 			} else {
-				toggle_visibility("#" + itemId + " > div.userComment");
+				toggle_visibility("#" + itemId + " > div.userComment", itemId);
 				$("#add").hide();
 			}
 		}
 	});
 }
 
-function toggle_visibility(selector) {
+function toggle_visibility(selector, id) {
        var e = document.querySelector(selector);
        if(e.style.display == 'flex') {
           e.style.display = 'none';
-	  $("#info").html("");
+	        $("#info").html("");
+          $(".toy").css('opacity', '1');
        } else {
-	  $(".userComment").hide();
+          $(".userComment").hide();
+          $(".toy").css('opacity', '0.6');
+          $("#" + id).css('opacity', '1');
           e.style.display = 'flex';
        }
    }
@@ -74,8 +78,9 @@ const NEW_ITEM_TEMPLATE = `[code]{
     "text": "{{TEXT}}",
     "xPos": "{{XPOS}}",
     "yPos": "{{YPOS}}",
+    "bgPos": "{{BG_POSITION}}",
     "filter": "{{FILTER}}"
-  }[/code]`;
+  },[/code]`;
 
 
 function updToyCode() {
@@ -89,6 +94,7 @@ function updToyCode() {
 		.replace("{{TEXT}}", TEXT)
 		.replace("{{XPOS}}", XPOS)
 		.replace("{{YPOS}}", YPOS)
+		.replace("{{BG_POSITION}}", BG_POSITION)
 		.replace("{{FILTER}}", FILTER);
 	resultCode.value = TOY_CODE;
 }
@@ -118,7 +124,7 @@ async function loadInv() {
 	title='{{IMG_TITLE}}'
 	style='{{XPOS}} {{YPOS}}'
 	onclick='{{ONCLICK}}'>
-	<div class="userImg" style="{{BG_IMG}} {{FILTER}}"></div><div class="{{ITEM_TYPE}}_mask"></div>
+	<div class="userImg" style="{{BG_IMG}} {{BG_POSITION}} {{FILTER}}"></div><div class="{{ITEM_TYPE}}_mask"></div>
 	<div class="userComment" style="display:none;"><h3>{{IMG_TITLE}}</h3>{{USER_COMMENT}}</div>
 </div>`;
 		toy = TOY_TEMPLATE
@@ -129,6 +135,7 @@ async function loadInv() {
 			.replaceAll("{{BG_IMG}}", item.img ? ("background-image:url(" + item.img + ");") : "")
 			.replaceAll("{{XPOS}}", item.xPos ? ("left:" + item.xPos + "px;") : "")
 			.replaceAll("{{YPOS}}", item.yPos ? ("top:" + item.yPos + "px;") : "")
+			.replaceAll("{{BG_POSITION}}", item.bgPos ? item.bgPos : "")
 			.replaceAll("{{FILTER}}", item.filter ? item.filter : "")
 			.replaceAll("{{ONCLICK}}", 'showInfo("' + item.id + '")');
 			toysStr += `<li onclick='showInfo("` + item.id + `")'><div class='toy ` + item.type + (item.img ? ` added` : ``) + `' style="position: relative;"></div>` + (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`) + `</li>`;
@@ -201,6 +208,8 @@ let invert = 0;
 let huerotate = 0;
 let sepia = 0;
 let dropshadow = 0;
+let moveX = 0;
+let moveY = 0;
  
 const imgture = document.querySelector("#currentToyUserImg")
 const resetAll = document.getElementById("resetAll");
@@ -219,9 +228,15 @@ const slider6 = document.getElementById("slider6");
 const value6 = document.getElementById("hue");
 const slider9 = document.getElementById("slider9");
 const value9 = document.getElementById("sepia");
+const slider10 = document.getElementById("slider10");
+const value10 = document.getElementById("moveX");
+const slider11 = document.getElementById("slider11");
+const value11 = document.getElementById("moveY");
  
 //Update filters
 function updateFilters() {
+	imgture.style.backgroundPosition = moveX + "px " + moveY + "px"; 
+	BG_POSITION =  "background-position:" + moveX + "px " + moveY + "px;"; 
 	imgture.style.filter =
 		"brightness(" +
 		brightness +
@@ -329,6 +344,18 @@ slider6.addEventListener("input", function() {
 slider9.addEventListener("input", function() {
 	value9.innerHTML = slider9.value + "%";
 	sepia = slider9.value;
+	updateFilters();
+});
+//Move x slider
+slider10.addEventListener("input", function() {
+	value10.innerHTML = slider10.value + "px";
+	moveX = slider10.value;
+	updateFilters();
+});
+//Move y slider
+slider11.addEventListener("input", function() {
+	value11.innerHTML = slider11.value + "px";
+	moveY = slider11.value;
 	updateFilters();
 });
 
