@@ -1,5 +1,57 @@
 [
   {
+    "id": "b2-p316569-1",
+    "owner": "Ian Abercrombie",
+    "type": "b2",
+    "post": "p316569",
+    "img": "https://forumupload.ru/uploads/001b/9d/5d/599/22187.gif",
+    "faceOwner": "Амрит",
+    "text": "забери меня в Калькутту",
+    "xPos": "363",
+    "yPos": "528",
+    "bgPos": "background-position:0px 9px;",
+    "filter": "filter: brightness(114%) contrast(179%) saturate(98%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b3-p316569-2",
+    "owner": "Ian Abercrombie",
+    "type": "b3",
+    "post": "p316569",
+    "img": "https://forumupload.ru/uploads/001b/9d/5d/599/167748.gif",
+    "faceOwner": "Оззик",
+    "text": "фактурный мужчина!",
+    "xPos": "114",
+    "yPos": "390",
+    "bgPos": "background-position:0px 9px;",
+    "filter": "filter: brightness(114%) contrast(179%) saturate(98%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b4-p316569-3",
+    "owner": "Ian Abercrombie",
+    "type": "b4",
+    "post": "p316569",
+    "img": "https://forumupload.ru/uploads/001b/9d/5d/599/618165.gif",
+    "faceOwner": "Барти",
+    "text": "бешеный пездюк :3",
+    "xPos": "276",
+    "yPos": "268",
+    "bgPos": "background-position:-6px 6px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b1-p316569-1",
+    "owner": "Ian Abercrombie",
+    "type": "b1",
+    "post": "p316569",
+    "img": "https://forumupload.ru/uploads/001b/9d/5d/599/538610.gif",
+    "faceOwner": "Мариончик",
+    "text": "ты - огонь ",
+    "xPos": "172",
+    "yPos": "128",
+    "bgPos": "background-position:0px 9px;",
+    "filter": "filter: brightness(114%) contrast(179%) saturate(98%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "s1-p316939-0",
     "owner": "Ian Abercrombie",
     "type": "s1",
