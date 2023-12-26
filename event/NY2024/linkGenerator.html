@@ -89,7 +89,7 @@ $("#postLink").on('change', function () {
 	updTotalCount();
 });
 $("#username").on('change', function () {
-	uname = username.value;
+	uname = username.value.trim();
 });
 
 var totalCount = 0;
