@@ -1,5 +1,31 @@
 [
   {
+    "id": "b1-p316971-1",
+    "owner": "Ezra Minchum",
+    "type": "b1",
+    "post": "p316971",
+    "img": "https://images-s.kinorium.com/movie/cast/1604260/w150_538786.jpg",
+    "faceOwner": "генри",
+    "text": "люблю генри",
+    "xPos": "115.66667175292969",
+    "yPos": "299.3333435058594",
+    "bgPos": "",
+    "filter": ""
+  },
+  {
+    "id": "b2-p316971-1",
+    "owner": "Ezra Minchum",
+    "type": "b2",
+    "post": "p316971",
+    "img": "https://i.pinimg.com/736x/f3/29/ab/f329abb9532c3b72560f6cb7d92fd378.jpg",
+    "faceOwner": "мардж",
+    "text": "люблю мардж",
+    "xPos": "259.66668701171875",
+    "yPos": "200",
+    "bgPos": "",
+    "filter": ""
+  },
+  {
     "id": "b2-p316569-1",
     "owner": "Ian Abercrombie",
     "type": "b2",
