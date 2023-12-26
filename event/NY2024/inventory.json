@@ -1,5 +1,57 @@
 [
   {
+    "id": "b2-p316914-2",
+    "owner": "Ophelia Nott",
+    "type": "b2",
+    "post": "p316914",
+    "img": "https://i.pinimg.com/564x/6f/12/c3/6f12c368d815825a24999721b186c1e6.jpg",
+    "faceOwner": "Theodore Nott",
+    "text": "Любимому дэдди Меры волшебства в новом году!",
+    "xPos": "236.66668701171875",
+    "yPos": "190",
+    "bgPos": "background-position:0px 0px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(80%) invert(0%) hue-rotate(177deg) sepia(0%)"
+  },
+  {
+    "id": "b3-p316914-5",
+    "owner": "Ophelia Nott",
+    "type": "b3",
+    "post": "p316914",
+    "img": "https://i.pinimg.com/564x/78/ce/60/78ce60a63a70507ae4b8f8d2150f21bf.jpg",
+    "faceOwner": "Keiren Travers",
+    "text": "Волку с самой мощной харизмой в дикой Шотландии много любви и рыжую девицу в новом году!",
+    "xPos": "130",
+    "yPos": "263.3333435058594",
+    "bgPos": "background-position:2px 0px;",
+    "filter": "filter: brightness(104%) contrast(100%) saturate(100%) grayscale(87%) invert(0%) hue-rotate(187deg) sepia(0%)"
+  },
+  {
+    "id": "b4-p316914-7",
+    "owner": "Ophelia Nott",
+    "type": "b4",
+    "post": "p316914",
+    "img": "https://i.pinimg.com/564x/8a/56/e5/8a56e560c9258af132e955e9397c7522.jpg",
+    "faceOwner": "Kayden Ollivander",
+    "text": "В новом году снова войди в реку под названием Эрида, тебе понравится!",
+    "xPos": "205.33334350585938",
+    "yPos": "260",
+    "bgPos": "background-position:4px -4px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(59%) invert(0%) hue-rotate(55deg) sepia(0%)"
+  },
+  {
+    "id": "c1-p316964-7",
+    "owner": "Ophelia Nott",
+    "type": "c1",
+    "post": "p316964",
+    "img": "https://i.pinimg.com/originals/9c/35/5b/9c355b7f9d44a08ea98df054ec1e2124.png",
+    "faceOwner": "Solveig Ogden",
+    "text": "Щастячка, денег, крутых идей тебе!",
+    "xPos": "196",
+    "yPos": "138.66668701171875",
+    "bgPos": "background-position:-2px 9px;",
+    "filter": "filter: brightness(126%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "b1-p316971-1",
     "owner": "Ezra Minchum",
     "type": "b1",
