@@ -1,5 +1,82 @@
 [
-  
+  {
+    "id": "b1-p317234-1",
+    "owner": "Rowan Turner",
+    "type": "b1",
+    "post": "p317234",
+    "img": "https://forumupload.ru/uploads/001b/9d/5d/656/t603655.gif",
+    "faceOwner": "Мисс Кэмпбелл",
+    "text": "Прогулки по кладбищам - не самое любимое моё занятие, однако с вами я готов бродить там сколько потребуется. С Наступающим!",
+    "xPos": "150",
+    "yPos": "113",
+    "bgPos": "background-position:-27px 12px;",
+    "filter": "filter: brightness(96%) contrast(159%) saturate(169%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b5-p317234-9",
+    "owner": "Rowan Turner",
+    "type": "b5",
+    "post": "p317234",
+    "img": "https://forumupload.ru/uploads/001b/9d/5d/702/237932.gif",
+    "faceOwner": "Брат",
+    "text": "Брат. Рад, что нашёл тебя в этом году. Обещаю больше не терять. ",
+    "xPos": "240",
+    "yPos": "95",
+    "bgPos": "background-position:-27px 12px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b3-p317234-5",
+    "owner": "Rowan Turner",
+    "type": "b3",
+    "post": "p317234",
+    "img": "https://i.imgur.com/loohayg.gif",
+    "faceOwner": "Стив",
+    "text": "Душа компании! Рад видеть тебя. Спасибо за всё, жги дальше!",
+    "xPos": "101",
+    "yPos": "223",
+    "bgPos": "background-position:-41px 12px;",
+    "filter": "filter: brightness(117%) contrast(100%) saturate(120%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(42%)"
+  },
+  {
+    "id": "b4-p317234-7",
+    "owner": "Rowan Turner",
+    "type": "b4",
+    "post": "p317234",
+    "img": "https://forumupload.ru/uploads/001b/9d/5d/607/t320927.gif",
+    "faceOwner": "Трой",
+    "text": "Мэтт просил передать, что ты возглавляешь список самых лучших его подчинённых. Продолжай в том же духе! С Наступающим!",
+    "xPos": "288",
+    "yPos": "218",
+    "bgPos": "background-position:-18px 2px;",
+    "filter": "filter: brightness(131%) contrast(113%) saturate(133%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b1-p317234-2",
+    "owner": "Rowan Turner",
+    "type": "b1",
+    "post": "p317234",
+    "img": "https://64.media.tumblr.com/d390b0e8dcb81be09fd99c90ccdfb1e6/5472aba2156548db-0f/s540x810/2e6e69cad9b509120926c7f17e3583353c0d4aa2.gif",
+    "faceOwner": "Племянничек",
+    "text": "Привет, Дакарэй! С Наступающим! Пей с Амброзом осторожнее. И да, меньше ходи на вечера к стрёмным незнакомцам. Даже если там обещают еду. Здоровье важнее, уж поверь мне.",
+    "xPos": "59",
+    "yPos": "371",
+    "bgPos": "background-position:-8px 7px;",
+    "filter": "filter: brightness(131%) contrast(113%) saturate(133%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b2-p317234-2",
+    "owner": "Rowan Turner",
+    "type": "b2",
+    "post": "p317234",
+    "img": "https://forumupload.ru/uploads/001b/9d/5d/78/868037.gif",
+    "faceOwner": "Мышка",
+    "text": "Пусть лапки не болят! И пусть лежание у меня дома компенсирует хоть отчасти весь недосып :)",
+    "xPos": "333",
+    "yPos": "362",
+    "bgPos": "background-position:-21px 3px;",
+    "filter": "filter: brightness(131%) contrast(113%) saturate(133%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
   {
     "id": "b2-p317327-0",
     "owner": "Michael Flamel",
