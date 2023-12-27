@@ -1,5 +1,31 @@
 [
   {
+    "id": "b2-p317874-1",
+    "owner": "Ophelia Nott",
+    "type": "b2",
+    "post": "p317874",
+    "img": "https://i.pinimg.com/564x/53/ed/11/53ed11c76114bd447a5932fd1a122b5e.jpg",
+    "faceOwner": "Ophelia Nott",
+    "text": "Пожелание себе в Новый год - выжить и прекратить круг депрессуна!",
+    "xPos": "170.18519592285156",
+    "yPos": "343.5185546875",
+    "bgPos": "background-position:-1px 7px;",
+    "filter": "filter: brightness(128%) contrast(100%) saturate(100%) grayscale(92%) invert(0%) hue-rotate(150deg) sepia(0%)"
+  },
+  {
+    "id": "b1-p317874-1",
+    "owner": "Ophelia Nott",
+    "type": "b1",
+    "post": "p317874",
+    "img": "https://i.pinimg.com/564x/7e/4a/f2/7e4af29a4e590a6943be78da665918fd.jpg",
+    "faceOwner": "Laura Buttermere",
+    "text": "Моему Тайному Санте, который внезапно порадовал подарочком. Успехов в 2024-м!",
+    "xPos": "196.85186767578125",
+    "yPos": "142.0370635986328",
+    "bgPos": "background-position:-2px 9px;",
+    "filter": "filter: brightness(98%) contrast(98%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "b5-p318114-8",
     "owner": "Ian Abercrombie",
     "type": "b5",
