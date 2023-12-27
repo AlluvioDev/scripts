@@ -7,8 +7,8 @@
     "img": "https://i.postimg.cc/ZRt90SM0/tumblr-inline-olplkw08-Gs1s62zm4-100.gif",
     "faceOwner": "Париж",
     "text": "Самый понимающий капитан во всём аврорате!<br>P.S.: а как твой ГМ скажу, что соблазнять каждого встречного непися... мощно. Но помни, что все они ждут обещанных свиданий!",
-    "xPos": "",
-    "yPos": "",
+    "xPos": "29",
+    "yPos": "510",
     "bgPos": "background-position:-5px 15px;",
     "filter": "filter: brightness(137%) contrast(117%) saturate(151%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
   },
@@ -39,9 +39,9 @@
     "filter": "filter: brightness(208%) contrast(215%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(100%)"
   },
   {
-    "id": "b4-p317234-6",
+    "id": "b2-p317234-3",
     "owner": "Rowan Turner",
-    "type": "b4",
+    "type": "b2",
     "post": "p317234",
     "img": "https://forumupload.ru/uploads/001b/9d/5d/770/731309.gif",
     "faceOwner": "Дэвид Эбботт",
