@@ -1,4 +1,70 @@
 [
+  
+  {
+    "id": "b2-p317327-0",
+    "owner": "Michael Flamel",
+    "type": "b2",
+    "post": "p317327",
+    "img": "https://forumavatars.ru/img/avatars/001b/9d/5d/144-1703357831.png",
+    "faceOwner": "Ernest Prang",
+    "text": "Люблю тебя до луны и обратно",
+    "xPos": "110",
+    "yPos": "281",
+    "bgPos": "background-position:6px -5px;",
+    "filter": "filter: brightness(101%) contrast(219%) saturate(218%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b3-p317327-1",
+    "owner": "Michael Flamel",
+    "type": "b3",
+    "post": "p317327",
+    "img": "https://forumavatars.ru/img/avatars/001b/9d/5d/742-1703441108.png",
+    "faceOwner": "Rowan Turner",
+    "text": "Желаю тебе море вдохновения и сил осуществлять все планы и желания.",
+    "xPos": "346",
+    "yPos": "478",
+    "bgPos": "background-position:3px 5px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(235%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "c1-p316964-5",
+    "owner": "Michael Flamel",
+    "type": "c1",
+    "post": "p316964",
+    "img": "https://forumavatars.ru/img/avatars/001b/9d/5d/693-1696073810.png",
+    "faceOwner": "Edward Tonks",
+    "text": "Ты моя сладость",
+    "xPos": "225",
+    "yPos": "242",
+    "bgPos": "background-position:4px -3px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(266deg) sepia(0%)"
+  },
+  {
+    "id": "b3-p316914-4",
+    "owner": "Ophelia Nott",
+    "type": "b3",
+    "post": "p316914",
+    "img": "https://64.media.tumblr.com/aafd6e64bf9554b1fe4b8b2293435c8d/fc1f70d5b5215d83-23/s1280x1920/272665093fcb7daae7a6a874ec88612857b83583.jpg",
+    "faceOwner": "Marigold Macdonald",
+    "text": "Моя ментальная сис, с зимними праздниками. Лучшая девочка!",
+    "xPos": "96.66667175292969",
+    "yPos": "403.3333740234375",
+    "bgPos": "background-position:0px 0px;",
+    "filter": "filter: brightness(125%) contrast(90%) saturate(83%) grayscale(72%) invert(0%) hue-rotate(211deg) sepia(0%)"
+  },
+  {
+    "id": "b1-p316914-2",
+    "owner": "Ophelia Nott",
+    "type": "b1",
+    "post": "p316914",
+    "img": "https://64.media.tumblr.com/46113e6075d9483a40bfa8b75ce851ca/9f89a5fd38927903-60/s400x600/48e8231b77dc889741a142a6d40970c5173e7a56.png",
+    "faceOwner": "Steve Baker",
+    "text": "Стиви, шлю новогодние обнимурмурмурки!",
+    "xPos": "201.33334350585938",
+    "yPos": "341.3333435058594",
+    "bgPos": "background-position:-2px 0px;",
+    "filter": "filter: brightness(109%) contrast(85%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(6%)"
+  },
   {
     "id": "b1-p316914-1",
     "owner": "Ophelia Nott",
