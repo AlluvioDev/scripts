@@ -1,5 +1,18 @@
 [
   {
+    "id": "s1-p317309-0",
+    "owner": "Antares Nott",
+    "type": "s1",
+    "post": "p317309",
+    "img": "https://i.pinimg.com/originals/e3/9a/46/e39a461c2f1d1c19202cf906fca63d15.gif",
+    "faceOwner": "Фел",
+    "text": "Потому что ты - моя звезда!",
+    "xPos": "201",
+    "yPos": "38",
+    "bgPos": "background-position:-21px 1px;",
+    "filter": "filter: brightness(90%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "b3-p317234-4",
     "owner": "Rowan Turner",
     "type": "b3",
