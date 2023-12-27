@@ -1,5 +1,57 @@
 [
   {
+    "id": "b3-p317234-4",
+    "owner": "Rowan Turner",
+    "type": "b3",
+    "post": "p317234",
+    "img": "https://i.postimg.cc/ZRt90SM0/tumblr-inline-olplkw08-Gs1s62zm4-100.gif",
+    "faceOwner": "Париж",
+    "text": "Самый понимающий капитан во всём аврорате!<br>P.S.: а как твой ГМ скажу, что соблазнять каждого встречного непися... мощно. Но помни, что все они ждут обещанных свиданий!",
+    "xPos": "",
+    "yPos": "",
+    "bgPos": "background-position:-5px 15px;",
+    "filter": "filter: brightness(137%) contrast(117%) saturate(151%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b4-p317234-6",
+    "owner": "Rowan Turner",
+    "type": "b4",
+    "post": "p317234",
+    "img": "https://64.media.tumblr.com/8c3eccf260bbd2755becce36f987c8d5/718b166e65123ef0-66/s540x810/0c80b10e1ca806f4ace2266746c785ddf6b8ba24.gif",
+    "faceOwner": "Маруся",
+    "text": "Ваши игры со Стивом во всех амплуа хороши :)<br>Пусть с Марой у Роуэна не особо сложилось, зато у ГМа всё хорошо. Вы с Сашей - просто радость для меня. Такая милота! И букетики, и ходите за ручки, и склеп потрошите вместе. Умиляюсь!",
+    "xPos": "373",
+    "yPos": "524",
+    "bgPos": "background-position:-31px 10px;",
+    "filter": "filter: brightness(162%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b5-p317234-8",
+    "owner": "Rowan Turner",
+    "type": "b5",
+    "post": "p317234",
+    "img": "https://forumupload.ru/uploads/001b/9d/5d/411/t38740.gif",
+    "faceOwner": "Миша",
+    "text": "Какой же крутой мне ГМ попался! И админ. Креативный, с бездонным запасом вдохновения и хуёчками везде, где можно и нельзя. Продолжай, мне нравится.",
+    "xPos": "255",
+    "yPos": "297",
+    "bgPos": "background-position:-40px 10px;",
+    "filter": "filter: brightness(208%) contrast(215%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(100%)"
+  },
+  {
+    "id": "b4-p317234-6",
+    "owner": "Rowan Turner",
+    "type": "b4",
+    "post": "p317234",
+    "img": "https://forumupload.ru/uploads/001b/9d/5d/770/731309.gif",
+    "faceOwner": "Дэвид Эбботт",
+    "text": "Мастер рождественских приключений! Бежим искать жаб дальше!",
+    "xPos": "158",
+    "yPos": "294",
+    "bgPos": "background-position:-33px 4px;",
+    "filter": "filter: brightness(131%) contrast(113%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "b1-p317234-1",
     "owner": "Rowan Turner",
     "type": "b1",
