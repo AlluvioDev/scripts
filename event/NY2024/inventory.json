@@ -1,5 +1,31 @@
 [
   {
+    "id": "b2-p317295-1",
+    "owner": "Ophelia Nott",
+    "type": "b2",
+    "post": "p317295",
+    "img": "https://i.pinimg.com/474x/b9/14/bd/b914bdfc044fef5bc42e29a601709a85.jpg",
+    "faceOwner": "Edgar Bones",
+    "text": "Зі святами тебе, містер Ікло!",
+    "xPos": "147.33334350585938",
+    "yPos": "496.66668701171875",
+    "bgPos": "background-position:0px 6px;",
+    "filter": "filter: brightness(118%) contrast(100%) saturate(100%) grayscale(61%) invert(0%) hue-rotate(171deg) sepia(0%)"
+  },
+  {
+    "id": "b1-p317295-1",
+    "owner": "Ophelia Nott",
+    "type": "b1",
+    "post": "p317295",
+    "img": "https://www.lahiguera.net/cinemania/actores/sasha_luss/fotos/28189/sasha_luss.jpg",
+    "faceOwner": "Hesper Avery",
+    "text": "Лучшая леди мемов на всем белом свете. Здоровья тебе и АДЕКВАТНОГО начальства!",
+    "xPos": "233.33334350585938",
+    "yPos": "492.66668701171875",
+    "bgPos": "background-position:-3px 5px;",
+    "filter": "filter: brightness(109%) contrast(109%) saturate(97%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "s1-p317295-6",
     "owner": "Ophelia Nott",
     "type": "s1",
