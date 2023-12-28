@@ -1,5 +1,31 @@
 [
   {
+    "id": "b2-p317908-1",
+    "owner": "Antares Nott",
+    "type": "b2",
+    "post": "p317908",
+    "img": "https://i.pinimg.com/originals/be/3c/41/be3c416960287d9263e72844319a23f6.png",
+    "faceOwner": "Роуэн Тёрнер",
+    "text": "Спасибо за ёлку!",
+    "xPos": "102",
+    "yPos": "351",
+    "bgPos": "background-position:2px -7px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b1-p317908-1",
+    "owner": "Antares Nott",
+    "type": "b1",
+    "post": "p317908",
+    "img": "https://files.binar.bg/files/media/2020/01/esq120117adamdriver007-1510871342-e1580458906498.jpg",
+    "faceOwner": "Мэтт Калифорния",
+    "text": "Чур, сестру не обижать! ",
+    "xPos": "232",
+    "yPos": "550",
+    "bgPos": "background-position:2px 8px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "s1-p317466-12",
     "owner": "Steve Baker",
     "type": "s1",
