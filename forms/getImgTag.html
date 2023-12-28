@@ -7,6 +7,7 @@
   		<tr>
   			<td>Введите ссылку на изображение:</td>
   			<td><input type="text" id="imgUrl"/></td>
+  			<td rowspan="2"><img src="" title="" id="preview"></td>
   		</tr>
   		<tr>
   			<td>Введите текст комментария:</td>
@@ -61,6 +62,8 @@ function updCode() {
     + `" title="`
   + comment.value.replaceAll("\"", "&quot;").replaceAll("\\", "&#92;")
     + `">`;
+	preview.src = imgUrl.value;
+	preview.title = comment.value.replaceAll("\"", "&quot;").replaceAll("\\", "&#92;");
 	console.log(imgHtml);
 	resultCode.value= imgHtml;
 }
