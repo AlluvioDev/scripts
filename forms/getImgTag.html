@@ -60,8 +60,9 @@ function updCode() {
     + imgUrl.value
     + `" title="`
   + comment.value.replaceAll("\"", "&quot;").replaceAll("\\", "&#92;")
-    + `">`
-	console.log(invStr);
+    + `">`;
+	console.log(imgHtml);
+	resultCode.value= imgHtml;
 }
 
 $("#imgUrl").on('change', function () {
