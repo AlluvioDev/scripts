@@ -59,7 +59,7 @@ function updCode() {
 	imgHtml = `<img src="`
     + imgUrl.value
     + `" title="`
-  + comment.replaceAll("\"", "&quot;").replaceAll("\\", "&#92;")
+  + comment.value.replaceAll("\"", "&quot;").replaceAll("\\", "&#92;")
     + `">`
 	console.log(invStr);
 }
