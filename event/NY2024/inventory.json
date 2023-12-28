@@ -1,5 +1,31 @@
 [
   {
+    "id": "b3-p318315-2",
+    "owner": "Ophelia Nott",
+    "type": "b3",
+    "post": "p318315",
+    "img": "https://i.pinimg.com/564x/78/b2/0d/78b20d6957f85d7399f093421029808e.jpg",
+    "faceOwner": "Lucy Ollivander",
+    "text": "Сестричку спешит поздравить с праздниками Нимерия. Сохрани свой свет!",
+    "xPos": "45.740753173828125",
+    "yPos": "535.3704223632812",
+    "bgPos": "background-position:-1px 0px;",
+    "filter": "filter: brightness(103%) contrast(100%) saturate(100%) grayscale(65%) invert(0%) hue-rotate(184deg) sepia(0%)"
+  },
+  {
+    "id": "b2-p318315-1",
+    "owner": "Ophelia Nott",
+    "type": "b2",
+    "post": "p318315",
+    "img": "https://assets.mycast.io/actor_images/actor-danielle-rose-russell-151175_large.jpg?1607152590",
+    "faceOwner": "Isla Macfusty",
+    "text": "Следующий год наш. Так давай его проведем на все сто процентов офигенно, чтобы все Гебриды знали (кисс от сис)",
+    "xPos": "353.1481628417969",
+    "yPos": "530.926025390625",
+    "bgPos": "background-position:3px 7px;",
+    "filter": "filter: brightness(90%) contrast(100%) saturate(100%) grayscale(78%) invert(0%) hue-rotate(150deg) sepia(0%)"
+  },
+  {
     "id": "s1-p317975-14",
     "owner": "Oswald Stein",
     "type": "s1",
