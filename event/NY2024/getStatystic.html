@@ -58,7 +58,6 @@ const sortable = Object.entries(countByTypes)
     totalStat.innerHTML = tsStr;
     
     let psStr = "<table>";
-    countByUsers = countByUsers.sort((a, b) => b[1] - a[1]));
 const sortable1 = Object.entries(countByUsers)
     .sort(([,a],[,b]) => a-b)
     .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
