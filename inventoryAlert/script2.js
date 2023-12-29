@@ -1,4 +1,4 @@
-const version = "SCRIPT 2"; // Обнови меня, если меняешь код!
+const version = "v5.0"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -101,12 +101,6 @@ const CHUNK_SIZE = 15;
 var regexpSpecChars = /[^\w\sа-яА-ЯёЁ\d\.<>\\\/\"=\[\]\!\?\:]/g;
 console.log("init inventoryAlert plugin " + version);
 if(DEBUG_MODE) console.log("DEBUG_MODE on");
-
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 function saveCurrentInventory() {
 	let invStr = getCurrentInventory();
 	let current = new Date();
@@ -118,13 +112,18 @@ function saveCurrentInventory() {
 		let jId = 1;
 		for(let j = 0; j <= items.length; j = j + CHUNK_SIZE){
 			if(j != 0) {
-				sleep(100).then(() => { setValueToStorage(i + "_" + jId, items.slice(j, j+CHUNK_SIZE ).join("\n"));});
+				setValueToStorage(i + "_" + jId, items.slice(j, j+CHUNK_SIZE ).join("\n"));
 				jId++;
 			} else {
-				sleep(100).then(() => { setValueToStorage(i, items.slice(0, CHUNK_SIZE).join("\n"));});
+				setValueToStorage(i, items.slice(0, CHUNK_SIZE).join("\n"));
 			}
 		}
 	}
+}
+function saveCurrentInventoryTime() {
+	let current = new Date();
+	current = current.getTime();
+	setValueToStorage(0, current);
 }
 
 function setValueToStorage(keySuffix, keyValue){
@@ -155,18 +154,17 @@ function setValueToStorage(keySuffix, keyValue){
 		  }
 	});
 }
- 
+
 function getLastInventory() {
 	let inventory = [];
 	inventory[0] = getValueFromStorage(0);
 	for(let i = 1; i < 6; i++) {
-		let val; 
-		sleep(100).then(() => { val =  getValueFromStorage(i);});
+		let val = getValueFromStorage(i);
 		let arr = splitItemsStringToArr(val);
 		let rez = arr;
 		let chunksCount = 1;
 		while(arr.length >= CHUNK_SIZE) {
-			sleep(100).then(() => { val =  getValueFromStorage(i + "_" + chunksCount);});
+			val = getValueFromStorage(i + "_" + chunksCount);
 			arr = splitItemsStringToArr(val ? val.replace(/[\r\n\t]+/g, '').trim() : "");
 			rez = rez.concat(arr);
 			chunksCount++;
@@ -234,36 +232,40 @@ function getCurrentInventory() {
 }
 
 function showAlertIfInventoryChanged() {
-	console.log("Get last inv...");
-	let oldInventoryArr = getLastInventory();
-	console.log(oldInventoryArr);
-	if(!oldInventoryArr || !oldInventoryArr[0]) {
-		console.log("Last inv not exist...");
-		saveCurrentInventory();
-		console.log("Curr inv saved");
-		return;
-	}
-	console.log("Last inv getted");
-	
 	console.log("Get curr inv...");
 	let newInventory = getCurrentInventory();
 	console.log(newInventory);
 	console.log("Curr inv getted");
 	
-	if(oldInventoryArr[0]*1 + UPDATE_INTERVAL_IN_MS > newInventory[0]) {console.log("Inv too fresh"); if(!DEBUG_MODE) return;}
+	let lastUpdInv = getValueFromStorage(0);
+	lastUpdInv = lastUpdInv ? lastUpdInv : 0;
+	
+	if(lastUpdInv*1 + UPDATE_INTERVAL_IN_MS > newInventory[0]) {console.log("Inv too fresh"); if(!DEBUG_MODE) return;}
+	
+	console.log("Get last inv...");
+	let oldInventoryArr = getLastInventory();
+	console.log(oldInventoryArr);
+	if(!oldInventoryArr || !oldInventoryArr[0]) {
+		console.log("Last inv not exist...");
+		saveCurrentInventory([1,2,3,4,5]);
+		console.log("Curr inv saved");
+		return;
+	}
+	console.log("Last inv getted");
 
 	if(oldInventoryArr[1].join("") === newInventory[1].join("")
 		&& oldInventoryArr[2].join("").replace(/[\r\n\t]+/g, '').trim() === newInventory[2].join("").replace(/[\r\n\t]+/g, '').trim()
 		&& oldInventoryArr[3].join("").replace(/[\r\n\t]+/g, '').trim() === newInventory[3].join("").replace(/[\r\n\t]+/g, '').trim()
 		&& oldInventoryArr[4].join("").replace(/[\r\n\t]+/g, '').trim() === newInventory[4].join("").replace(/[\r\n\t]+/g, '').trim()
 		&& oldInventoryArr[5].join("").replace(/[\r\n\t]+/g, '').trim() === newInventory[5].join("").replace(/[\r\n\t]+/g, '').trim()) {
-		saveCurrentInventory();
+		saveCurrentInventoryTime();
 		console.log("No changes!");
 		if(!DEBUG_MODE) return;
 	}
 	console.log("Find changes!");
 	
 	let message = "";
+	let diffsSections = [];
 	for(let i = 1; i < newInventory.length; i++) {
 		let arrsDiff = getItems(oldInventoryArr[i], newInventory[i]);
 		if(arrsDiff.length > 1) {
@@ -281,18 +283,21 @@ function showAlertIfInventoryChanged() {
 			message += arrsDiff;
 	// console.log("Diffs getted!");
 			message += MESSAGE_ITEMS_ROW_END + MESSAGE_BLOCK_END;
+			diffsSections.push(i);
 		}
 	}
-	console.log("Save curr inv...");
-	saveCurrentInventory();
-	console.log("Curr inv saved");
+	if(diffsSections.length > 0) {
+		console.log("Save curr inv " + i);
+		saveCurrentInventory(diffsSections);
+		console.log("Curr inv saved");
+	}
 
 	//$('body').append(STYLE);
 	if(DEBUG_MODE) {
 		message = `<div class="alert_block"><div class="alert_blockTitle">Изменён раздел "Артефакты"!</div><div class="alert_blockItems"><span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 1 тысячи слов"></span> <span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 2 тысячи слов"></span> <span class="alert_deletedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 3 тысячи слов"></span></div></div><div class="alert_block"><div class="alert_blockTitle">Изменён раздел "Подарки"!</div><div class="alert_blockItems"><span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 1 тысячи слов"></span> <span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 2 тысячи слов"></span> <span class="alert_addedItem"><img src="https://forumupload.ru/uploads/001a/b7/b5/5/169367.png" title="вместо 3 тысячи слов"></span></div></div>`;
 	}
 	
-	console.log("message: '" + message + "';");
+	// console.log("message: '" + message + "';");
 	// if(UserID == 411) {
 	// 	console.log("message:" + message);
 	// 	return 0;
@@ -351,7 +356,6 @@ function getItems(oldItemsArr, newItemsArr) {
 
 function splitItemsStringToArr(istr) {
 	let arr = [];
-	
 	istr = istr.replace(regexpSpecChars, "");
 	if(istr.length == 0 || istr.trim().length == 0) return arr;
 	$(istr).filter('img').each(function(idx, ctx) {arr.push(ctx.outerHTML.toString())});
