@@ -51,8 +51,8 @@ async function loadInv() {
 const sortable = Object.entries(countByTypes)
     .sort(([,a],[,b]) => a-b)
     .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
-    sortable.forEach((values, keys) => {
-        tsStr += "<tr><td><img src='https://alluviodev.github.io/scripts/event/NY2024/img/" + key + ".png'></td><td><b>" + value + "</b></td></tr>";
+for (var key in sortable) {
+        tsStr += "<tr><td><img src='https://alluviodev.github.io/scripts/event/NY2024/img/" + key + ".png'></td><td><b>" + sortable[key] + "</b></td></tr>";
     });
     tsStr += "</table>";
     totalStat.innerHTML = tsStr;
@@ -61,8 +61,8 @@ const sortable = Object.entries(countByTypes)
 const sortable1 = Object.entries(countByUsers)
     .sort(([,a],[,b]) => a-b)
     .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
-    sortable1.forEach((values, keys) => {
-        psStr += "<tr><td><b>" + key + "</b></td><td>" + value + "</td></tr>";
+    for (var key in sortable1) {
+        psStr += "<tr><td><b>" + key + "</b></td><td>" + sortable1[key] + "</td></tr>";
     });
     psStr += "</table>";
     personalStat.innerHTML = psStr;
