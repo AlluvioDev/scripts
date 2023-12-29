@@ -1,4 +1,4 @@
-const version = "v5.0"; // Обнови меня, если меняешь код!
+const version = "v5.1"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -101,21 +101,20 @@ const CHUNK_SIZE = 15;
 var regexpSpecChars = /[^\w\sа-яА-ЯёЁ\d\.<>\\\/\"=\[\]\!\?\:]/g;
 console.log("init inventoryAlert plugin " + version);
 if(DEBUG_MODE) console.log("DEBUG_MODE on");
-function saveCurrentInventory() {
-	let invStr = getCurrentInventory();
-	let current = new Date();
-	current = current.getTime();
-	setValueToStorage(0, current);
-	for(let i = 1; i < 6; i++) {
-		let items = invStr[i];
+
+function saveCurrentInventory(fields, newInventory) {
+	let invStr = newInventory;
+	saveCurrentInventoryTime();
+	for(let i = 0; i < fields.length; i++) {
+		let items = invStr[fields[i]];
 		let chunksCount = Math.floor(items.length / CHUNK_SIZE);
 		let jId = 1;
 		for(let j = 0; j <= items.length; j = j + CHUNK_SIZE){
 			if(j != 0) {
-				setValueToStorage(i + "_" + jId, items.slice(j, j+CHUNK_SIZE ).join("\n"));
+				setValueToStorage(fields[i] + "_" + jId, items.slice(j, j+CHUNK_SIZE ).join("\n"));
 				jId++;
 			} else {
-				setValueToStorage(i, items.slice(0, CHUNK_SIZE).join("\n"));
+				setValueToStorage(fields[i], items.slice(0, CHUNK_SIZE).join("\n"));
 			}
 		}
 	}
@@ -247,7 +246,7 @@ function showAlertIfInventoryChanged() {
 	console.log(oldInventoryArr);
 	if(!oldInventoryArr || !oldInventoryArr[0]) {
 		console.log("Last inv not exist...");
-		saveCurrentInventory([1,2,3,4,5]);
+		saveCurrentInventory([1,2,3,4,5], newInventory);
 		console.log("Curr inv saved");
 		return;
 	}
@@ -288,7 +287,7 @@ function showAlertIfInventoryChanged() {
 	}
 	if(diffsSections.length > 0) {
 		console.log("Save curr inv " + i);
-		saveCurrentInventory(diffsSections);
+		saveCurrentInventory(diffsSections, newInventory);
 		console.log("Curr inv saved");
 	}
 
