@@ -1,5 +1,57 @@
 [
   {
+    "id": "s1-p318842-9",
+    "owner": "Marceline Trembley",
+    "type": "s1",
+    "post": "p318842",
+    "img": "https://happythanksgivingtoall.com/wp-content/uploads/2023/12/2024-Happy-New-Year-GIF.gif",
+    "faceOwner": "жизнь до 2018",
+    "text": "2024, пожалуйста, ПОЩАДИ",
+    "xPos": "203",
+    "yPos": "46",
+    "bgPos": "background-position:50px -50px;",
+    "filter": "filter: brightness(92%) contrast(113%) saturate(181%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b5-p318842-8",
+    "owner": "Marceline Trembley",
+    "type": "b5",
+    "post": "p318842",
+    "img": "https://64.media.tumblr.com/810b73a1fb4d588eb64f97eb522bdaaa/d9cf4bce982b8476-e6/s400x600/67f59c840f1e580a384689b5950c45481612399b.gif",
+    "faceOwner": "юджин",
+    "text": "ты знаешь, почему шишки всегда падают вниз? потому что даже они не могут устоять перед твоим притяжением",
+    "xPos": "242.20001220703125",
+    "yPos": "149.20001220703125",
+    "bgPos": "background-position:-19px 5px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(28%)"
+  },
+  {
+    "id": "b1-p318842-2",
+    "owner": "Marceline Trembley",
+    "type": "b1",
+    "post": "p318842",
+    "img": "https://64.media.tumblr.com/910f1aacb56b0202cea7ac21a6177878/tumblr_inline_pd8ikpkZLZ1sxjxv9_540.gif",
+    "faceOwner": "винни",
+    "text": "я бы сделала для тебя ещё одного бота <3",
+    "xPos": "160.60000610351562",
+    "yPos": "186",
+    "bgPos": "background-position:0px 5px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(28%)"
+  },
+  {
+    "id": "b4-p318842-7",
+    "owner": "Marceline Trembley",
+    "type": "b4",
+    "post": "p318842",
+    "img": "https://64.media.tumblr.com/5cb4b3bed7ecd6562b29b1828547a7fc/7fa29a8c01706977-27/s400x600/88f95937d62a3aa0e92dd2fe34aaac32e74fd5a3.gif",
+    "faceOwner": "киан",
+    "text": "in a world of boys he's a gentleman",
+    "xPos": "244.60000610351562",
+    "yPos": "225.1999969482422",
+    "bgPos": "background-position:-14px -47px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "b2-p318256-3",
     "owner": "Rowan Turner",
     "type": "b2",
