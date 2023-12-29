@@ -1,5 +1,18 @@
 [
   {
+    "id": "b5-p318319-8",
+    "owner": "Edgar Bones",
+    "type": "b5",
+    "post": "p318319",
+    "img": "https://imgur.com/ulcqaZL.gif",
+    "faceOwner": "wife",
+    "text": "с новым годом и счастливого рождества ♥",
+    "xPos": "136.60000610351562",
+    "yPos": "175.80003356933594",
+    "bgPos": "background-position:-12px 8px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "b5-p319430-7",
     "owner": "Ezra Minchum",
     "type": "b5",
