@@ -1,5 +1,5 @@
 var currLink = location.href;
-var inventorySrc= "https://alluviodev.github.io/scripts/event/NY2024/inventory.json";
+var inventorySrc= "https://alluviodev.github.io/scripts/event/NY2024/inventory.json?t=" + new Date().getTime();
 
 
 var params = {};
