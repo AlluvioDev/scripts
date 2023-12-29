@@ -118,10 +118,10 @@ function saveCurrentInventory() {
 		let jId = 1;
 		for(let j = 0; j <= items.length; j = j + CHUNK_SIZE){
 			if(j != 0) {
-				sleep(200).then(() => { setValueToStorage(i + "_" + jId, items.slice(j, j+CHUNK_SIZE ).join("\n"));});
+				sleep(100).then(() => { setValueToStorage(i + "_" + jId, items.slice(j, j+CHUNK_SIZE ).join("\n"));});
 				jId++;
 			} else {
-				sleep(200).then(() => { setValueToStorage(i, items.slice(0, CHUNK_SIZE).join("\n"));});
+				sleep(100).then(() => { setValueToStorage(i, items.slice(0, CHUNK_SIZE).join("\n"));});
 			}
 		}
 	}
@@ -161,12 +161,12 @@ function getLastInventory() {
 	inventory[0] = getValueFromStorage(0);
 	for(let i = 1; i < 6; i++) {
 		let val; 
-		sleep(200).then(() => { val =  getValueFromStorage(i);});
+		sleep(100).then(() => { val =  getValueFromStorage(i);});
 		let arr = splitItemsStringToArr(val);
 		let rez = arr;
 		let chunksCount = 1;
 		while(arr.length >= CHUNK_SIZE) {
-			sleep(200).then(() => { val =  getValueFromStorage(i + "_" + chunksCount);});
+			sleep(100).then(() => { val =  getValueFromStorage(i + "_" + chunksCount);});
 			arr = splitItemsStringToArr(val ? val.replace(/[\r\n\t]+/g, '').trim() : "");
 			rez = rez.concat(arr);
 			chunksCount++;
@@ -351,6 +351,7 @@ function getItems(oldItemsArr, newItemsArr) {
 
 function splitItemsStringToArr(istr) {
 	let arr = [];
+	
 	istr = istr.replace(regexpSpecChars, "");
 	if(istr.length == 0 || istr.trim().length == 0) return arr;
 	$(istr).filter('img').each(function(idx, ctx) {arr.push(ctx.outerHTML.toString())});
