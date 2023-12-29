@@ -34,7 +34,7 @@ function showInfo(itemId) {
 	realInv.forEach((item) => {
 		if(itemId == item.id) {
 			$("#info").html(infoTemplate.replace("{{OWNER_NAME}}", item.owner).replaceAll("{{PID}}", item.post).replaceAll("{{SHORT_PID}}", item.post.slice(1)));
-			if(!item.img) {
+			if(!item.img && !item.faceOwner) {
 				TOY_ID = item.id;
 				OWNER_NAME = params.uname;
 				TOY_TYPE = item.type;
@@ -143,7 +143,7 @@ async function loadInv() {
 			.replaceAll("{{ONCLICK}}", 'showInfo("' + item.id + '")');
 			toysStr += `<li onclick='showInfo("` + item.id + `")'><div class='toy ` + item.type + (item.img ? ` added` : ``) + `' style="position: relative;"></div>` + (item.img ? `Игрушка уже висит!` : `Вы можете повесить эту игрушку.`) + `</li>`;
 
-			if(item.img) {
+			if(item.img || item.faceOwner) {
 				$('#tree').after(toy);
 			}
 		}
