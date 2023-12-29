@@ -48,16 +48,21 @@ async function loadInv() {
 	  });
     let tsStr = "<table>";
     tsStr += "<tr><td>Игрушек на ёлке всего:</td><td><b>" + totalCount + "</b></td></tr>"; 
-    countByTypes = countByTypes.sort((a, b) => b[1] - a[1]));
-    countByTypes.forEach((values, keys) => {
+const sortable = Object.entries(countByTypes)
+    .sort(([,a],[,b]) => a-b)
+    .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+    sortable.forEach((values, keys) => {
         tsStr += "<tr><td><img src='https://alluviodev.github.io/scripts/event/NY2024/img/" + key + ".png'></td><td><b>" + value + "</b></td></tr>";
     });
     tsStr += "</table>";
     totalStat.innerHTML = tsStr;
     
     let psStr = "<table>";
-    countByUsers = countByTypes.sort((a, b) => b[1] - a[1]));
-    countByUsers.forEach((values, keys) => {
+    countByUsers = countByUsers.sort((a, b) => b[1] - a[1]));
+const sortable1 = Object.entries(countByUsers)
+    .sort(([,a],[,b]) => a-b)
+    .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+    sortable1.forEach((values, keys) => {
         psStr += "<tr><td><b>" + key + "</b></td><td>" + value + "</td></tr>";
     });
     psStr += "</table>";
