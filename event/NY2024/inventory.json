@@ -1,5 +1,31 @@
 [
   {
+    "id": "b2-p318256-2",
+    "owner": "Rowan Turner",
+    "type": "b2",
+    "post": "p318256",
+    "img": "https://i.imgur.com/08MU3W0.gif",
+    "faceOwner": "Офелия",
+    "text": "Спасибо за адвент! Было весело.",
+    "xPos": "46",
+    "yPos": "455",
+    "bgPos": "background-position:-15px 12px;",
+    "filter": "filter: brightness(117%) contrast(100%) saturate(142%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b5-p318256-8",
+    "owner": "Rowan Turner",
+    "type": "b5",
+    "post": "p318256",
+    "img": "https://artofpain.ru/sites/default/files/styles/review_400x400/public/1cf372a6-4cf8-42ca-9570-9f15e73620a3_y.jpg",
+    "faceOwner": "Икарус",
+    "text": "Спасибо, что пустил в песочницу!",
+    "xPos": "57",
+    "yPos": "415",
+    "bgPos": "background-position:1px 6px;",
+    "filter": "filter: brightness(135%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "b5-p318256-9",
     "owner": "Rowan Turner",
     "type": "b5",
