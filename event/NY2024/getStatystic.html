@@ -1,0 +1,70 @@
+<head>
+  <title>Статистика.</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <style>
+  img {
+	width: 50px;
+	height: 50px;
+  }
+  </style>
+  <h2>Статистика.</h2>
+
+  <details><summary><h3>Общефорумная</h3></summary>
+    <div id="totalStat"></div>
+  </details>
+
+  <details><summary><h3>По участникам</h3></summary>
+    <div id="personalStat"></div>
+  </details>
+  <script>
+    var inventorySrc= "https://alluviodev.github.io/scripts/event/NY2024/inventory.json?t=" + new Date().getTime();
+      var TOTAL_INV;
+
+      var totalCount = 0;
+      var countByUsers = {};
+      var countByTypes = {};
+async function loadInv() {
+	const response = await fetch(inventorySrc);
+	TOTAL_INV = await response.json();
+	
+	console.log("Load inventory...");
+
+	  TOTAL_INV.forEach((item) => {
+		 if(item.owner == "Gremlin") return;
+
+          totalCount++;
+          if(!countByUsers[item.owner]) {
+              countByUsers[item.owner] = 1;
+          } else {
+              countByUsers[item.owner] = countByUsers[item.owner]*1 + 1;
+          }
+          if(!countByTypes[item.type]) {
+              countByTypes[item.type] = 1;
+          } else {
+              countByTypes[item.type] = countByTypes[item.type]*1 + 1;
+          }
+	  });
+    let tsStr = "<table>";
+    tsStr += "<tr><td>Игрушек на ёлке всего:</td><td><b>" + totalCount + "</b></td></tr>"; 
+    countByTypes = countByTypes.sort((a, b) => b[1] - a[1]));
+    countByTypes.forEach((values, keys) => {
+        tsStr += "<tr><td><img src='https://alluviodev.github.io/scripts/event/NY2024/img/" + key + ".png'></td><td><b>" + value + "</b></td></tr>";
+    });
+    tsStr += "</table>";
+    totalStat.innerHTML = tsStr;
+    
+    let psStr = "<table>";
+    countByUsers = countByTypes.sort((a, b) => b[1] - a[1]));
+    countByUsers.forEach((values, keys) => {
+        psStr += "<tr><td><b>" + key + "</b></td><td>" + value + "</td></tr>";
+    });
+    psStr += "</table>";
+    personalStat.innerHTML = psStr;
+}
+
+  loadInv();
+  </script>
+
+</body></html>
