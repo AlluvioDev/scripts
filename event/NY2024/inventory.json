@@ -1,5 +1,57 @@
 [
   {
+    "id": "b3-p318256-5",
+    "owner": "Rowan Turner",
+    "type": "b3",
+    "post": "p318256",
+    "img": "https://64.media.tumblr.com/e0839825bacae8e2f6ac907b9f40f60e/tumblr_inline_pfnk9zEpF01rifr4k_1280.gif",
+    "faceOwner": "Чарли",
+    "text": "Удачи в поисках шкатулки!",
+    "xPos": "252",
+    "yPos": "168",
+    "bgPos": "background-position:-5px 1px;",
+    "filter": "filter: brightness(121%) contrast(202%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(342deg) sepia(0%)"
+  },
+  {
+    "id": "b4-p318256-7",
+    "owner": "Rowan Turner",
+    "type": "b4",
+    "post": "p318256",
+    "img": "https://i.ibb.co/vvfy917/tumblr-570a6c22e000634bfe8f12fc3d68f14d-32e67860-540.gif",
+    "faceOwner": "Орфей",
+    "text": "Ты что куришь в моём шарике? Фу! Лучше шкатулку ищите :) Удачи в поисках!",
+    "xPos": "97",
+    "yPos": "300",
+    "bgPos": "background-position:-6px 11px;",
+    "filter": "filter: brightness(127%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b1-p318256-1",
+    "owner": "Rowan Turner",
+    "type": "b1",
+    "post": "p318256",
+    "img": "https://forumupload.ru/uploads/001b/9d/5d/604/581988.gif",
+    "faceOwner": "Видар",
+    "text": "Держись, дед! Ты должен выжить в квесте.",
+    "xPos": "311",
+    "yPos": "308",
+    "bgPos": "background-position:-1px 16px;",
+    "filter": "filter: brightness(160%) contrast(134%) saturate(151%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b3-p318256-4",
+    "owner": "Rowan Turner",
+    "type": "b3",
+    "post": "p318256",
+    "img": "https://forumupload.ru/uploads/001b/9d/5d/702/156275.gif",
+    "faceOwner": "Мизери",
+    "text": "Спасибо за то, что пожертвовал рубашку. Но мы ведь знаем, что кубы не обмануть, и шансы выжить у меня весьма низки.",
+    "xPos": "208",
+    "yPos": "328",
+    "bgPos": "background-position:-13px 6px;",
+    "filter": "filter: brightness(141%) contrast(100%) saturate(45%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "s1-p318256-13",
     "owner": "Rowan Turner",
     "type": "s1",
