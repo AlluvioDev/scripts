@@ -1,5 +1,31 @@
 [
   {
+    "id": "b2-p318256-3",
+    "owner": "Rowan Turner",
+    "type": "b2",
+    "post": "p318256",
+    "img": "https://forumupload.ru/uploads/001a/1e/d0/4/t715051.gif",
+    "faceOwner": "Люциус",
+    "text": "Ты так стараешься для своих учеников! Я в восторге. Успехов!",
+    "xPos": "293",
+    "yPos": "265",
+    "bgPos": "background-position:-19px 0px;",
+    "filter": "filter: brightness(250%) contrast(100%) saturate(147%) grayscale(45%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b4-p318256-6",
+    "owner": "Rowan Turner",
+    "type": "b4",
+    "post": "p318256",
+    "img": "https://64.media.tumblr.com/7b54d90ea4a9f00592bfd9483709896f/tumblr_nmtwnr6JN41usqbxho3_250.gif",
+    "faceOwner": "Оз",
+    "text": "Повесил тебя. Теперь-то ты не будешь лезть целоваться?",
+    "xPos": "95",
+    "yPos": "264",
+    "bgPos": "background-position:-41px 8px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "b2-p318256-2",
     "owner": "Rowan Turner",
     "type": "b2",
