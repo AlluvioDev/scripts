@@ -53,7 +53,7 @@ const sortable = Object.entries(countByTypes)
     .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
 for (var key in sortable) {
         tsStr += "<tr><td><img src='https://alluviodev.github.io/scripts/event/NY2024/img/" + key + ".png'></td><td><b>" + sortable[key] + "</b></td></tr>";
-    });
+    };
     tsStr += "</table>";
     totalStat.innerHTML = tsStr;
     
@@ -63,7 +63,7 @@ const sortable1 = Object.entries(countByUsers)
     .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
     for (var key in sortable1) {
         psStr += "<tr><td><b>" + key + "</b></td><td>" + sortable1[key] + "</td></tr>";
-    });
+    };
     psStr += "</table>";
     personalStat.innerHTML = psStr;
 }
