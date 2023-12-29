@@ -1,4 +1,4 @@
-const version = "v4.18"; // Обнови меня, если меняешь код!
+const version = "SCRIPT 2"; // Обнови меня, если меняешь код!
 
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
@@ -101,6 +101,12 @@ const CHUNK_SIZE = 15;
 var regexpSpecChars = /[^\w\sа-яА-ЯёЁ\d\.<>\\\/\"=\[\]\!\?\:]/g;
 console.log("init inventoryAlert plugin " + version);
 if(DEBUG_MODE) console.log("DEBUG_MODE on");
+
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function saveCurrentInventory() {
 	let invStr = getCurrentInventory();
 	let current = new Date();
@@ -112,14 +118,15 @@ function saveCurrentInventory() {
 		let jId = 1;
 		for(let j = 0; j <= items.length; j = j + CHUNK_SIZE){
 			if(j != 0) {
-				setValueToStorage(i + "_" + jId, items.slice(j, j+CHUNK_SIZE ).join("\n"));
+				sleep(200).then(() => { setValueToStorage(i + "_" + jId, items.slice(j, j+CHUNK_SIZE ).join("\n"));});
 				jId++;
 			} else {
-				setValueToStorage(i, items.slice(0, CHUNK_SIZE).join("\n"));
+				sleep(200).then(() => { setValueToStorage(i, items.slice(0, CHUNK_SIZE).join("\n"));});
 			}
 		}
 	}
 }
+
 function setValueToStorage(keySuffix, keyValue){
 	if(keyValue instanceof Array) {
 		keyValue = keyValue.join("\n");
@@ -148,17 +155,18 @@ function setValueToStorage(keySuffix, keyValue){
 		  }
 	});
 }
-
+ 
 function getLastInventory() {
 	let inventory = [];
 	inventory[0] = getValueFromStorage(0);
 	for(let i = 1; i < 6; i++) {
-		let val = getValueFromStorage(i);
+		let val; 
+		sleep(200).then(() => { val =  getValueFromStorage(i);});
 		let arr = splitItemsStringToArr(val);
 		let rez = arr;
 		let chunksCount = 1;
 		while(arr.length >= CHUNK_SIZE) {
-			val = getValueFromStorage(i + "_" + chunksCount);
+			sleep(200).then(() => { val =  getValueFromStorage(i + "_" + chunksCount);});
 			arr = splitItemsStringToArr(val ? val.replace(/[\r\n\t]+/g, '').trim() : "");
 			rez = rez.concat(arr);
 			chunksCount++;
@@ -245,10 +253,10 @@ function showAlertIfInventoryChanged() {
 	if(oldInventoryArr[0]*1 + UPDATE_INTERVAL_IN_MS > newInventory[0]) {console.log("Inv too fresh"); if(!DEBUG_MODE) return;}
 
 	if(oldInventoryArr[1].join("") === newInventory[1].join("")
-		&& oldInventoryArr[2].join("") === newInventory[2].join("")
-		&& oldInventoryArr[3].join("") === newInventory[3].join("")
-		&& oldInventoryArr[4].join("") === newInventory[4].join("")
-		&& oldInventoryArr[5].join("") === newInventory[5].join("")) {
+		&& oldInventoryArr[2].join("").replace(/[\r\n\t]+/g, '').trim() === newInventory[2].join("").replace(/[\r\n\t]+/g, '').trim()
+		&& oldInventoryArr[3].join("").replace(/[\r\n\t]+/g, '').trim() === newInventory[3].join("").replace(/[\r\n\t]+/g, '').trim()
+		&& oldInventoryArr[4].join("").replace(/[\r\n\t]+/g, '').trim() === newInventory[4].join("").replace(/[\r\n\t]+/g, '').trim()
+		&& oldInventoryArr[5].join("").replace(/[\r\n\t]+/g, '').trim() === newInventory[5].join("").replace(/[\r\n\t]+/g, '').trim()) {
 		saveCurrentInventory();
 		console.log("No changes!");
 		if(!DEBUG_MODE) return;
@@ -289,7 +297,7 @@ function showAlertIfInventoryChanged() {
 	// 	console.log("message:" + message);
 	// 	return 0;
 	// }
-	if(message.length > 1) {
+	if(message.length > 1 && UserID != 54 && UserID != 222) {
 		$('body').append(MESSAGE_PANEL_WRAPPER_START + MESSAGE_CLOSE_BTN + message + MESSAGE_PANEL_WRAPPER_END);
 	}
 	
@@ -308,8 +316,8 @@ function getItems(oldItemsArr, newItemsArr) {
 	// let oldItemsArr = oldItemsString ? splitItemsStringToArr(oldItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
 	// let newItemsArr = newItemsString ? splitItemsStringToArr(newItemsString.replace(/[\r\n\t]+/g, '').trim()) : [];
 
-	let cleanedOldArr = oldItemsArr.map(function(x){ return x.replace(regexpSpecChars, ""); });
-	let cleanedNewArr = newItemsArr.map(function(x){ return x.replace(regexpSpecChars, ""); });
+	let cleanedOldArr = oldItemsArr.map(function(x){ return x.replace(regexpSpecChars, "").trim(); });
+	let cleanedNewArr = newItemsArr.map(function(x){ return x.replace(regexpSpecChars, "").trim(); });
 	
 	var result = [];
 	
@@ -337,12 +345,14 @@ function getItems(oldItemsArr, newItemsArr) {
 			result.push(MESSAGE_ITEM_DELETED_START + oldItemsArr[cleanedOldArr.indexOf(key)] + MESSAGE_ITEM_DELETED_END);
 		}
 	}
-	
+	console.log(resultF);
 	return result.join(" ");
 }
 
 function splitItemsStringToArr(istr) {
 	let arr = [];
+	istr = istr.replace(regexpSpecChars, "");
+	if(istr.length == 0 || istr.trim().length == 0) return arr;
 	$(istr).filter('img').each(function(idx, ctx) {arr.push(ctx.outerHTML.toString())});
 	return arr;
 }
