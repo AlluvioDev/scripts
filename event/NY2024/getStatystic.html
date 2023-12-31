@@ -11,12 +11,11 @@
   </style>
   <h2>Статистика.</h2>
 
-  <details><summary><h3>Общефорумная</h3></summary>
-    <div id="totalStat"></div>
-  </details>
-
-  <details><summary><h3>По участникам</h3></summary>
-    <div id="personalStat"></div>
+	<table>
+		<tr><td><h3>Общефорумная</h3></td><td><h3>По участникам</h3></td></tr>
+		<tr><td> <div id="totalStat"></div></td><td> <div id="personalStat"></div></td></tr>
+	</table>
+   
   </details>
   <script>
     var inventorySrc= "https://alluviodev.github.io/scripts/event/NY2024/inventory.json?t=" + new Date().getTime();
