@@ -48,7 +48,7 @@ async function loadInv() {
     let tsStr = "<table>";
     tsStr += "<tr><td>Игрушек на ёлке всего:</td><td><b>" + totalCount + "</b></td></tr>"; 
 const sortable = Object.entries(countByTypes)
-    .sort(([,a],[,b]) => a-b)
+    .sort(([,a],[,b]) => b-a)
     .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
 for (var key in sortable) {
         tsStr += "<tr><td><img src='https://alluviodev.github.io/scripts/event/NY2024/img/" + key + ".png'></td><td><b>" + sortable[key] + "</b></td></tr>";
@@ -58,7 +58,7 @@ for (var key in sortable) {
     
     let psStr = "<table>";
 const sortable1 = Object.entries(countByUsers)
-    .sort(([,a],[,b]) => a-b)
+    .sort(([,a],[,b]) => b-a)
     .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
     for (var key in sortable1) {
         psStr += "<tr><td><b>" + key + "</b></td><td>" + sortable1[key] + "</td></tr>";
