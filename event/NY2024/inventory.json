@@ -1,5 +1,31 @@
 [
   {
+    "id": "b3-p320302-2",
+    "owner": "Ophelia Nott",
+    "type": "b3",
+    "post": "p320302",
+    "img": "https://assets.fxnetworks.com/cms-next/production/cms/2022/03/22/web_cast_roryculkin_under-the-banner-of-heaven_570x698.jpg",
+    "faceOwner": "Sidney Morris",
+    "text": "Эрида передает тебе, шо ты ее пэсдюк, и она желает тебе не быть псиной в Новом году. Будь лапушкой :з",
+    "xPos": "193.88890075683594",
+    "yPos": "499.81488037109375",
+    "bgPos": "background-position:-1px 2px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(82%) invert(0%) hue-rotate(211deg) sepia(0%)"
+  },
+  {
+    "id": "b2-p320302-1",
+    "owner": "Ophelia Nott",
+    "type": "b2",
+    "post": "p320302",
+    "img": "https://i.pinimg.com/736x/55/28/d0/5528d0feb3dc823b2bc5e2f2c01cd9f3.jpg",
+    "faceOwner": "Dragon",
+    "text": "Год дракона, будь классным! А еще это любимец наших с еноттом персонажей.",
+    "xPos": "201.29632568359375",
+    "yPos": "229.4444580078125",
+    "bgPos": "background-position:0px 2px;",
+    "filter": "filter: brightness(118%) contrast(101%) saturate(100%) grayscale(55%) invert(0%) hue-rotate(89deg) sepia(0%)"
+  },
+  {
     "id": "s1-p320225-6",
     "owner": "Oswald Stein",
     "type": "s1",
@@ -2154,8 +2180,8 @@
     "img": "https://i.pinimg.com/564x/8a/56/e5/8a56e560c9258af132e955e9397c7522.jpg",
     "faceOwner": "Kayden Ollivander",
     "text": "В новом году снова войди в реку под названием Эрида, тебе понравится!",
-    "xPos": "205.33334350585938",
-    "yPos": "260",
+    "xPos": "202.03704833984375",
+    "yPos": "290.1852111816406",
     "bgPos": "background-position:4px -4px;",
     "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(59%) invert(0%) hue-rotate(55deg) sepia(0%)"
   },
