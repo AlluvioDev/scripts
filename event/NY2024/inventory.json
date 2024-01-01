@@ -1,5 +1,31 @@
 [
   {
+    "id": "b4-p318842-6",
+    "owner": "Marceline Trembley",
+    "type": "b4",
+    "post": "p318842",
+    "img": "https://64.media.tumblr.com/1955c6dbb8e4ff0d22a131108ab08bcb/d94be3f325b536e3-32/s400x600/57bd9980ff9969a4dacddda44b4b1c651bde51e9.gif",
+    "faceOwner": "ирма",
+    "text": "самые крепкие объятия на планете земля",
+    "xPos": "92.5999984741211",
+    "yPos": "487.60003662109375",
+    "bgPos": "background-position:-24px 0px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b2-p318842-2",
+    "owner": "Marceline Trembley",
+    "type": "b2",
+    "post": "p318842",
+    "img": "https://i.gifer.com/6qWK.gif",
+    "faceOwner": "стив",
+    "text": "я бы помогла тебе победить дагот ура",
+    "xPos": "209.40000915527344",
+    "yPos": "510.79998779296875",
+    "bgPos": "background-position:-24px 0px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "b1-p318315-1",
     "owner": "Ophelia Nott",
     "type": "b1",
