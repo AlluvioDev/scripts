@@ -137,8 +137,8 @@
     "img": "https://m.media-amazon.com/images/M/MV5BMjI3ODkxMjU3OF5BMl5BanBnXkFtZTgwMTk2Njk3MTE@._V1_.jpg",
     "faceOwner": "Oswald Stein",
     "text": "Эрида передает, что в  новом году только чай и никаких ядов))",
-    "xPos": "158.33334350585938",
-    "yPos": "563.5185546875",
+    "xPos": "172.40740966796875",
+    "yPos": "567.9630126953125",
     "bgPos": "background-position:0px 0px;",
     "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(56%) invert(0%) hue-rotate(44deg) sepia(0%)"
   },
@@ -150,8 +150,8 @@
     "img": "https://m.media-amazon.com/images/M/MV5BMGFmYWJmMjktZDNkYi00MTYzLWFhMjQtY2FkMmUzNTdlNTRhXkEyXkFqcGdeQXVyNDI5NzQ2Mzc@._V1_.jpg",
     "faceOwner": "Barty Crouch Jr",
     "text": "Береги Мэри в новом году!)",
-    "xPos": "224.25927734375",
-    "yPos": "572.4074096679688",
+    "xPos": "237.59259033203125",
+    "yPos": "571.6666870117188",
     "bgPos": "background-position:-1px 2px;",
     "filter": "filter: brightness(105%) contrast(123%) saturate(100%) grayscale(68%) invert(0%) hue-rotate(276deg) sepia(0%)"
   },
@@ -1634,8 +1634,8 @@
     "img": "https://i.pinimg.com/474x/b9/14/bd/b914bdfc044fef5bc42e29a601709a85.jpg",
     "faceOwner": "Edgar Bones",
     "text": "Зі святами тебе, містер Ікло!",
-    "xPos": "147.33334350585938",
-    "yPos": "496.66668701171875",
+    "xPos": "129.4444580078125",
+    "yPos": "492.40740966796875",
     "bgPos": "background-position:0px 6px;",
     "filter": "filter: brightness(118%) contrast(100%) saturate(100%) grayscale(61%) invert(0%) hue-rotate(171deg) sepia(0%)"
   },
@@ -1647,8 +1647,8 @@
     "img": "https://www.lahiguera.net/cinemania/actores/sasha_luss/fotos/28189/sasha_luss.jpg",
     "faceOwner": "Hesper Avery",
     "text": "Лучшая леди мемов на всем белом свете. Здоровья тебе и АДЕКВАТНОГО начальства!",
-    "xPos": "233.33334350585938",
-    "yPos": "492.66668701171875",
+    "xPos": "258.3333435058594",
+    "yPos": "491.66668701171875",
     "bgPos": "background-position:-3px 5px;",
     "filter": "filter: brightness(109%) contrast(109%) saturate(97%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
   },
