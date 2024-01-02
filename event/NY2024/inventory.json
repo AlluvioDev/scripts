@@ -1,5 +1,31 @@
 [
   {
+    "id": "b2-p319660-1",
+    "owner": "Antares Nott",
+    "type": "b2",
+    "post": "p319660",
+    "img": "https://i.ibb.co/HpcRSP8/image.png",
+    "faceOwner": "аллка",
+    "text": "Живи и процветай!",
+    "xPos": "200",
+    "yPos": "107",
+    "bgPos": "background-position:-44px 15px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
+    "id": "b1-p319660-1",
+    "owner": "Antares Nott",
+    "type": "b1",
+    "post": "p319660",
+    "img": "https://papik.pro/grafic/uploads/posts/2023-04/thumbs/1681375883_papik-pro-p-plakat-tainii-santa-22.jpg",
+    "faceOwner": "тайный Санта",
+    "text": "Спасибо за твои подарки!",
+    "xPos": "128",
+    "yPos": "562",
+    "bgPos": "background-position:-15px 2px;",
+    "filter": "filter: brightness(100%) contrast(100%) saturate(100%) grayscale(0%) invert(0%) hue-rotate(0deg) sepia(0%)"
+  },
+  {
     "id": "b3-p320302-2",
     "owner": "Ophelia Nott",
     "type": "b3",
