@@ -3,6 +3,8 @@ const version = "v4.30"; // Обнови меня, если меняешь ко�
 const DEBUG_MODE = false; // true - уведомление никогда не исчезает, false  - всё работает в нормальном режиме.
 const UPDATE_INTERVAL_IN_MS = 120_000; //120_000 (2 min) | 3_600_000 (1h) | 43_200_000 (12h) | 86_400_000 (24h)
 
+var EXCLUDE_UID = [54, 222, 332]; // Этим пользователям не будут показываться уведомления
+
 /* ==== STYLE SETTINGS ==== */
 /* Обёртка для всей панельки */
 const MESSAGE_PANEL_WRAPPER_CLASS = `alert_wrapper`;
@@ -289,7 +291,7 @@ function showAlertIfInventoryChanged() {
 	// 	console.log("message:" + message);
 	// 	return 0;
 	// }
-	if(message.length > 1 && UserID != 54 && UserID != 222) {
+	if(message.length > 1 && EXCLUDE_UID.indexOf(UserID) < 0) {
 		$('body').append(MESSAGE_PANEL_WRAPPER_START + MESSAGE_CLOSE_BTN + message + MESSAGE_PANEL_WRAPPER_END);
 	}
 	
